@@ -1,0 +1,24 @@
+plugins {
+    id 'java'
+}
+
+def gitVersion = { ->
+    def stdout = new ByteArrayOutputStream()
+    exec {
+        commandLine 'git', 'describe', '--tags', '--always', '--dirty'
+        standardOutput = stdout
+    }
+    def version = stdout.toString().trim()
+    return version.contains('-') ? version + '-SNAPSHOT' : version
+}
+
+allprojects {
+    group 'org.dmfs'
+    version gitVersion()
+    repositories {
+        mavenCentral()
+    }
+}
+
+apply from: 'publish.gradle'
+apply from: 'jacoco.gradle'

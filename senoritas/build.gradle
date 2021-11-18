@@ -1,0 +1,24 @@
+plugins {
+    id 'java'
+}
+
+configurations {
+    provided
+}
+
+sourceSets {
+    main { compileClasspath += configurations.provided }
+}
+
+dependencies {
+    provided 'org.hamcrest:hamcrest:2.2'
+    implementation 'org.dmfs:jems2:2.5.0'
+    testImplementation 'org.dmfs:jems2-testing:2.5.0'
+    testImplementation 'org.hamcrest:hamcrest:2.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+}
+
+test {
+    useJUnitPlatform()
+}
