@@ -1,8 +1,8 @@
 package org.saynotobugs.senoritas.description;
 
-import org.dmfs.jems2.iterable.Seq;
 import org.saynotobugs.senoritas.Description;
 import org.saynotobugs.senoritas.Scribe;
+import org.saynotobugs.senoritas.utils.ArrayIterable;
 
 import java.util.Map;
 import java.util.Optional;
@@ -63,7 +63,7 @@ public final class ValueDescription<T> implements Description
         }
         else if (value.getClass().isArray())
         {
-            description = new IterableDescription(new Seq<>((Object[]) value));
+            description = new IterableDescription(new ArrayIterable(value));
         }
         else
         {

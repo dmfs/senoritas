@@ -1,13 +1,13 @@
 package org.saynotobugs.senoritas.matcher.core;
 
+import org.dmfs.jems2.iterable.Mapped;
 import org.saynotobugs.senoritas.Verdict;
 import org.saynotobugs.senoritas.description.Composite;
 import org.saynotobugs.senoritas.description.TextDescription;
 import org.saynotobugs.senoritas.description.ValueDescription;
-import org.saynotobugs.senoritas.verdict.Updated;
+import org.saynotobugs.senoritas.utils.ArrayIterable;
 import org.saynotobugs.senoritas.verdict.PassIf;
-import org.dmfs.jems2.iterable.Mapped;
-import org.dmfs.jems2.iterable.Seq;
+import org.saynotobugs.senoritas.verdict.Updated;
 
 
 public final class EqualTo<T> extends DelegatingMatcher<T>
@@ -21,9 +21,10 @@ public final class EqualTo<T> extends DelegatingMatcher<T>
 
     private static <T> Verdict attestation(T expected, T actual)
     {
-        return expected.getClass().isArray()
+        return expected.getClass().isArray() && actual.getClass().isArray()
             ? new Updated(orig -> new Composite(new TextDescription("array that"), orig),
-            new Iterates<>(new Mapped<>(EqualTo::new, new Seq<>((T[]) expected))).match(new Seq<T>((T[]) actual)))
+            new Iterates<>(new Mapped<>(EqualTo::new, new ArrayIterable(expected))).match(new ArrayIterable(actual)))
             : new PassIf(expected.equals(actual), new ValueDescription<>(actual));
     }
+
 }
