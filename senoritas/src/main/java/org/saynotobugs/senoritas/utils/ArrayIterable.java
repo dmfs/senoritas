@@ -22,7 +22,7 @@ public final class ArrayIterable implements Iterable<Object>
     @Override
     public Iterator<Object> iterator()
     {
-        return new Iterator<>()
+        return new Iterator<Object>()
         {
             private int mPos;
 

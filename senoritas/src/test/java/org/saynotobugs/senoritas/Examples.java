@@ -12,7 +12,6 @@ import org.saynotobugs.senoritas.matcher.matcher.Matches;
 import org.saynotobugs.senoritas.matcher.matcher.Mismatches;
 import org.saynotobugs.senoritas.verdict.PassIf;
 
-import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -35,6 +34,8 @@ public final class Examples
     @Test
     void testEqualToArray()
     {
+        assertThat(new int[][] { new int[] { 1, 2, 3 }, new int[] { 4, 5, 6 }, new int[] { 6, 7, 8, 9 } },
+            new EqualTo<>(new int[][] { new int[] { 1, 2, 3 }, new int[] { 4, 5, 6 }, new int[] { 6, 7, 8 } }));
         assertThat(new Integer[][] { new Integer[] { 1, 2, 3 }, new Integer[] { 4, 5, 6 }, new Integer[] { 6, 7, 8 } },
             new EqualTo<>(new Integer[][] { new Integer[] { 1, 2, 3 }, new Integer[] { 4, 5, 6 }, new Integer[] { 6, 7, 8 } }));
         assertThat(new Integer[][] { new Integer[] { 1, 2, 3 }, new Integer[] { 4, 55, 6 }, new Integer[] { 6, 7, 88 } },
@@ -73,7 +74,7 @@ public final class Examples
     @Test
     void testContainsAll()
     {
-        assertThat(List.of(1, 2, 10, 3, 4), new ContainsAllOf<>(1, 32, 11, 4));
+        assertThat(new Seq<>(1, 2, 10, 3, 4), new ContainsAllOf<>(1, 32, 11, 4));
     }
 
 
@@ -144,7 +145,7 @@ public final class Examples
     @Test
     void testMatches()
     {
-        assertThat(new Matcher<>()
+        assertThat(new Matcher<String>()
         {
             @Override
             public Verdict match(String actual)
@@ -219,7 +220,7 @@ public final class Examples
     @Test
     void testNotAnyOf()
     {
-        assertThat(List.of(1, 2, 10, 11, 4), new Each<>(new NoneOf<>(new EqualTo<>(77), new EqualTo<>(10), new EqualTo<>(22), new GreaterThan<>(9))));
+        assertThat(new Seq<>(1, 2, 10, 11, 4), new Each<>(new NoneOf<>(new EqualTo<>(77), new EqualTo<>(10), new EqualTo<>(22), new GreaterThan<>(9))));
     }
 
 }
