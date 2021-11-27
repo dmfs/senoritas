@@ -1,6 +1,7 @@
 plugins {
     id 'java'
 }
+apply from: '../jacoco.gradle'
 
 sourceCompatibility = 1.8
 
