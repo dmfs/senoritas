@@ -60,6 +60,6 @@ public final class NoneOf<T> implements Matcher<T>
     @Override
     public Description expectation()
     {
-        return new StructuredDescription("none of:", ",", "", new Mapped<>(Matcher::expectation, mDelegates));
+        return new StructuredDescription("none of", ",", "", new Mapped<>(Matcher::expectation, mDelegates));
     }
 }

@@ -12,6 +12,20 @@ import org.saynotobugs.senoritas.verdict.FailPrepended;
 public final class Each<T> extends DelegatingMatcher<Iterable<T>>
 {
 
+    @SafeVarargs
+    public Each(Matcher<? super T>... delegates)
+    {
+        this("each value", new AllOf<>(delegates));
+    }
+
+
+    @SafeVarargs
+    public Each(String description, Matcher<? super T>... delegate)
+    {
+        this(description, new AllOf<>(delegate));
+    }
+
+
     public Each(Matcher<? super T> delegate)
     {
         this("each value", delegate);

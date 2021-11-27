@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import org.saynotobugs.senoritas.description.Composite;
 import org.saynotobugs.senoritas.description.NumberDescription;
 import org.saynotobugs.senoritas.description.TextDescription;
-import org.saynotobugs.senoritas.matcher.core.Hamcrest;
 import org.saynotobugs.senoritas.matcher.core.*;
 import org.saynotobugs.senoritas.matcher.matcher.Matches;
 import org.saynotobugs.senoritas.matcher.matcher.Mismatches;
@@ -72,9 +71,16 @@ public final class Examples
 
 
     @Test
-    void testContainsAll()
+    void testContainsOne()
     {
-        assertThat(new Seq<>(1, 2, 10, 3, 4), new ContainsAllOf<>(1, 32, 11, 4));
+        assertThat(new Seq<>(1, 2, 10, 3, 4), new Contains<>(15));
+    }
+
+
+    @Test
+    void testContainsMany()
+    {
+        assertThat(new Seq<>(1, 2, 10, 3, 4), new Contains<>(1, 32, 11, 4));
     }
 
 
