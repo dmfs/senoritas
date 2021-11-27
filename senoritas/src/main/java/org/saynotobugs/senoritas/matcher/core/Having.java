@@ -1,11 +1,11 @@
 package org.saynotobugs.senoritas.matcher.core;
 
+import org.dmfs.jems2.Function;
 import org.saynotobugs.senoritas.Description;
 import org.saynotobugs.senoritas.Matcher;
 import org.saynotobugs.senoritas.description.Composite;
 import org.saynotobugs.senoritas.description.TextDescription;
-import org.saynotobugs.senoritas.verdict.Updated;
-import org.dmfs.jems2.Function;
+import org.saynotobugs.senoritas.verdict.FailPrepended;
 
 
 public final class Having<T, V> extends DelegatingMatcher<T>
@@ -24,9 +24,7 @@ public final class Having<T, V> extends DelegatingMatcher<T>
         Function<? super T, ? extends V> featureFunction,
         Matcher<? super V> delegate)
     {
-        super(actual -> new Updated(
-                orig -> new Composite(featureMismatchDescription, orig),
-                delegate.match(featureFunction.value(actual))),
+        super(actual -> new FailPrepended(featureMismatchDescription, delegate.match(featureFunction.value(actual))),
             new Composite(featureDescription, delegate.expectation()));
     }
 }

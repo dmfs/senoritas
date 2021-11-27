@@ -1,27 +1,29 @@
 package org.saynotobugs.senoritas.matcher.matcher;
 
 import org.saynotobugs.senoritas.Description;
-import org.saynotobugs.senoritas.Scribe;
 import org.saynotobugs.senoritas.Matcher;
+import org.saynotobugs.senoritas.Scribe;
 import org.saynotobugs.senoritas.Verdict;
 import org.saynotobugs.senoritas.description.Composite;
+import org.saynotobugs.senoritas.description.DescriptionDescription;
 import org.saynotobugs.senoritas.description.TextDescription;
-import org.saynotobugs.senoritas.scribe.StringBuilderScribe;
 import org.saynotobugs.senoritas.matcher.core.EqualTo;
+import org.saynotobugs.senoritas.scribe.StringBuilderScribe;
+import org.saynotobugs.senoritas.verdict.FailUpdated;
 
 
-public final class DescriptionMatcher implements Matcher<Description>
+public final class DescribesAs implements Matcher<Description>
 {
     private final Matcher<String> mDelegate;
 
 
-    public DescriptionMatcher(String description)
+    public DescribesAs(String description)
     {
         this(new EqualTo<>(description));
     }
 
 
-    public DescriptionMatcher(Matcher<String> delegate)
+    public DescribesAs(Matcher<String> delegate)
     {
         mDelegate = delegate;
     }
@@ -32,13 +34,14 @@ public final class DescriptionMatcher implements Matcher<Description>
     {
         Scribe sink = new StringBuilderScribe("  ");
         actual.describeTo(sink);
-        return mDelegate.match(sink.toString());
+        return new FailUpdated(mismatch -> new Composite(new TextDescription("described as"), new DescriptionDescription(mismatch)),
+            mDelegate.match(sink.toString()));
     }
 
 
     @Override
     public Description expectation()
     {
-        return new Composite(new TextDescription("description"), mDelegate.expectation());
+        return new Composite(new TextDescription("describes as"), new DescriptionDescription(mDelegate.expectation()));
     }
 }

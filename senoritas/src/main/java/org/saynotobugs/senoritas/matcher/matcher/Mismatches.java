@@ -4,7 +4,7 @@ import org.saynotobugs.senoritas.Verdict;
 import org.saynotobugs.senoritas.Description;
 import org.saynotobugs.senoritas.Matcher;
 import org.saynotobugs.senoritas.verdict.Fail;
-import org.saynotobugs.senoritas.verdict.Updated;
+import org.saynotobugs.senoritas.verdict.FailUpdated;
 import org.saynotobugs.senoritas.description.Composite;
 import org.saynotobugs.senoritas.description.DescriptionDescription;
 import org.saynotobugs.senoritas.description.TextDescription;
@@ -26,7 +26,7 @@ public final class Mismatches<T> implements Matcher<Matcher<T>>
 
     public Mismatches(T mismatchingValue, String description)
     {
-        this(mismatchingValue, new DescriptionMatcher(description));
+        this(mismatchingValue, new DescribesAs(description));
     }
 
 
@@ -47,7 +47,7 @@ public final class Mismatches<T> implements Matcher<Matcher<T>>
                 new ValueDescription<>(mMismatchingValue),
                 new TextDescription("matched"),
                 new DescriptionDescription(actual.expectation())))
-            : new Updated(
+            : new FailUpdated(
                 orig -> new Composite(
                     new ValueDescription<>(mMismatchingValue),
                     new TextDescription("mismatched with diff"),

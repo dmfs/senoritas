@@ -16,9 +16,9 @@ public final class ObjectDescription implements Description
 
 
     @Override
-    public void describeTo(Scribe sink)
+    public void describeTo(Scribe scribe)
     {
-        sink.append("<")
+        scribe.append("<")
             .append(value.toString())
             .append(">");
     }

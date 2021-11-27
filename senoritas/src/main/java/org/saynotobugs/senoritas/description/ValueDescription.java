@@ -26,7 +26,7 @@ public final class ValueDescription<T> implements Description
 
 
     @Override
-    public void describeTo(Scribe sink)
+    public void describeTo(Scribe scribe)
     {
         Description description;
         if (value == null)
@@ -69,6 +69,6 @@ public final class ValueDescription<T> implements Description
         {
             description = new ObjectDescription(value);
         }
-        description.describeTo(sink);
+        description.describeTo(scribe);
     }
 }

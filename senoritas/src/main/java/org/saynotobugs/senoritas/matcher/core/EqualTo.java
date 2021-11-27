@@ -6,8 +6,9 @@ import org.saynotobugs.senoritas.description.Composite;
 import org.saynotobugs.senoritas.description.TextDescription;
 import org.saynotobugs.senoritas.description.ValueDescription;
 import org.saynotobugs.senoritas.utils.ArrayIterable;
+import org.saynotobugs.senoritas.verdict.FailPrepended;
 import org.saynotobugs.senoritas.verdict.PassIf;
-import org.saynotobugs.senoritas.verdict.Updated;
+import org.saynotobugs.senoritas.verdict.FailUpdated;
 
 
 public final class EqualTo<T> extends DelegatingMatcher<T>
@@ -22,7 +23,7 @@ public final class EqualTo<T> extends DelegatingMatcher<T>
     private static <T> Verdict attestation(T expected, T actual)
     {
         return expected.getClass().isArray() && actual.getClass().isArray()
-            ? new Updated(orig -> new Composite(new TextDescription("array that"), orig),
+            ? new FailPrepended(new TextDescription("array that"),
             new Iterates<>(new Mapped<>(EqualTo::new, new ArrayIterable(expected))).match(new ArrayIterable(actual)))
             : new PassIf(expected.equals(actual), new ValueDescription<>(actual));
     }

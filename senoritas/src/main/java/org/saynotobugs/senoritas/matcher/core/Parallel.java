@@ -3,14 +3,14 @@ package org.saynotobugs.senoritas.matcher.core;
 import org.dmfs.jems2.generatable.Sequence;
 import org.dmfs.jems2.iterable.First;
 import org.dmfs.jems2.procedure.ForEach;
-import org.saynotobugs.senoritas.Verdict;
 import org.saynotobugs.senoritas.Description;
 import org.saynotobugs.senoritas.Matcher;
-import org.saynotobugs.senoritas.verdict.AllPass;
-import org.saynotobugs.senoritas.verdict.Fail;
-import org.saynotobugs.senoritas.verdict.Updated;
+import org.saynotobugs.senoritas.Verdict;
 import org.saynotobugs.senoritas.description.Composite;
 import org.saynotobugs.senoritas.description.TextDescription;
+import org.saynotobugs.senoritas.verdict.AllPass;
+import org.saynotobugs.senoritas.verdict.Fail;
+import org.saynotobugs.senoritas.verdict.FailPrepended;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -49,7 +49,7 @@ public final class Parallel<T> implements Matcher<T>
                 i -> executor.execute(() -> {
                     try
                     {
-                        results.add(new Updated(orig -> new Composite(new TextDescription("#" + i + " in thread " + Thread.currentThread().getName()), orig),
+                        results.add(new FailPrepended(new TextDescription("#" + i + " in thread " + Thread.currentThread().getName()),
                             mDelegate.match(actual)));
                     }
                     catch (Exception e)

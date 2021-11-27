@@ -29,9 +29,9 @@ public final class StructuredDescription implements Description
 
 
     @Override
-    public void describeTo(Scribe sink)
+    public void describeTo(Scribe scribe)
     {
-        Scribe s = (mIntro.length() + mOutro.length() > 0) ? sink.indented() : sink;
+        Scribe s = (mIntro.length() + mOutro.length() > 0) ? scribe.indented() : scribe;
         new Delimited<Description>(
             () -> {
                 if (mIntro.length() != 0)
@@ -43,7 +43,7 @@ public final class StructuredDescription implements Description
             () -> {
                 if (mOutro.length() != 0)
                 {
-                    sink.newLine().append(mOutro);
+                    scribe.newLine().append(mOutro);
                 }
             },
             e -> e.describeTo(s)).process(mValue);

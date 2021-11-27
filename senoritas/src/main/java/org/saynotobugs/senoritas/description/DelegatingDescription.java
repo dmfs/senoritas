@@ -16,8 +16,8 @@ public abstract class DelegatingDescription implements Description
 
 
     @Override
-    public final void describeTo(Scribe sink)
+    public final void describeTo(Scribe scribe)
     {
-        mDelegate.describeTo(sink);
+        mDelegate.describeTo(scribe);
     }
 }

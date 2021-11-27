@@ -5,8 +5,8 @@ import org.saynotobugs.senoritas.Matcher;
 import org.saynotobugs.senoritas.Verdict;
 import org.saynotobugs.senoritas.description.Composite;
 import org.saynotobugs.senoritas.description.TextDescription;
-import org.saynotobugs.senoritas.verdict.Updated;
 import org.saynotobugs.senoritas.verdict.Fail;
+import org.saynotobugs.senoritas.verdict.FailPrepended;
 
 import java.util.Optional;
 
@@ -32,7 +32,7 @@ public final class Present<T> implements Matcher<Optional<T>>
     public Verdict match(Optional<T> actual)
     {
         return actual.isPresent()
-            ? new Updated(orig -> new Composite(new TextDescription("was present"), orig), delegate.match(actual.get()))
+            ? new FailPrepended(new TextDescription("was present"), delegate.match(actual.get()))
             : new Fail(new TextDescription("was absent"));
     }
 

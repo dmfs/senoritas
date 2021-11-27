@@ -13,8 +13,8 @@ public final class NullDescription implements Description
 
 
     @Override
-    public void describeTo(Scribe sink)
+    public void describeTo(Scribe scribe)
     {
-        sink.append("<null>");
+        scribe.append("<null>");
     }
 }

@@ -7,14 +7,14 @@ import org.saynotobugs.senoritas.Description;
 import static org.saynotobugs.senoritas.description.EmptyDescription.emptyDescription;
 
 
-public final class Updated implements Verdict
+public final class FailUpdated implements Verdict
 {
     private final Function<Description, ? extends Description> mDescriptionFunction;
     private final Verdict mDelegate;
 
 
 
-    public Updated(Function<Description, ? extends Description> descriptionFunction, Verdict delegate)
+    public FailUpdated(Function<Description, ? extends Description> descriptionFunction, Verdict delegate)
     {
         mDescriptionFunction = descriptionFunction;
         mDelegate = delegate;

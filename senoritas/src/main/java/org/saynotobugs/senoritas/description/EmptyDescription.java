@@ -10,7 +10,7 @@ public final class EmptyDescription implements Description
 
 
     @Override
-    public void describeTo(Scribe sink)
+    public void describeTo(Scribe scribe)
     {
         // nothing
     }

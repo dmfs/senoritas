@@ -15,7 +15,7 @@ public final class Absent<T> extends DelegatingMatcher<Optional<T>>
     {
         super(actual -> !actual.isPresent()
                 ? new Pass()
-                : new Fail(new Composite(new TextDescription("present"), new ValueDescription<>(actual.get()))),
+                : new Fail(new Composite(new TextDescription("<present"), new ValueDescription<>(actual.get()), new TextDescription(">"))),
             new TextDescription("empty optional"));
     }
 }

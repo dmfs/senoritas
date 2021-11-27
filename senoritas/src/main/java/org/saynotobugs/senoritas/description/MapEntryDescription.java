@@ -7,7 +7,7 @@ public final class MapEntryDescription extends DelegatingDescription
 {
     public MapEntryDescription(Map.Entry<?, ?> value)
     {
-        super(new Composite(
+        super(new Composite("",
             new ValueDescription<>(value.getKey()),
             new TextDescription(": "),
             new ValueDescription<>(value.getValue())));

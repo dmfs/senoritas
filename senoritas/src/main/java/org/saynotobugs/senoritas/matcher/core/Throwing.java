@@ -1,13 +1,13 @@
 package org.saynotobugs.senoritas.matcher.core;
 
+import org.dmfs.jems2.Fragile;
 import org.saynotobugs.senoritas.Description;
 import org.saynotobugs.senoritas.Matcher;
 import org.saynotobugs.senoritas.Verdict;
 import org.saynotobugs.senoritas.description.Composite;
 import org.saynotobugs.senoritas.description.TextDescription;
-import org.saynotobugs.senoritas.verdict.Updated;
 import org.saynotobugs.senoritas.verdict.Fail;
-import org.dmfs.jems2.Fragile;
+import org.saynotobugs.senoritas.verdict.FailPrepended;
 
 
 public final class Throwing implements Matcher<Fragile<?, ?>>
@@ -31,7 +31,7 @@ public final class Throwing implements Matcher<Fragile<?, ?>>
         }
         catch (Exception e)
         {
-            return new Updated(orig -> new Composite(new TextDescription("threw"), orig), mDelegate.match(e));
+            return new FailPrepended(new TextDescription("threw"), mDelegate.match(e));
         }
     }
 

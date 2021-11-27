@@ -1,5 +1,10 @@
 package org.saynotobugs.senoritas.matcher.core;
 
+import org.dmfs.jems2.iterable.Mapped;
+import org.dmfs.jems2.iterable.Numbered;
+import org.dmfs.jems2.iterable.Seq;
+import org.dmfs.jems2.optional.Zipped;
+import org.dmfs.jems2.single.Backed;
 import org.saynotobugs.senoritas.Description;
 import org.saynotobugs.senoritas.Matcher;
 import org.saynotobugs.senoritas.Verdict;
@@ -9,13 +14,8 @@ import org.saynotobugs.senoritas.description.TextDescription;
 import org.saynotobugs.senoritas.description.ValueDescription;
 import org.saynotobugs.senoritas.utils.OuterZipped;
 import org.saynotobugs.senoritas.verdict.AllPass;
-import org.saynotobugs.senoritas.verdict.Updated;
 import org.saynotobugs.senoritas.verdict.Fail;
-import org.dmfs.jems2.iterable.Mapped;
-import org.dmfs.jems2.iterable.Numbered;
-import org.dmfs.jems2.iterable.Seq;
-import org.dmfs.jems2.optional.Zipped;
-import org.dmfs.jems2.single.Backed;
+import org.saynotobugs.senoritas.verdict.FailPrepended;
 
 
 public final class Iterates<T> implements Matcher<Iterable<T>>
@@ -48,7 +48,7 @@ public final class Iterates<T> implements Matcher<Iterable<T>>
     {
         return new AllPass("iterated [", ",", "]",
             new Mapped<>(
-                n -> new Updated(orig -> new Composite(new TextDescription(n.left() + ":"), orig), n.right()),
+                n -> new FailPrepended(new TextDescription(n.left() + ":"), n.right()),
                 new Numbered<>(
                     new OuterZipped<>(
                         mDelegates,

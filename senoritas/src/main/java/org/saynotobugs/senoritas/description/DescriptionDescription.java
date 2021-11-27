@@ -19,9 +19,9 @@ public final class DescriptionDescription implements Description
 
 
     @Override
-    public void describeTo(Scribe sink)
+    public void describeTo(Scribe scribe)
     {
-        Scribe s = sink.indented();
+        Scribe s = scribe.indented();
         s.newLine().append("----");
         mDescription.describeTo(s.newLine());
         s.newLine().append("----");

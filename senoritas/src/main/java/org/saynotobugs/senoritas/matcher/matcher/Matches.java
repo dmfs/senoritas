@@ -7,7 +7,7 @@ import org.saynotobugs.senoritas.Matcher;
 import org.saynotobugs.senoritas.Verdict;
 import org.saynotobugs.senoritas.description.*;
 import org.saynotobugs.senoritas.verdict.AllPass;
-import org.saynotobugs.senoritas.verdict.Updated;
+import org.saynotobugs.senoritas.verdict.FailUpdated;
 
 
 public final class Matches<T> implements Matcher<Matcher<T>>
@@ -33,7 +33,7 @@ public final class Matches<T> implements Matcher<Matcher<T>>
     {
         return new AllPass("[", ",", "]",
             new Mapped<>(
-                value -> new Updated(
+                value -> new FailUpdated(
                     orig -> new Composite(new ValueDescription<>(value), new TextDescription("mismatched with"), new DescriptionDescription(orig)),
                     actual.match(value)),
                 mMatchingValues
