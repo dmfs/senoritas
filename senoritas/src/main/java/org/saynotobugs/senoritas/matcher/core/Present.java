@@ -1,8 +1,6 @@
 package org.saynotobugs.senoritas.matcher.core;
 
-import org.saynotobugs.senoritas.Description;
 import org.saynotobugs.senoritas.Matcher;
-import org.saynotobugs.senoritas.Verdict;
 import org.saynotobugs.senoritas.description.Composite;
 import org.saynotobugs.senoritas.description.TextDescription;
 import org.saynotobugs.senoritas.verdict.Fail;
@@ -11,11 +9,8 @@ import org.saynotobugs.senoritas.verdict.FailPrepended;
 import java.util.Optional;
 
 
-public final class Present<T> implements Matcher<Optional<T>>
+public final class Present<T> extends DelegatingMatcher<Optional<T>>
 {
-    private final Matcher<? super T> delegate;
-
-
     public Present(T value)
     {
         this(new EqualTo<>(value));
@@ -24,23 +19,11 @@ public final class Present<T> implements Matcher<Optional<T>>
 
     public Present(Matcher<? super T> delegate)
     {
-        this.delegate = delegate;
+        super(
+            actual -> actual.isPresent()
+                ? new FailPrepended(new TextDescription("was present"), delegate.match(actual.get()))
+                : new Fail(new TextDescription("was absent")),
+            new Composite(new TextDescription("is present"), delegate.expectation())
+        );
     }
-
-
-    @Override
-    public Verdict match(Optional<T> actual)
-    {
-        return actual.isPresent()
-            ? new FailPrepended(new TextDescription("was present"), delegate.match(actual.get()))
-            : new Fail(new TextDescription("was absent"));
-    }
-
-
-    @Override
-    public Description expectation()
-    {
-        return new Composite(new TextDescription("is present"), delegate.expectation());
-    }
-
 }
