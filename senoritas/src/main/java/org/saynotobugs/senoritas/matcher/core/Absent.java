@@ -1,6 +1,5 @@
 package org.saynotobugs.senoritas.matcher.core;
 
-import org.saynotobugs.senoritas.description.Composite;
 import org.saynotobugs.senoritas.description.TextDescription;
 import org.saynotobugs.senoritas.description.ValueDescription;
 import org.saynotobugs.senoritas.verdict.Fail;
@@ -15,7 +14,7 @@ public final class Absent<T> extends DelegatingMatcher<Optional<T>>
     {
         super(actual -> !actual.isPresent()
                 ? new Pass()
-                : new Fail(new Composite(new TextDescription("<present"), new ValueDescription<>(actual.get()), new TextDescription(">"))),
+                : new Fail(new ValueDescription<>(actual)),
             new TextDescription("empty optional"));
     }
 }

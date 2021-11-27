@@ -15,10 +15,10 @@ class OptionalDescriptionTest
     void testPresent()
     {
         assertThat(new OptionalDescription(Optional.of(123)),
-            new DescribesAs("<present <123> >"));
+            new DescribesAs("<present <123>>"));
 
         assertThat(new OptionalDescription(Optional.of("abc")),
-            new DescribesAs("<present \"abc\" >"));
+            new DescribesAs("<present \"abc\">"));
     }
 
 

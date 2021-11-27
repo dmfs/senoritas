@@ -19,7 +19,7 @@ class AbsentTest
         assertThat(new Absent<>(),
             new AllOf<>(
                 new Matches<>(Optional.empty()),
-                new Mismatches<>(Optional.of(123), new DescribesAs("<present <123> >"))
+                new Mismatches<>(Optional.of(123), new DescribesAs("<present <123>>"))
             ));
     }
 

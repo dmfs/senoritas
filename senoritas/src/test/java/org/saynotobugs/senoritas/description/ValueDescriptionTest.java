@@ -21,7 +21,7 @@ class ValueDescriptionTest
         assertThat(new ValueDescription<>(new Seq<>(5, "abc", 7)), describesAs("[\n  <5>,\n  \"abc\",\n  <7>\n]"));
         // assertThat(new ValueDescription<>(Map.of("abc", 123)), describesAs("{\n  \"abc\" :  <123>\n}"));
         assertThat(new ValueDescription<>(empty()), describesAs("<empty>"));
-        assertThat(new ValueDescription<>(of(123)), describesAs("<present <123> >"));
+        assertThat(new ValueDescription<>(of(123)), describesAs("<present <123>>"));
         assertThat(new ValueDescription<>(new String[] { "a", "b", "c" }), describesAs("[\n  \"a\",\n  \"b\",\n  \"c\"\n]"));
     }
 }
