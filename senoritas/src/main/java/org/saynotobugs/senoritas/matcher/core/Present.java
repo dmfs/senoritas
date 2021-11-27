@@ -11,6 +11,12 @@ import java.util.Optional;
 
 public final class Present<T> extends DelegatingMatcher<Optional<T>>
 {
+    public Present()
+    {
+        this(new Anything());
+    }
+
+
     public Present(T value)
     {
         this(new EqualTo<>(value));
