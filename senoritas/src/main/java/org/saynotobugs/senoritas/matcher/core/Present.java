@@ -19,11 +19,9 @@ public final class Present<T> extends DelegatingMatcher<Optional<T>>
 
     public Present(Matcher<? super T> delegate)
     {
-        super(
-            actual -> actual.isPresent()
+        super(actual -> actual.isPresent()
                 ? new FailPrepended(new TextDescription("was present"), delegate.match(actual.get()))
                 : new Fail(new TextDescription("was absent")),
-            new Composite(new TextDescription("is present"), delegate.expectation())
-        );
+            new Composite(new TextDescription("is present"), delegate.expectation()));
     }
 }

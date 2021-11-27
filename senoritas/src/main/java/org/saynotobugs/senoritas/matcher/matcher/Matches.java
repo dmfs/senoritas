@@ -12,7 +12,7 @@ import org.saynotobugs.senoritas.verdict.FailUpdated;
 
 public final class Matches<T> implements Matcher<Matcher<T>>
 {
-    private final Iterable<T> mMatchingValues;
+    private final Iterable<? extends T> mMatchingValues;
 
 
     @SafeVarargs
@@ -22,7 +22,7 @@ public final class Matches<T> implements Matcher<Matcher<T>>
     }
 
 
-    public Matches(Iterable<T> matchingValues)
+    public Matches(Iterable<? extends T> matchingValues)
     {
         mMatchingValues = matchingValues;
     }

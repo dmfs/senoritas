@@ -20,7 +20,7 @@ public final class Mismatches<T> implements Matcher<Matcher<T>>
 
     public Mismatches(T mismatchingValue)
     {
-        this(mismatchingValue, new Anything<>());
+        this(mismatchingValue, new Anything());
     }
 
 

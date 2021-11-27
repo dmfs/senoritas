@@ -6,23 +6,21 @@ import org.saynotobugs.senoritas.matcher.matcher.Expects;
 import org.saynotobugs.senoritas.matcher.matcher.Matches;
 import org.saynotobugs.senoritas.matcher.matcher.Mismatches;
 
-import java.util.Optional;
-
 import static org.saynotobugs.senoritas.Assertion.assertThat;
 
 
-class AbsentTest
+class SuppliesTest
 {
 
     @Test
     void test()
     {
-        assertThat(new Absent<>(),
-            new AllOf<>(
-                new Matches<>(Optional.empty()),
-                new Mismatches<>(Optional.of(123), new DescribesAs("<present <123>>")),
-                new Expects("empty optional")
-            ));
+        assertThat(new Supplies<>(123), new AllOf<>(
+            new Matches<>(() -> 123),
+            new Mismatches<>(() -> null, new DescribesAs("supplied value <null>")),
+            new Mismatches<>(() -> 1234, new DescribesAs("supplied value <1234>")),
+            new Expects("supplies value <123>")
+        ));
     }
 
 }

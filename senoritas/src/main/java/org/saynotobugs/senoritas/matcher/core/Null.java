@@ -13,7 +13,6 @@ public final class Null extends DelegatingMatcher<Object>
 {
     public Null()
     {
-        super(actual -> new PassIf(actual == null, new ValueDescription<>(actual)),
-            new NullDescription());
+        super(actual -> new PassIf(actual == null, new ValueDescription<>(actual)), new NullDescription());
     }
 }

@@ -10,10 +10,10 @@ import org.saynotobugs.senoritas.verdict.Fail;
  * <p>
  * This may be useful for testing {@link Matcher}s.
  */
-public final class Nothing<T> extends DelegatingMatcher<T>
+public final class Nothing extends DelegatingMatcher<Object>
 {
     public Nothing()
     {
-        super(actual -> new Fail(new TextDescription("<nothing>")), new TextDescription("<nothing>"));
+        super(actual -> new Fail(new TextDescription("was something")), new TextDescription("<nothing>"));
     }
 }
