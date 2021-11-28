@@ -12,7 +12,7 @@ import static org.saynotobugs.senoritas.description.NullDescription.nullDescript
 
 /**
  * A {@link Description} for all types of values. If possible, it delegates to a concrete {@link Description} for the type of the given value,
- * otherwise it delegates to {@link ObjectDescription}.
+ * otherwise it delegates to {@link ToStringDescription}.
  */
 public final class ValueDescription<T> implements Description
 {
@@ -67,7 +67,7 @@ public final class ValueDescription<T> implements Description
         }
         else
         {
-            description = new ObjectDescription(value);
+            description = new ToStringDescription(value);
         }
         description.describeTo(scribe);
     }

@@ -1,23 +1,9 @@
 package org.saynotobugs.senoritas.description;
 
-import org.saynotobugs.senoritas.Description;
-import org.saynotobugs.senoritas.Scribe;
-
-
-public final class TextDescription implements Description
+public final class TextDescription extends DelegatingDescription
 {
-    private final String mText;
-
-
     public TextDescription(String text)
     {
-        this.mText = text;
-    }
-
-
-    @Override
-    public void describeTo(Scribe scribe)
-    {
-        scribe.append(mText);
+        super(scribe -> scribe.append(text));
     }
 }

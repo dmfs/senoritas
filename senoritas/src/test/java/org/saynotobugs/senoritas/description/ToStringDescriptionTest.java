@@ -6,13 +6,13 @@ import org.saynotobugs.senoritas.matcher.matcher.DescribesAs;
 import static org.saynotobugs.senoritas.Assertion.assertThat;
 
 
-class ObjectDescriptionTest
+class ToStringDescriptionTest
 {
 
     @Test
     void test()
     {
-        assertThat(new ObjectDescription(new Object()
+        assertThat(new ToStringDescription(new Object()
             {
                 @Override
                 public String toString()

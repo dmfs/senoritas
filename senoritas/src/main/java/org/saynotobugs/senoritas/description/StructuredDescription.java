@@ -7,9 +7,9 @@ import org.saynotobugs.senoritas.utils.Delimited;
 
 public final class StructuredDescription implements Description
 {
-    private final String mIntro;
+    private final String mEntry;
     private final String mDelimiter;
-    private final String mOutro;
+    private final String mExit;
     private final Iterable<? extends Description> mValue;
 
 
@@ -19,11 +19,11 @@ public final class StructuredDescription implements Description
     }
 
 
-    public StructuredDescription(String intro, String delimiter, String outro, Iterable<? extends Description> value)
+    public StructuredDescription(String entry, String delimiter, String exit, Iterable<? extends Description> value)
     {
-        mIntro = intro;
+        mEntry = entry;
         mDelimiter = delimiter;
-        mOutro = outro;
+        mExit = exit;
         mValue = value;
     }
 
@@ -31,19 +31,19 @@ public final class StructuredDescription implements Description
     @Override
     public void describeTo(Scribe scribe)
     {
-        Scribe s = (mIntro.length() + mOutro.length() > 0) ? scribe.indented() : scribe;
+        Scribe s = (mEntry.length() + mExit.length() > 0) ? scribe.indented() : scribe;
         new Delimited<Description>(
             () -> {
-                if (mIntro.length() != 0)
+                if (mEntry.length() != 0)
                 {
-                    s.append(mIntro).newLine();
+                    s.append(mEntry).newLine();
                 }
             },
             () -> s.append(mDelimiter).newLine(),
             () -> {
-                if (mOutro.length() != 0)
+                if (mExit.length() != 0)
                 {
-                    scribe.newLine().append(mOutro);
+                    scribe.newLine().append(mExit);
                 }
             },
             e -> e.describeTo(s)).process(mValue);
