@@ -10,7 +10,7 @@ public final class OptionalDescription extends DelegatingDescription
     {
         super(
             value.isPresent()
-                ? new Composite("", new TextDescription("<present "), new ValueDescription<>(value.get()), new TextDescription(">"))
+                ? new Composite(new TextDescription("<present "), new ValueDescription(value.get()), new TextDescription(">"))
                 : new TextDescription("<empty>")
         );
     }

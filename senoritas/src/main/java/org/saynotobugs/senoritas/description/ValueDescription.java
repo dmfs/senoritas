@@ -7,19 +7,19 @@ import org.saynotobugs.senoritas.utils.ArrayIterable;
 import java.util.Map;
 import java.util.Optional;
 
-import static org.saynotobugs.senoritas.description.NullDescription.nullDescription;
+import static org.saynotobugs.senoritas.description.LiteralDescription.NULL;
 
 
 /**
  * A {@link Description} for all types of values. If possible, it delegates to a concrete {@link Description} for the type of the given value,
  * otherwise it delegates to {@link ToStringDescription}.
  */
-public final class ValueDescription<T> implements Description
+public final class ValueDescription implements Description
 {
-    private final T value;
+    private final Object value;
 
 
-    public ValueDescription(T value)
+    public ValueDescription(Object value)
     {
         this.value = value;
     }
@@ -31,7 +31,7 @@ public final class ValueDescription<T> implements Description
         Description description;
         if (value == null)
         {
-            description = nullDescription;
+            description = NULL;
         }
         else if (value instanceof Number)
         {

@@ -1,11 +1,14 @@
 
 package org.saynotobugs.senoritas.matcher.core;
 
-import org.saynotobugs.senoritas.Matcher;
-import org.saynotobugs.senoritas.description.StructuredDescription;
-import org.saynotobugs.senoritas.verdict.AnyPass;
 import org.dmfs.jems2.iterable.Mapped;
 import org.dmfs.jems2.iterable.Seq;
+import org.saynotobugs.senoritas.Matcher;
+import org.saynotobugs.senoritas.description.StructuredDescription;
+import org.saynotobugs.senoritas.description.TextDescription;
+import org.saynotobugs.senoritas.verdict.AnyPassed;
+
+import static org.saynotobugs.senoritas.description.LiteralDescription.EMPTY;
 
 
 public final class AnyOf<T> extends DelegatingMatcher<T>
@@ -26,10 +29,10 @@ public final class AnyOf<T> extends DelegatingMatcher<T>
 
     public AnyOf(Iterable<? extends Matcher<? super T>> delegates)
     {
-        super(actual -> new AnyPass(" ", " or",
+        super(actual -> new AnyPassed(EMPTY, new TextDescription("or"),
                 new Mapped<>(
                     d -> d.match(actual),
                     delegates)),
-            new StructuredDescription(" or", new Mapped<>(Matcher::expectation, delegates)));
+            new StructuredDescription(new TextDescription(" or"), new Mapped<>(Matcher::expectation, delegates)));
     }
 }

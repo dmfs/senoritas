@@ -7,10 +7,11 @@ import org.saynotobugs.senoritas.Description;
 import org.saynotobugs.senoritas.Matcher;
 import org.saynotobugs.senoritas.Verdict;
 import org.saynotobugs.senoritas.description.Composite;
+import org.saynotobugs.senoritas.description.Delimited;
 import org.saynotobugs.senoritas.description.TextDescription;
-import org.saynotobugs.senoritas.verdict.AllPass;
+import org.saynotobugs.senoritas.verdict.AllPassed;
 import org.saynotobugs.senoritas.verdict.Fail;
-import org.saynotobugs.senoritas.verdict.FailPrepended;
+import org.saynotobugs.senoritas.verdict.MismatchPrepended;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -18,6 +19,8 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+
+import static org.saynotobugs.senoritas.description.LiteralDescription.*;
 
 
 public final class Parallel<T> implements Matcher<T>
@@ -49,7 +52,7 @@ public final class Parallel<T> implements Matcher<T>
                 i -> executor.execute(() -> {
                     try
                     {
-                        results.add(new FailPrepended(new TextDescription("#" + i + " in thread " + Thread.currentThread().getName()),
+                        results.add(new MismatchPrepended(new TextDescription("#" + i + " in thread " + Thread.currentThread().getName()),
                             mDelegate.match(actual)));
                     }
                     catch (Exception e)
@@ -71,13 +74,13 @@ public final class Parallel<T> implements Matcher<T>
             Thread.currentThread().interrupt();
             return new Fail(new TextDescription("interrupted"));
         }
-        return new AllPass("Executions:", ",", "", results);
+        return new AllPassed(new TextDescription("executions: "), COMMA_NEW_LINE, EMPTY, results);
     }
 
 
     @Override
     public Description expectation()
     {
-        return new Composite(new TextDescription("running " + mThreadCount + " parallel execution, each"), mDelegate.expectation());
+        return new Delimited(new TextDescription("running " + mThreadCount + " parallel execution, each"), mDelegate.expectation());
     }
 }

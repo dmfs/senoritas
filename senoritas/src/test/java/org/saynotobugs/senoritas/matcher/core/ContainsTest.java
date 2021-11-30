@@ -38,10 +38,10 @@ class ContainsTest
                     new Seq<>(3, 3, 3, 1, 1, 1, 2, 2, 2),
                     new Seq<>(0, 1, 2, 3, 123),
                     new Seq<>(3, 2, 3, 123, 1)),
-                new Mismatches<Iterable<Integer>>(emptyIterable(), new DescribesAs("did not contain <1> and\ndid not contain <2> and\ndid not contain <3>")),
-                new Mismatches<Iterable<Integer>>(new Seq<>(1, 2), new DescribesAs("...\ndid not contain <3>")),
-                new Mismatches<Iterable<Integer>>(new Seq<>(1, 2, 2, 2), new DescribesAs("...\ndid not contain <3>")),
-                new Expects("contains <1> and\ncontains <2> and\ncontains <3>")
+                new Mismatches<Iterable<Integer>>(emptyIterable(), new DescribesAs("{ did not contain <1>\n  and\n  did not contain <2>\n  and\n  did not contain <3> }")),
+                new Mismatches<Iterable<Integer>>(new Seq<>(1, 2), new DescribesAs("{ ...\n  did not contain <3> }")),
+                new Mismatches<Iterable<Integer>>(new Seq<>(1, 2, 2, 2), new DescribesAs("{ ...\n  did not contain <3> }")),
+                new Expects("contains <1>\n  and\n  contains <2>\n  and\n  contains <3>")
             ));
     }
 }

@@ -9,7 +9,7 @@ import org.saynotobugs.senoritas.description.DescriptionDescription;
 import org.saynotobugs.senoritas.description.TextDescription;
 import org.saynotobugs.senoritas.matcher.core.EqualTo;
 import org.saynotobugs.senoritas.scribe.StringBuilderScribe;
-import org.saynotobugs.senoritas.verdict.FailUpdated;
+import org.saynotobugs.senoritas.verdict.MismatchUpdated;
 
 
 public final class DescribesAs implements Matcher<Description>
@@ -34,7 +34,7 @@ public final class DescribesAs implements Matcher<Description>
     {
         Scribe sink = new StringBuilderScribe("  ");
         actual.describeTo(sink);
-        return new FailUpdated(mismatch -> new Composite(new TextDescription("described as"), new DescriptionDescription(mismatch)),
+        return new MismatchUpdated(mismatch -> new Composite(new TextDescription("described as"), new DescriptionDescription(mismatch)),
             mDelegate.match(sink.toString()));
     }
 

@@ -14,14 +14,14 @@ class ValueDescriptionTest
     @Test
     void test()
     {
-        assertThat(new ValueDescription<>(null), new DescribesAs("<null>"));
-        assertThat(new ValueDescription<>(123), new DescribesAs("<123>"));
-        assertThat(new ValueDescription<>("abc"), new DescribesAs("\"abc\""));
-        assertThat(new ValueDescription<>(true), new DescribesAs("<true>"));
-        assertThat(new ValueDescription<>(new Seq<>(5, "abc", 7)), new DescribesAs("[\n  <5>,\n  \"abc\",\n  <7>\n]"));
-        // assertThat(new ValueDescription<>(Map.of("abc", 123)), describesAs("{\n  \"abc\" :  <123>\n}"));
-        assertThat(new ValueDescription<>(empty()), new DescribesAs("<empty>"));
-        assertThat(new ValueDescription<>(of(123)), new DescribesAs("<present <123>>"));
-        assertThat(new ValueDescription<>(new String[] { "a", "b", "c" }), new DescribesAs("[\n  \"a\",\n  \"b\",\n  \"c\"\n]"));
+        assertThat(new ValueDescription(null), new DescribesAs("<null>"));
+        assertThat(new ValueDescription(123), new DescribesAs("<123>"));
+        assertThat(new ValueDescription("abc"), new DescribesAs("\"abc\""));
+        assertThat(new ValueDescription(true), new DescribesAs("<true>"));
+        assertThat(new ValueDescription(new Seq<>(5, "abc", 7)), new DescribesAs("[ <5>,\n  \"abc\",\n  <7> ]"));
+        // assertThat(new ValueDescription(Map.of("abc", 123)), describesAs("{\n  \"abc\" :  <123>\n}"));
+        assertThat(new ValueDescription(empty()), new DescribesAs("<empty>"));
+        assertThat(new ValueDescription(of(123)), new DescribesAs("<present <123>>"));
+        assertThat(new ValueDescription(new String[] { "a", "b", "c" }), new DescribesAs("[ \"a\",\n  \"b\",\n  \"c\" ]"));
     }
 }

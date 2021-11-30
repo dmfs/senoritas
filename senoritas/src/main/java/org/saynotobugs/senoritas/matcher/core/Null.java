@@ -1,9 +1,10 @@
 package org.saynotobugs.senoritas.matcher.core;
 
 import org.saynotobugs.senoritas.Matcher;
-import org.saynotobugs.senoritas.description.NullDescription;
 import org.saynotobugs.senoritas.description.ValueDescription;
 import org.saynotobugs.senoritas.verdict.PassIf;
+
+import static org.saynotobugs.senoritas.description.LiteralDescription.NULL;
 
 
 /**
@@ -13,6 +14,6 @@ public final class Null extends DelegatingMatcher<Object>
 {
     public Null()
     {
-        super(actual -> new PassIf(actual == null, new ValueDescription<>(actual)), new NullDescription());
+        super(actual -> new PassIf(actual == null, new ValueDescription(actual)), NULL);
     }
 }

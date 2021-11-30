@@ -1,15 +1,14 @@
 package org.saynotobugs.senoritas.matcher.matcher;
 
-import org.saynotobugs.senoritas.Verdict;
 import org.saynotobugs.senoritas.Description;
 import org.saynotobugs.senoritas.Matcher;
-import org.saynotobugs.senoritas.verdict.Fail;
-import org.saynotobugs.senoritas.verdict.FailUpdated;
-import org.saynotobugs.senoritas.description.Composite;
-import org.saynotobugs.senoritas.description.DescriptionDescription;
+import org.saynotobugs.senoritas.Verdict;
+import org.saynotobugs.senoritas.description.Delimited;
 import org.saynotobugs.senoritas.description.TextDescription;
 import org.saynotobugs.senoritas.description.ValueDescription;
 import org.saynotobugs.senoritas.matcher.core.Anything;
+import org.saynotobugs.senoritas.verdict.Fail;
+import org.saynotobugs.senoritas.verdict.MismatchUpdated;
 
 
 public final class Mismatches<T> implements Matcher<Matcher<T>>
@@ -43,15 +42,15 @@ public final class Mismatches<T> implements Matcher<Matcher<T>>
         Verdict matcherVerdict = actual.match(mMismatchingValue);
         return matcherVerdict.isSuccess()
             ? new Fail(
-            new Composite(
-                new ValueDescription<>(mMismatchingValue),
+            new Delimited(
+                new ValueDescription(mMismatchingValue),
                 new TextDescription("matched"),
-                new DescriptionDescription(actual.expectation())))
-            : new FailUpdated(
-                orig -> new Composite(
-                    new ValueDescription<>(mMismatchingValue),
+                actual.expectation()))
+            : new MismatchUpdated(
+                orig -> new Delimited(
+                    new ValueDescription(mMismatchingValue),
                     new TextDescription("mismatched with diff"),
-                    new DescriptionDescription(orig)),
+                    orig),
                 mDiffMatcher.match(matcherVerdict.description()));
     }
 
@@ -59,10 +58,10 @@ public final class Mismatches<T> implements Matcher<Matcher<T>>
     @Override
     public Description expectation()
     {
-        return new Composite(
+        return new Delimited(
             new TextDescription("mismatches"),
-            new ValueDescription<>(mMismatchingValue),
+            new ValueDescription(mMismatchingValue),
             new TextDescription("with diff"),
-            new DescriptionDescription(mDiffMatcher.expectation()));
+            mDiffMatcher.expectation());
     }
 }

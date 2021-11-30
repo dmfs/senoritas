@@ -6,7 +6,8 @@ import org.dmfs.jems2.optional.First;
 import org.dmfs.jems2.single.Backed;
 import org.saynotobugs.senoritas.Matcher;
 import org.saynotobugs.senoritas.Verdict;
-import org.saynotobugs.senoritas.description.Composite;
+import org.saynotobugs.senoritas.description.Delimited;
+import org.saynotobugs.senoritas.description.Indented;
 import org.saynotobugs.senoritas.description.TextDescription;
 import org.saynotobugs.senoritas.verdict.Fail;
 
@@ -23,9 +24,9 @@ public final class Contains<T> extends DelegatingMatcher<Iterable<T>>
     {
         super(actual -> new Backed<>(
                 new First<>(Verdict::isSuccess, new Mapped<>(delegate::match, actual)),
-                new Fail(new Composite(new TextDescription("did not contain"), delegate.expectation())))
+                new Fail(new Delimited(new TextDescription("did not contain"), new Indented(delegate.expectation()))))
                 .value(),
-            new Composite(new TextDescription("contains"), delegate.expectation()));
+            new Delimited(new TextDescription("contains"), new Indented(delegate.expectation())));
     }
 
 

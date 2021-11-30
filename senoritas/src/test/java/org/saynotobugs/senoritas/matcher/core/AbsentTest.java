@@ -21,7 +21,7 @@ class AbsentTest
             new AllOf<>(
                 new Matches<>(Optional.empty()),
                 new Mismatches<>(Optional.of(123), new DescribesAs("<present <123>>")),
-                new Expects("empty optional")
+                new Expects("<empty> optional")
             ));
     }
 

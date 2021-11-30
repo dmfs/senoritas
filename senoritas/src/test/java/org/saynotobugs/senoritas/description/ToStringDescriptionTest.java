@@ -10,7 +10,7 @@ class ToStringDescriptionTest
 {
 
     @Test
-    void test()
+    void testNonEmpty()
     {
         assertThat(new ToStringDescription(new Object()
             {

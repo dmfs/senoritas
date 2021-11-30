@@ -4,6 +4,6 @@ public final class ToStringDescription extends DelegatingDescription
 {
     public ToStringDescription(Object value)
     {
-        super(new QuotedDescription("<", scribe -> scribe.append(value.toString()), ">"));
+        super(new QuotedDescription("<", new TextDescription(value.toString()), ">"));
     }
 }

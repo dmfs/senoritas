@@ -3,13 +3,18 @@ package org.saynotobugs.senoritas.matcher.core;
 
 import org.dmfs.jems2.iterable.Mapped;
 import org.dmfs.jems2.iterable.Seq;
-import org.saynotobugs.senoritas.Verdict;
 import org.saynotobugs.senoritas.Description;
 import org.saynotobugs.senoritas.Matcher;
-import org.saynotobugs.senoritas.verdict.AllPass;
+import org.saynotobugs.senoritas.Verdict;
+import org.saynotobugs.senoritas.description.Composite;
+import org.saynotobugs.senoritas.description.StructuredDescription;
+import org.saynotobugs.senoritas.description.TextDescription;
+import org.saynotobugs.senoritas.verdict.AllPassed;
 import org.saynotobugs.senoritas.verdict.Fail;
 import org.saynotobugs.senoritas.verdict.Pass;
-import org.saynotobugs.senoritas.description.StructuredDescription;
+
+import static org.saynotobugs.senoritas.description.LiteralDescription.EMPTY;
+import static org.saynotobugs.senoritas.description.LiteralDescription.NEW_LINE;
 
 
 public final class NoneOf<T> implements Matcher<T>
@@ -40,10 +45,8 @@ public final class NoneOf<T> implements Matcher<T>
     @Override
     public Verdict match(T actual)
     {
-        return new AllPass(
-            "was",
-            " and",
-            "",
+        return new AllPassed(
+            new TextDescription("was"), new Composite(new TextDescription(" and"), NEW_LINE), EMPTY,
             new Mapped<>(
                 delegate -> {
                     Verdict result = delegate.match(actual);
@@ -60,6 +63,7 @@ public final class NoneOf<T> implements Matcher<T>
     @Override
     public Description expectation()
     {
-        return new StructuredDescription("none of", ",", "", new Mapped<>(Matcher::expectation, mDelegates));
+        return new StructuredDescription(new TextDescription("None of "), new Composite(NEW_LINE, new TextDescription("and"), NEW_LINE), EMPTY,
+            new Mapped<>(Matcher::expectation, mDelegates));
     }
 }

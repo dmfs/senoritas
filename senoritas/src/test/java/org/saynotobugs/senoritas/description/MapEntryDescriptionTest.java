@@ -67,7 +67,7 @@ class MapEntryDescriptionTest
                 }
 
             }),
-            new DescribesAs("<42>: [\n  <1>,\n  <2>\n]"));
+            new DescribesAs("<42>: [ <1>,\n  <2> ]"));
     }
 
 }

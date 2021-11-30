@@ -7,7 +7,7 @@ import org.saynotobugs.senoritas.Verdict;
 import org.saynotobugs.senoritas.description.Composite;
 import org.saynotobugs.senoritas.description.TextDescription;
 import org.saynotobugs.senoritas.verdict.Fail;
-import org.saynotobugs.senoritas.verdict.FailPrepended;
+import org.saynotobugs.senoritas.verdict.MismatchPrepended;
 
 
 public final class Throwing implements Matcher<Fragile<?, ?>>
@@ -31,7 +31,7 @@ public final class Throwing implements Matcher<Fragile<?, ?>>
         }
         catch (Exception e)
         {
-            return new FailPrepended(new TextDescription("threw"), mDelegate.match(e));
+            return new MismatchPrepended(new TextDescription("threw"), mDelegate.match(e));
         }
     }
 

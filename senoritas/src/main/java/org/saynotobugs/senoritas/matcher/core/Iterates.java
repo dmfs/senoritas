@@ -8,14 +8,13 @@ import org.dmfs.jems2.single.Backed;
 import org.saynotobugs.senoritas.Description;
 import org.saynotobugs.senoritas.Matcher;
 import org.saynotobugs.senoritas.Verdict;
-import org.saynotobugs.senoritas.description.Composite;
-import org.saynotobugs.senoritas.description.StructuredDescription;
-import org.saynotobugs.senoritas.description.TextDescription;
-import org.saynotobugs.senoritas.description.ValueDescription;
+import org.saynotobugs.senoritas.description.*;
 import org.saynotobugs.senoritas.utils.OuterZipped;
-import org.saynotobugs.senoritas.verdict.AllPass;
+import org.saynotobugs.senoritas.verdict.AllPassed;
 import org.saynotobugs.senoritas.verdict.Fail;
-import org.saynotobugs.senoritas.verdict.FailPrepended;
+import org.saynotobugs.senoritas.verdict.MismatchPrepended;
+
+import static org.saynotobugs.senoritas.description.LiteralDescription.COMMA_NEW_LINE;
 
 
 public final class Iterates<T> implements Matcher<Iterable<T>>
@@ -46,17 +45,17 @@ public final class Iterates<T> implements Matcher<Iterable<T>>
     @Override
     public Verdict match(Iterable<T> actual)
     {
-        return new AllPass("iterated [", ",", "]",
+        return new AllPassed(new TextDescription("iterated ["), COMMA_NEW_LINE, new TextDescription("]"),
             new Mapped<>(
-                n -> new FailPrepended(new TextDescription(n.left() + ":"), n.right()),
+                n -> new MismatchPrepended(new TextDescription(n.left() + ": "), n.right()),
                 new Numbered<>(
                     new OuterZipped<>(
                         mDelegates,
                         actual,
                         (left, right) -> new Backed<>(new Zipped<>(left, right, Matcher::match),
                             () -> new Fail(left.isPresent()
-                                ? new Composite(new TextDescription("missing"), left.value().expectation())
-                                : new Composite(new TextDescription("unexpected"), new ValueDescription<>(right.value())))).value()))));
+                                ? new Delimited(new TextDescription("missing"), left.value().expectation())
+                                : new Delimited(new TextDescription("unexpected"), new ValueDescription(right.value())))).value()))));
     }
 
 
@@ -64,9 +63,9 @@ public final class Iterates<T> implements Matcher<Iterable<T>>
     public Description expectation()
     {
         return new StructuredDescription(
-            "iterates [",
-            ",",
-            "]",
-            new Mapped<>(d -> new Composite(new TextDescription(d.left() + ":"), d.right().expectation()), new Numbered<>(mDelegates)));
+            new TextDescription("iterates ["),
+            COMMA_NEW_LINE,
+            new TextDescription("]"),
+            new Mapped<>(d -> new Composite(new TextDescription(d.left() + ": "), d.right().expectation()), new Numbered<>(mDelegates)));
     }
 }

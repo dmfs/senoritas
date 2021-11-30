@@ -3,7 +3,7 @@ package org.saynotobugs.senoritas;
 import org.dmfs.jems2.iterable.Seq;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-import org.saynotobugs.senoritas.description.Composite;
+import org.saynotobugs.senoritas.description.Delimited;
 import org.saynotobugs.senoritas.description.NumberDescription;
 import org.saynotobugs.senoritas.description.TextDescription;
 import org.saynotobugs.senoritas.matcher.core.*;
@@ -156,7 +156,7 @@ public final class Examples
             @Override
             public Verdict match(String actual)
             {
-                return new PassIf(actual.length() == 3, new Composite(
+                return new PassIf(actual.length() == 3, new Delimited(
                     new TextDescription("String length was"),
                     new NumberDescription(actual.length())));
             }
@@ -184,7 +184,7 @@ public final class Examples
                        @Override
                        public Verdict match(String actual)
                        {
-                           return new PassIf(actual.length() == 3, new Composite(
+                           return new PassIf(actual.length() == 3, new Delimited(
                                new TextDescription("String length was"),
                                new NumberDescription(actual.length())));
                        }

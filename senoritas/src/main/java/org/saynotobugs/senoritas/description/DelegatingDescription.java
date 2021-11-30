@@ -4,6 +4,9 @@ import org.saynotobugs.senoritas.Description;
 import org.saynotobugs.senoritas.Scribe;
 
 
+/**
+ * A {@link Description} for easy composition.
+ */
 public abstract class DelegatingDescription implements Description
 {
     private final Description mDelegate;

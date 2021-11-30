@@ -1,20 +1,19 @@
 package org.saynotobugs.senoritas.verdict;
 
 import org.dmfs.jems2.Function;
-import org.saynotobugs.senoritas.Verdict;
 import org.saynotobugs.senoritas.Description;
+import org.saynotobugs.senoritas.Verdict;
 
-import static org.saynotobugs.senoritas.description.EmptyDescription.emptyDescription;
+import static org.saynotobugs.senoritas.description.LiteralDescription.EMPTY;
 
 
-public final class FailUpdated implements Verdict
+public final class MismatchUpdated implements Verdict
 {
     private final Function<Description, ? extends Description> mDescriptionFunction;
     private final Verdict mDelegate;
 
 
-
-    public FailUpdated(Function<Description, ? extends Description> descriptionFunction, Verdict delegate)
+    public MismatchUpdated(Function<Description, ? extends Description> descriptionFunction, Verdict delegate)
     {
         mDescriptionFunction = descriptionFunction;
         mDelegate = delegate;
@@ -31,7 +30,7 @@ public final class FailUpdated implements Verdict
     @Override
     public Description description()
     {
-        return isSuccess() ? emptyDescription : mDescriptionFunction.value(mDelegate.description());
+        return isSuccess() ? EMPTY : mDescriptionFunction.value(mDelegate.description());
     }
 
 }

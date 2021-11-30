@@ -1,15 +1,13 @@
 package org.saynotobugs.senoritas.description;
 
 import org.saynotobugs.senoritas.Description;
-import org.saynotobugs.senoritas.Scribe;
 
 
-public final class QuotedDescription implements Description
+/**
+ * A {@link Description} that's put in some sort of quoting characters.
+ */
+public final class QuotedDescription extends DelegatingDescription
 {
-    private final String mEntryString;
-    private final Description mDelegate;
-    private final String mExitString;
-
 
     public QuotedDescription(String quoteString, Description delegate)
     {
@@ -17,19 +15,20 @@ public final class QuotedDescription implements Description
     }
 
 
-    public QuotedDescription(String entryString, Description delegate, String exitString)
+    public QuotedDescription(String entry, Description delegate, String exit)
     {
-        this.mEntryString = entryString;
-        this.mDelegate = delegate;
-        this.mExitString = exitString;
+        this(new TextDescription(entry), delegate, new TextDescription(exit));
     }
 
 
-    @Override
-    public void describeTo(Scribe scribe)
+    public QuotedDescription(Description quoteString, Description delegate)
     {
-        scribe.append(mEntryString);
-        mDelegate.describeTo(scribe);
-        scribe.append(mExitString);
+        this(quoteString, delegate, quoteString);
+    }
+
+
+    public QuotedDescription(Description entry, Description delegate, Description exit)
+    {
+        super(new Composite(entry, delegate, exit));
     }
 }

@@ -1,15 +1,23 @@
 package org.saynotobugs.senoritas.description;
 
+import org.saynotobugs.senoritas.Description;
+
 import java.util.Map;
 
 
+/**
+ * A {@link Description} of a {@link Map.Entry}.
+ */
 public final class MapEntryDescription extends DelegatingDescription
 {
+    private static final Description SEPARATOR = new TextDescription(": ");
+
+
     public MapEntryDescription(Map.Entry<?, ?> value)
     {
-        super(new Composite("",
-            new ValueDescription<>(value.getKey()),
-            new TextDescription(": "),
-            new ValueDescription<>(value.getValue())));
+        super(new Composite(
+            new ValueDescription(value.getKey()),
+            SEPARATOR,
+            new ValueDescription(value.getValue())));
     }
 }

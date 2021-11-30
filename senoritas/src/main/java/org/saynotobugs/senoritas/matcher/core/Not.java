@@ -1,9 +1,9 @@
 package org.saynotobugs.senoritas.matcher.core;
 
-import org.saynotobugs.senoritas.Verdict;
 import org.saynotobugs.senoritas.Description;
 import org.saynotobugs.senoritas.Matcher;
-import org.saynotobugs.senoritas.description.Composite;
+import org.saynotobugs.senoritas.Verdict;
+import org.saynotobugs.senoritas.description.Delimited;
 import org.saynotobugs.senoritas.description.TextDescription;
 import org.saynotobugs.senoritas.description.ValueDescription;
 
@@ -41,7 +41,7 @@ public final class Not<T> implements Matcher<T>
             @Override
             public Description description()
             {
-                return new Composite(new ValueDescription<>(actual), mDelegate.expectation());
+                return new Delimited(new ValueDescription(actual), mDelegate.expectation());
             }
 
         };
@@ -51,6 +51,6 @@ public final class Not<T> implements Matcher<T>
     @Override
     public Description expectation()
     {
-        return new Composite(new TextDescription("not"), mDelegate.expectation());
+        return new Delimited(new TextDescription("not"), mDelegate.expectation());
     }
 }

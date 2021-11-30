@@ -6,8 +6,11 @@ import org.saynotobugs.senoritas.Description;
 import org.saynotobugs.senoritas.Matcher;
 import org.saynotobugs.senoritas.Verdict;
 import org.saynotobugs.senoritas.description.*;
-import org.saynotobugs.senoritas.verdict.AllPass;
-import org.saynotobugs.senoritas.verdict.FailUpdated;
+import org.saynotobugs.senoritas.verdict.AllPassed;
+import org.saynotobugs.senoritas.verdict.MismatchUpdated;
+
+import static org.saynotobugs.senoritas.description.LiteralDescription.EMPTY;
+import static org.saynotobugs.senoritas.description.LiteralDescription.NEW_LINE;
 
 
 public final class Matches<T> implements Matcher<Matcher<T>>
@@ -31,10 +34,10 @@ public final class Matches<T> implements Matcher<Matcher<T>>
     @Override
     public Verdict match(Matcher<T> actual)
     {
-        return new AllPass("[", ",", "]",
+        return new AllPassed(new TextDescription("matched"), new Composite(NEW_LINE, new TextDescription("and"), NEW_LINE), EMPTY,
             new Mapped<>(
-                value -> new FailUpdated(
-                    orig -> new Composite(new ValueDescription<>(value), new TextDescription("mismatched with"), new DescriptionDescription(orig)),
+                value -> new MismatchUpdated(
+                    orig -> new Delimited(new ValueDescription(value), new TextDescription("mismatched with"), new DescriptionDescription(orig)),
                     actual.match(value)),
                 mMatchingValues
             ));
@@ -44,6 +47,7 @@ public final class Matches<T> implements Matcher<Matcher<T>>
     @Override
     public Description expectation()
     {
-        return new Composite(new TextDescription("matches"), new StructuredDescription("[", ",", "]", new Mapped<>(ValueDescription::new, mMatchingValues)));
+        return new StructuredDescription(new TextDescription("matches"), new Composite(NEW_LINE, new TextDescription("and"), NEW_LINE), EMPTY,
+            new Mapped<>(ValueDescription::new, mMatchingValues));
     }
 }

@@ -6,12 +6,12 @@ import org.saynotobugs.senoritas.Verdict;
 
 public final class Fail implements Verdict
 {
-    private final Description mDiff;
+    private final Description mMismatch;
 
 
-    public Fail(Description diff)
+    public Fail(Description mismatch)
     {
-        mDiff = diff;
+        mMismatch = mismatch;
     }
 
 
@@ -25,7 +25,6 @@ public final class Fail implements Verdict
     @Override
     public Description description()
     {
-        return mDiff;
+        return mMismatch;
     }
-
 }

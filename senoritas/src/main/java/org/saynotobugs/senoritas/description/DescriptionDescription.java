@@ -1,29 +1,18 @@
 package org.saynotobugs.senoritas.description;
 
 import org.saynotobugs.senoritas.Description;
-import org.saynotobugs.senoritas.Scribe;
+
+import static org.saynotobugs.senoritas.description.LiteralDescription.NEW_LINE;
 
 
 /**
  * A {@link Description} of a {@link Description}.
  */
-public final class DescriptionDescription implements Description
+public final class DescriptionDescription extends DelegatingDescription
 {
-    private final Description mDescription;
-
 
     public DescriptionDescription(Description description)
     {
-        mDescription = description;
-    }
-
-
-    @Override
-    public void describeTo(Scribe scribe)
-    {
-        Scribe s = scribe.indented();
-        s.newLine().append("----");
-        mDescription.describeTo(s.newLine());
-        s.newLine().append("----");
+        super(new Indented(new Composite(NEW_LINE, new TextDescription("----"), NEW_LINE, description, NEW_LINE, new TextDescription("----"))));
     }
 }

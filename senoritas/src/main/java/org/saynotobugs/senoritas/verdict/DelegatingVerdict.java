@@ -4,6 +4,9 @@ import org.saynotobugs.senoritas.Description;
 import org.saynotobugs.senoritas.Verdict;
 
 
+/**
+ * A {@link Verdict} for easy composition.
+ */
 public abstract class DelegatingVerdict implements Verdict
 {
     private final Verdict mDelegate;
