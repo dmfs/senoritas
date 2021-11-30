@@ -4,7 +4,7 @@ import org.dmfs.jems2.Fragile;
 import org.saynotobugs.senoritas.Description;
 import org.saynotobugs.senoritas.Matcher;
 import org.saynotobugs.senoritas.Verdict;
-import org.saynotobugs.senoritas.description.Composite;
+import org.saynotobugs.senoritas.description.Delimited;
 import org.saynotobugs.senoritas.description.TextDescription;
 import org.saynotobugs.senoritas.verdict.Fail;
 import org.saynotobugs.senoritas.verdict.MismatchPrepended;
@@ -27,7 +27,7 @@ public final class Throwing implements Matcher<Fragile<?, ?>>
         try
         {
             actual.value();
-            return new Fail(new Composite(new TextDescription("did not throw"), mDelegate.expectation()));
+            return new Fail(new Delimited(new TextDescription("did not throw"), mDelegate.expectation()));
         }
         catch (Exception e)
         {
@@ -39,6 +39,6 @@ public final class Throwing implements Matcher<Fragile<?, ?>>
     @Override
     public Description expectation()
     {
-        return new Composite(new TextDescription("throws"), mDelegate.expectation());
+        return new Delimited(new TextDescription("throws"), mDelegate.expectation());
     }
 }

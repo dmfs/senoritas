@@ -6,10 +6,14 @@ import org.dmfs.jems2.iterable.Mapped;
 import org.saynotobugs.senoritas.Description;
 import org.saynotobugs.senoritas.Verdict;
 
-import static org.saynotobugs.senoritas.description.LiteralDescription.EMPTY;
 import static org.saynotobugs.senoritas.description.LiteralDescription.NEW_LINE;
 
 
+/**
+ * A {@link Description} that contains the mismatch descriptions of failing {@link Verdict}s.
+ * <p>
+ * Passing {@link Verdict}s are collapsed into {@code ...}.
+ */
 public final class MismatchesDescription extends DelegatingDescription
 {
     public MismatchesDescription(Description entry, Description delimiter, Description exit, Iterable<Verdict> verdicts)

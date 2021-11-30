@@ -8,7 +8,7 @@ import static org.saynotobugs.senoritas.description.LiteralDescription.SPACE;
 
 
 /**
- * A {@link Description} that joins other {@link Description}s with a delimiter {@link Description}.
+ * A {@link Description} that concatenates other {@link Description}s with a delimiting {@link Description}.
  */
 public final class Delimited implements Description
 {
@@ -17,7 +17,7 @@ public final class Delimited implements Description
 
 
     /**
-     * Creates a {@link Description} of the sequence of the given {@link Description}s separated a {@link LiteralDescription#SPACE}.
+     * Creates a {@link Description} of the sequence of the given {@link Description}s separated with a {@link LiteralDescription#SPACE}.
      */
     public Delimited(Description... descriptions)
     {
@@ -26,7 +26,7 @@ public final class Delimited implements Description
 
 
     /**
-     * Creates a {@link Description} of the sequence of the given {@link Description}s separated by the given {@code delimiter}.
+     * Creates a {@link Description} of the sequence of the given {@link Description}s separated with the given {@code delimiter}.
      */
     public Delimited(CharSequence delimiter, Description... descriptions)
     {
@@ -35,7 +35,7 @@ public final class Delimited implements Description
 
 
     /**
-     * Creates a {@link Description} of the given {@link Description} sequence separated by the given {@code delimiter}.
+     * Creates a {@link Description} of the given {@link Description} sequence separated with the given {@code delimiter}.
      */
     public Delimited(CharSequence delimiter, Iterable<? extends Description> descriptions)
     {
@@ -44,7 +44,7 @@ public final class Delimited implements Description
 
 
     /**
-     * Creates a {@link Description} of the given {@link Description} sequence separated by the given {@code delimiter}.
+     * Creates a {@link Description} of the given {@link Description} sequence separated with the given {@code delimiter}.
      */
     public Delimited(Description delimiter, Iterable<? extends Description> descriptions)
     {

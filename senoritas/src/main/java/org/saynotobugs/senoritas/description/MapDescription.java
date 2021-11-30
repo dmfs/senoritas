@@ -5,7 +5,7 @@ import org.saynotobugs.senoritas.Description;
 
 import java.util.Map;
 
-import static org.saynotobugs.senoritas.description.LiteralDescription.*;
+import static org.saynotobugs.senoritas.description.LiteralDescription.COMMA_NEW_LINE;
 
 
 /**
@@ -13,11 +13,17 @@ import static org.saynotobugs.senoritas.description.LiteralDescription.*;
  */
 public final class MapDescription extends DelegatingDescription
 {
+
+    private static final TextDescription ENTRY_SEQUENCE = new TextDescription("{ ");
+    private static final TextDescription EXIT_SEQUENCE = new TextDescription(" }");
+
+
     public MapDescription(Map<?, ?> value)
     {
-        super(new StructuredDescription(new TextDescription("{ "),
+        super(new StructuredDescription(
+            ENTRY_SEQUENCE,
             COMMA_NEW_LINE,
-            new TextDescription(" }"),
+            EXIT_SEQUENCE,
             new Mapped<>(MapEntryDescription::new, value.entrySet())));
     }
 }

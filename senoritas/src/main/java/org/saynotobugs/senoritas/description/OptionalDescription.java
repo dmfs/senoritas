@@ -3,6 +3,9 @@ package org.saynotobugs.senoritas.description;
 import java.util.Optional;
 
 
+/**
+ * The Description of an {@link Optional} value.
+ */
 @SuppressWarnings("OptionalUsedAsFieldOrParameterType")
 public final class OptionalDescription extends DelegatingDescription
 {
