@@ -14,7 +14,7 @@ class OuterZippedTest
     @Test
     void testEmpty()
     {
-        assertThat(new OuterZipped<String, String, Boolean>(emptyIterable(), emptyIterable(), (l, r) -> l.isPresent() && r.isPresent()),
+        assertThat(new OuterZipped<String, String, Boolean>((l, r) -> l.isPresent() && r.isPresent(), emptyIterable(), emptyIterable()),
             new Iterates<>(/* nothing */));
     }
 
@@ -22,7 +22,7 @@ class OuterZippedTest
     @Test
     void testLeftSided()
     {
-        assertThat(new OuterZipped<String, String, Boolean>(new Seq<>("a", "b"), emptyIterable(), (l, r) -> l.isPresent() && !r.isPresent()),
+        assertThat(new OuterZipped<String, String, Boolean>((l, r) -> l.isPresent() && !r.isPresent(), new Seq<>("a", "b"), emptyIterable()),
             new Iterates<>(true, true));
     }
 
@@ -30,7 +30,7 @@ class OuterZippedTest
     @Test
     void testRightSided()
     {
-        assertThat(new OuterZipped<String, String, Boolean>(emptyIterable(), new Seq<>("a", "b"), (l, r) -> !l.isPresent() && r.isPresent()),
+        assertThat(new OuterZipped<String, String, Boolean>((l, r) -> !l.isPresent() && r.isPresent(), emptyIterable(), new Seq<>("a", "b")),
             new Iterates<>(true, true));
     }
 
@@ -38,7 +38,7 @@ class OuterZippedTest
     @Test
     void testBothSided()
     {
-        assertThat(new OuterZipped<String, String, Boolean>(new Seq<>("1", "2"), new Seq<>("a", "b"), (l, r) -> l.isPresent() && r.isPresent()),
+        assertThat(new OuterZipped<String, String, Boolean>((l, r) -> l.isPresent() && r.isPresent(), new Seq<>("1", "2"), new Seq<>("a", "b")),
             new Iterates<>(true, true));
     }
 }

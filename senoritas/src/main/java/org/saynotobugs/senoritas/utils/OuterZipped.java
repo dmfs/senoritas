@@ -14,9 +14,9 @@ public final class OuterZipped<T, U, R> implements Iterable<R>
     private final BiFunction<? super Optional<? extends T>, ? super Optional<? extends U>, ? extends R> mZipFunction;
 
 
-    public OuterZipped(Iterable<T> left,
-        Iterable<U> right,
-        BiFunction<? super Optional<? extends T>, ? super Optional<? extends U>, ? extends R> zipFunction)
+    public OuterZipped(BiFunction<? super Optional<? extends T>, ? super Optional<? extends U>, ? extends R> zipFunction,
+        Iterable<T> left,
+        Iterable<U> right)
     {
         mLeft = left;
         mRight = right;
