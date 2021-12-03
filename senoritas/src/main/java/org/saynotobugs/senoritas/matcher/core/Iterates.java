@@ -47,7 +47,7 @@ public final class Iterates<T> implements Matcher<Iterable<T>>
     @Override
     public Verdict match(Iterable<T> actual)
     {
-        return new AllPassed(new TextDescription("iterated ["), COMMA_NEW_LINE, new TextDescription("]"),
+        return new AllPassed(new TextDescription("iterated [ "), COMMA_NEW_LINE, new TextDescription(" ]"),
             new Numbered(
                 new OuterZipped<>(
                     (left, right) -> new Backed<>(new Zipped<>(left, right, Matcher::match),
@@ -63,9 +63,9 @@ public final class Iterates<T> implements Matcher<Iterable<T>>
     public Description expectation()
     {
         return new StructuredDescription(
-            new TextDescription("iterates ["),
+            new TextDescription("iterates [ "),
             COMMA_NEW_LINE,
-            new TextDescription("]"),
+            new TextDescription(" ]"),
             new org.saynotobugs.senoritas.description.iterable.Numbered(new Mapped<>(Matcher::expectation, mDelegates)));
     }
 }
