@@ -39,7 +39,7 @@ public final class ArrayIterable implements Iterable<Object>
             {
                 if (!hasNext())
                 {
-                    return new NoSuchElementException();
+                    throw new NoSuchElementException();
                 }
                 return Array.get(mArray, mPos++);
             }

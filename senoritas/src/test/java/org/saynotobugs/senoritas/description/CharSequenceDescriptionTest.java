@@ -1,7 +1,7 @@
 package org.saynotobugs.senoritas.description;
 
 import org.junit.jupiter.api.Test;
-import org.saynotobugs.senoritas.matcher.matcher.DescribesAs;
+import org.saynotobugs.senoritas.matcher.test.DescribesAs;
 
 import static org.saynotobugs.senoritas.Assertion.assertThat;
 

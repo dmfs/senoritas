@@ -7,8 +7,8 @@ import org.saynotobugs.senoritas.description.Delimited;
 import org.saynotobugs.senoritas.description.NumberDescription;
 import org.saynotobugs.senoritas.description.TextDescription;
 import org.saynotobugs.senoritas.matcher.core.*;
-import org.saynotobugs.senoritas.matcher.matcher.Matches;
-import org.saynotobugs.senoritas.matcher.matcher.Mismatches;
+import org.saynotobugs.senoritas.matcher.test.Matches;
+import org.saynotobugs.senoritas.matcher.test.Mismatches;
 import org.saynotobugs.senoritas.verdict.PassIf;
 
 import java.util.Objects;

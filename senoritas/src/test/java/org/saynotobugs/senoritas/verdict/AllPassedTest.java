@@ -11,7 +11,7 @@ class AllPassedTest
 {
 
     @Test
-    public void testDiff()
+    public void test()
     {
     }
 

@@ -35,4 +35,13 @@ class ArrayIterableTest
             new Iterates<>(true, false, false, true));
     }
 
+
+    @Test
+    void testNestedInt()
+    {
+        assertThat(
+            new ArrayIterable(new int[][] { new int[] { 1, 2 }, new int[] { 3, 4 } }),
+            new Iterates<>(new int[] { 1, 2 }, new int[] { 3, 4 }));
+    }
+
 }

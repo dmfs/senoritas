@@ -1,4 +1,4 @@
-package org.saynotobugs.senoritas.matcher.matcher;
+package org.saynotobugs.senoritas.matcher.test;
 
 import org.dmfs.jems2.iterable.Mapped;
 import org.dmfs.jems2.iterable.Seq;

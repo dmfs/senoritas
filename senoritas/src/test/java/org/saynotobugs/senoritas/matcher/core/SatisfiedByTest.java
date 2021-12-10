@@ -9,17 +9,17 @@ import org.saynotobugs.senoritas.matcher.test.Mismatches;
 import static org.saynotobugs.senoritas.Assertion.assertThat;
 
 
-class HasToStringTest
+class SatisfiedByTest
 {
 
     @Test
-    void test()
+    void testMatch()
     {
-        assertThat(new HasToString("123"),
+        assertThat(new SatisfiedBy<>("12"),
             new AllOf<>(
-                new Matches<>("123", 123),
-                new Mismatches<>("1234", new DescribesAs("had toString() \"1234\"")),
-                new Expects("has toString() \"123\"")));
+                new Matches<>("12"::equals, s -> s.length() == 2),
+                new Mismatches<>("123"::equals, new DescribesAs("not satisfied by \"12\"")),
+                new Expects("satisfied by \"12\"")));
     }
 
 }

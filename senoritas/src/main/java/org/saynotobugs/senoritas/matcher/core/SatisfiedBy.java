@@ -1,6 +1,6 @@
 package org.saynotobugs.senoritas.matcher.core;
 
-import org.saynotobugs.senoritas.description.Composite;
+import org.saynotobugs.senoritas.description.Delimited;
 import org.saynotobugs.senoritas.description.TextDescription;
 import org.saynotobugs.senoritas.description.ValueDescription;
 import org.saynotobugs.senoritas.verdict.PassIf;
@@ -12,7 +12,7 @@ public final class SatisfiedBy<T> extends DelegatingMatcher<Predicate<T>>
 {
     public SatisfiedBy(T testee)
     {
-        super(actual -> new PassIf(actual.test(testee), new Composite(new TextDescription("not satisfied by"), new ValueDescription(testee))),
-            new Composite(new TextDescription("satisfied by"), new ValueDescription(testee)));
+        super(actual -> new PassIf(actual.test(testee), new Delimited(new TextDescription("not satisfied by"), new ValueDescription(testee))),
+            new Delimited(new TextDescription("satisfied by"), new ValueDescription(testee)));
     }
 }

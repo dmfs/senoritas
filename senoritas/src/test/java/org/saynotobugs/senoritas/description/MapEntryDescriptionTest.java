@@ -2,7 +2,7 @@ package org.saynotobugs.senoritas.description;
 
 import org.dmfs.jems2.iterable.Seq;
 import org.junit.jupiter.api.Test;
-import org.saynotobugs.senoritas.matcher.matcher.DescribesAs;
+import org.saynotobugs.senoritas.matcher.test.DescribesAs;
 
 import java.util.Map;
 

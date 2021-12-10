@@ -2,8 +2,8 @@ package org.saynotobugs.senoritas.matcher.core;
 
 import org.dmfs.jems2.iterable.Seq;
 import org.junit.jupiter.api.Test;
-import org.saynotobugs.senoritas.matcher.matcher.Expects;
-import org.saynotobugs.senoritas.matcher.matcher.Matches;
+import org.saynotobugs.senoritas.matcher.test.Expects;
+import org.saynotobugs.senoritas.matcher.test.Matches;
 
 import static org.saynotobugs.senoritas.Assertion.assertThat;
 

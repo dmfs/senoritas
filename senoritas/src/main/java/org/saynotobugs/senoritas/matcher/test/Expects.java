@@ -1,4 +1,4 @@
-package org.saynotobugs.senoritas.matcher.matcher;
+package org.saynotobugs.senoritas.matcher.test;
 
 import org.saynotobugs.senoritas.Description;
 import org.saynotobugs.senoritas.Matcher;
