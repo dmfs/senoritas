@@ -14,7 +14,7 @@ import static org.saynotobugs.senoritas.description.LiteralDescription.NEW_LINE;
  * <p>
  * Passing {@link Verdict}s are collapsed into {@code ...}.
  */
-public final class MismatchesDescription extends DelegatingDescription
+public final class MismatchesDescription extends DescriptionComposition
 {
     public MismatchesDescription(Description entry, Description delimiter, Description exit, Iterable<Verdict> verdicts)
     {

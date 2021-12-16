@@ -8,7 +8,7 @@ import org.saynotobugs.senoritas.Description;
  * <p>
  * Note that certain control characters and {@code /} will be escaped in the result.
  */
-public final class TextDescription extends DelegatingDescription
+public final class TextDescription extends DescriptionComposition
 {
     public TextDescription(CharSequence text)
     {

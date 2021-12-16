@@ -2,6 +2,7 @@ package org.saynotobugs.senoritas.matcher.core;
 
 import org.dmfs.jems2.iterable.Mapped;
 import org.dmfs.jems2.iterable.Seq;
+import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 import org.saynotobugs.senoritas.Matcher;
 import org.saynotobugs.senoritas.description.Composite;
 import org.saynotobugs.senoritas.description.StructuredDescription;
@@ -11,6 +12,7 @@ import org.saynotobugs.senoritas.verdict.AllPassed;
 import static org.saynotobugs.senoritas.description.LiteralDescription.NEW_LINE;
 
 
+@StaticFactories("Core")
 public final class AllOf<T> extends DelegatingMatcher<T>
 {
     @SafeVarargs

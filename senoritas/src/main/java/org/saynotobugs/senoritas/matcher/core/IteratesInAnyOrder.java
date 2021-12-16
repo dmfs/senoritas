@@ -3,6 +3,7 @@ package org.saynotobugs.senoritas.matcher.core;
 import org.dmfs.jems2.iterable.Mapped;
 import org.dmfs.jems2.iterable.Seq;
 import org.dmfs.jems2.single.Collected;
+import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 import org.saynotobugs.senoritas.Description;
 import org.saynotobugs.senoritas.Matcher;
 import org.saynotobugs.senoritas.Verdict;
@@ -18,6 +19,7 @@ import java.util.List;
 import static org.saynotobugs.senoritas.description.LiteralDescription.COMMA_NEW_LINE;
 
 
+@StaticFactories("Core")
 public final class IteratesInAnyOrder<T> implements Matcher<Iterable<T>>
 {
     private final Iterable<? extends Matcher<? super T>> mDelegates;

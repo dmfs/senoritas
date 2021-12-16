@@ -2,6 +2,7 @@ package org.saynotobugs.senoritas.matcher.test;
 
 import org.dmfs.jems2.iterable.Mapped;
 import org.dmfs.jems2.iterable.Seq;
+import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 import org.saynotobugs.senoritas.Description;
 import org.saynotobugs.senoritas.Matcher;
 import org.saynotobugs.senoritas.Verdict;
@@ -13,6 +14,7 @@ import static org.saynotobugs.senoritas.description.LiteralDescription.EMPTY;
 import static org.saynotobugs.senoritas.description.LiteralDescription.NEW_LINE;
 
 
+@StaticFactories("Test")
 public final class Matches<T> implements Matcher<Matcher<T>>
 {
     private final Iterable<? extends T> mMatchingValues;

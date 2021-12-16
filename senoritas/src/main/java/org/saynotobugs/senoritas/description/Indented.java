@@ -6,7 +6,7 @@ import org.saynotobugs.senoritas.Description;
 /**
  * A {@link Description} that increases the level of indentation by one.
  */
-public final class Indented extends DelegatingDescription
+public final class Indented extends DescriptionComposition
 {
     public Indented(Description delegate)
     {

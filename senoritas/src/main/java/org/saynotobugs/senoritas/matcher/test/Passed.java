@@ -1,5 +1,6 @@
 package org.saynotobugs.senoritas.matcher.test;
 
+import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 import org.saynotobugs.senoritas.Verdict;
 import org.saynotobugs.senoritas.description.Delimited;
 import org.saynotobugs.senoritas.description.TextDescription;
@@ -8,6 +9,7 @@ import org.saynotobugs.senoritas.verdict.Fail;
 import org.saynotobugs.senoritas.verdict.MismatchPrepended;
 
 
+@StaticFactories("Test")
 public final class Passed extends DelegatingMatcher<Verdict>
 {
 

@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * A {@link Description} of a {@link Map.Entry}.
  */
-public final class MapEntryDescription extends DelegatingDescription
+public final class MapEntryDescription extends DescriptionComposition
 {
     private static final Description SEPARATOR = new TextDescription(": ");
 

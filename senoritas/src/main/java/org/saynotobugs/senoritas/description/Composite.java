@@ -8,7 +8,7 @@ import org.saynotobugs.senoritas.Description;
 /**
  * A {@link Description} composed of other {@link Description}s.
  */
-public final class Composite extends DelegatingDescription
+public final class Composite extends DescriptionComposition
 {
     /**
      * Creates a {@link Description} of the sequence of the given {@link Description}s.

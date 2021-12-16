@@ -1,5 +1,6 @@
 package org.saynotobugs.senoritas.matcher.core;
 
+import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 import org.saynotobugs.senoritas.Description;
 import org.saynotobugs.senoritas.Matcher;
 import org.saynotobugs.senoritas.Verdict;
@@ -8,6 +9,7 @@ import org.saynotobugs.senoritas.description.TextDescription;
 import org.saynotobugs.senoritas.description.ValueDescription;
 
 
+@StaticFactories("Core")
 public final class Not<T> implements Matcher<T>
 {
     private final Matcher<? super T> mDelegate;

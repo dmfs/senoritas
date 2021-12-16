@@ -1,5 +1,6 @@
 package org.saynotobugs.senoritas.matcher.test;
 
+import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 import org.saynotobugs.senoritas.Description;
 import org.saynotobugs.senoritas.Matcher;
 import org.saynotobugs.senoritas.Scribe;
@@ -12,6 +13,7 @@ import org.saynotobugs.senoritas.scribe.StringBuilderScribe;
 import org.saynotobugs.senoritas.verdict.MismatchUpdated;
 
 
+@StaticFactories("Test")
 public final class DescribesAs implements Matcher<Description>
 {
     private final Matcher<String> mDelegate;

@@ -1,5 +1,6 @@
 package org.saynotobugs.senoritas.matcher.core;
 
+import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 import org.saynotobugs.senoritas.Matcher;
 import org.saynotobugs.senoritas.description.TextDescription;
 import org.saynotobugs.senoritas.verdict.Fail;
@@ -10,6 +11,7 @@ import org.saynotobugs.senoritas.verdict.Fail;
  * <p>
  * This may be useful for testing {@link Matcher}s.
  */
+@StaticFactories("Core")
 public final class Nothing extends DelegatingMatcher<Object>
 {
     public Nothing()

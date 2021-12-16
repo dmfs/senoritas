@@ -1,5 +1,6 @@
 package org.saynotobugs.senoritas.matcher.core;
 
+import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 import org.saynotobugs.senoritas.description.Delimited;
 import org.saynotobugs.senoritas.description.TextDescription;
 import org.saynotobugs.senoritas.description.ValueDescription;
@@ -8,6 +9,7 @@ import org.saynotobugs.senoritas.verdict.PassIf;
 import java.util.function.Predicate;
 
 
+@StaticFactories("Core")
 public final class SatisfiedBy<T> extends DelegatingMatcher<Predicate<T>>
 {
     public SatisfiedBy(T testee)

@@ -7,7 +7,7 @@ import java.util.Optional;
  * The Description of an {@link Optional} value.
  */
 @SuppressWarnings("OptionalUsedAsFieldOrParameterType")
-public final class OptionalDescription extends DelegatingDescription
+public final class OptionalDescription extends DescriptionComposition
 {
     public OptionalDescription(Optional<?> value)
     {

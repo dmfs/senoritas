@@ -8,7 +8,7 @@ import org.saynotobugs.senoritas.description.Delimited;
 /**
  * A {@link Verdict} that prepends any mismatch {@link Description}.
  */
-public final class MismatchPrepended extends DelegatingVerdict
+public final class MismatchPrepended extends VerdictComposition
 {
     public MismatchPrepended(Description prefix, Verdict delegate)
     {

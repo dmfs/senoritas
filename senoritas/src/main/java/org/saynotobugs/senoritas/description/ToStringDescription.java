@@ -6,7 +6,7 @@ import org.saynotobugs.senoritas.Description;
 /**
  * A {@link Description} that describes an {@link Object} by its {@link Object#toString()} value.
  */
-public final class ToStringDescription extends DelegatingDescription
+public final class ToStringDescription extends DescriptionComposition
 {
     public ToStringDescription(Object value)
     {

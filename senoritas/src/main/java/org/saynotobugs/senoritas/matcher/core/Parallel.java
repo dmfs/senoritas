@@ -3,10 +3,10 @@ package org.saynotobugs.senoritas.matcher.core;
 import org.dmfs.jems2.generatable.Sequence;
 import org.dmfs.jems2.iterable.First;
 import org.dmfs.jems2.procedure.ForEach;
+import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 import org.saynotobugs.senoritas.Description;
 import org.saynotobugs.senoritas.Matcher;
 import org.saynotobugs.senoritas.Verdict;
-import org.saynotobugs.senoritas.description.Composite;
 import org.saynotobugs.senoritas.description.Delimited;
 import org.saynotobugs.senoritas.description.TextDescription;
 import org.saynotobugs.senoritas.verdict.AllPassed;
@@ -20,9 +20,11 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-import static org.saynotobugs.senoritas.description.LiteralDescription.*;
+import static org.saynotobugs.senoritas.description.LiteralDescription.COMMA_NEW_LINE;
+import static org.saynotobugs.senoritas.description.LiteralDescription.EMPTY;
 
 
+@StaticFactories("Core")
 public final class Parallel<T> implements Matcher<T>
 {
     private final int mThreadCount;

@@ -11,7 +11,7 @@ import static org.saynotobugs.senoritas.description.LiteralDescription.COMMA_NEW
 /**
  * A {@link Description} of a {@link Map}.
  */
-public final class MapDescription extends DelegatingDescription
+public final class MapDescription extends DescriptionComposition
 {
 
     private static final TextDescription ENTRY_SEQUENCE = new TextDescription("{ ");

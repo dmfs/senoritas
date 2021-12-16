@@ -6,7 +6,7 @@ import org.saynotobugs.senoritas.Description;
 /**
  * The {@link Description} of a {@link Number} value.
  */
-public final class NumberDescription extends DelegatingDescription
+public final class NumberDescription extends DescriptionComposition
 {
     public NumberDescription(Number value)
     {

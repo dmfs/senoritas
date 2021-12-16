@@ -8,7 +8,7 @@ import static org.saynotobugs.senoritas.description.LiteralDescription.NEW_LINE;
 /**
  * A {@link Description} of a {@link Description}.
  */
-public final class DescriptionDescription extends DelegatingDescription
+public final class DescriptionDescription extends DescriptionComposition
 {
 
     public DescriptionDescription(Description description)

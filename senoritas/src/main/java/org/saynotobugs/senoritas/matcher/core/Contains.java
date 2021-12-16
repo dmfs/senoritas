@@ -4,6 +4,7 @@ import org.dmfs.jems2.iterable.Mapped;
 import org.dmfs.jems2.iterable.Seq;
 import org.dmfs.jems2.optional.First;
 import org.dmfs.jems2.single.Backed;
+import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 import org.saynotobugs.senoritas.Matcher;
 import org.saynotobugs.senoritas.Verdict;
 import org.saynotobugs.senoritas.description.Delimited;
@@ -12,6 +13,7 @@ import org.saynotobugs.senoritas.description.TextDescription;
 import org.saynotobugs.senoritas.verdict.Fail;
 
 
+@StaticFactories("Core")
 public final class Contains<T> extends DelegatingMatcher<Iterable<T>>
 {
     public Contains(T value)

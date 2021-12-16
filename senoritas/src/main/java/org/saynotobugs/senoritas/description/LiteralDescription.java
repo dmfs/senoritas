@@ -4,7 +4,7 @@ import org.saynotobugs.senoritas.Description;
 import org.saynotobugs.senoritas.Scribe;
 
 
-public final class LiteralDescription extends DelegatingDescription
+public final class LiteralDescription extends DescriptionComposition
 {
     public static final Description DQUOTES = new LiteralDescription("\"");
     public static final Description COMMA = new LiteralDescription(",");

@@ -1,14 +1,16 @@
 package org.saynotobugs.senoritas.matcher.core;
 
+import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
+import org.hamcrest.StringDescription;
 import org.saynotobugs.senoritas.Description;
 import org.saynotobugs.senoritas.Matcher;
 import org.saynotobugs.senoritas.Verdict;
 import org.saynotobugs.senoritas.description.TextDescription;
 import org.saynotobugs.senoritas.verdict.Fail;
 import org.saynotobugs.senoritas.verdict.Pass;
-import org.hamcrest.StringDescription;
 
 
+@StaticFactories("Core")
 public final class Hamcrest<T> implements Matcher<T>
 {
     private final org.hamcrest.Matcher<? super T> mDelegate;

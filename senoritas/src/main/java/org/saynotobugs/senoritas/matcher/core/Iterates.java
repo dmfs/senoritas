@@ -4,6 +4,7 @@ import org.dmfs.jems2.iterable.Mapped;
 import org.dmfs.jems2.iterable.Seq;
 import org.dmfs.jems2.optional.Zipped;
 import org.dmfs.jems2.single.Backed;
+import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 import org.saynotobugs.senoritas.Description;
 import org.saynotobugs.senoritas.Matcher;
 import org.saynotobugs.senoritas.Verdict;
@@ -19,6 +20,7 @@ import org.saynotobugs.senoritas.verdict.iterable.Numbered;
 import static org.saynotobugs.senoritas.description.LiteralDescription.COMMA_NEW_LINE;
 
 
+@StaticFactories("Core")
 public final class Iterates<T> implements Matcher<Iterable<T>>
 {
     private final Iterable<? extends Matcher<? super T>> mDelegates;

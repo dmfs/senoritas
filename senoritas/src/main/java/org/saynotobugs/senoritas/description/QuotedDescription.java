@@ -6,7 +6,7 @@ import org.saynotobugs.senoritas.Description;
 /**
  * A {@link Description} that's put in some sort of quoting characters.
  */
-public final class QuotedDescription extends DelegatingDescription
+public final class QuotedDescription extends DescriptionComposition
 {
 
     public QuotedDescription(String quoteString, Description delegate)

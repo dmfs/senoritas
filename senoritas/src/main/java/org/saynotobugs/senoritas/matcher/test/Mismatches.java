@@ -1,5 +1,6 @@
 package org.saynotobugs.senoritas.matcher.test;
 
+import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 import org.saynotobugs.senoritas.Description;
 import org.saynotobugs.senoritas.Matcher;
 import org.saynotobugs.senoritas.Verdict;
@@ -11,6 +12,7 @@ import org.saynotobugs.senoritas.verdict.Fail;
 import org.saynotobugs.senoritas.verdict.MismatchUpdated;
 
 
+@StaticFactories("Test")
 public final class Mismatches<T> implements Matcher<Matcher<T>>
 {
     private final T mMismatchingValue;

@@ -1,5 +1,6 @@
 package org.saynotobugs.senoritas.matcher.core;
 
+import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 import org.saynotobugs.senoritas.Matcher;
 import org.saynotobugs.senoritas.description.Delimited;
 import org.saynotobugs.senoritas.description.TextDescription;
@@ -8,6 +9,7 @@ import org.saynotobugs.senoritas.verdict.MismatchPrepended;
 import java.util.function.Supplier;
 
 
+@StaticFactories("Core")
 public final class Supplies<T> extends DelegatingMatcher<Supplier<T>>
 {
     public Supplies(T delegate)

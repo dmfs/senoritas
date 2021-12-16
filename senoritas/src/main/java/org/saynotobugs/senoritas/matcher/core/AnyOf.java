@@ -1,8 +1,8 @@
-
 package org.saynotobugs.senoritas.matcher.core;
 
 import org.dmfs.jems2.iterable.Mapped;
 import org.dmfs.jems2.iterable.Seq;
+import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 import org.saynotobugs.senoritas.Matcher;
 import org.saynotobugs.senoritas.description.StructuredDescription;
 import org.saynotobugs.senoritas.description.TextDescription;
@@ -11,6 +11,7 @@ import org.saynotobugs.senoritas.verdict.AnyPassed;
 import static org.saynotobugs.senoritas.description.LiteralDescription.EMPTY;
 
 
+@StaticFactories("Core")
 public final class AnyOf<T> extends DelegatingMatcher<T>
 {
     @SafeVarargs

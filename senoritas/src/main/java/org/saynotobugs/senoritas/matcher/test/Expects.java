@@ -1,12 +1,14 @@
 package org.saynotobugs.senoritas.matcher.test;
 
+import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 import org.saynotobugs.senoritas.Description;
 import org.saynotobugs.senoritas.Matcher;
-import org.saynotobugs.senoritas.matcher.core.DelegatingMatcher;
+import org.saynotobugs.senoritas.matcher.MatcherComposition;
 import org.saynotobugs.senoritas.matcher.core.Having;
 
 
-public final class Expects extends DelegatingMatcher<Matcher<?>>
+@StaticFactories("Test")
+public final class Expects extends MatcherComposition<Matcher<?>>
 {
 
     public Expects(String expectation)

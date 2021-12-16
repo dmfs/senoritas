@@ -14,12 +14,14 @@ sourceSets {
 }
 
 dependencies {
+    implementation 'org.dmfs:srcless-annotations:0.0.3'
+    annotationProcessor 'org.dmfs:srcless-processors:0.0.3'
     provided 'org.hamcrest:hamcrest:2.2'
-    implementation 'org.dmfs:jems2:2.5.0'
-    testImplementation 'org.dmfs:jems2-testing:2.5.0'
+    implementation 'org.dmfs:jems2:2.6.0'
+    testImplementation 'org.dmfs:jems2-testing:2.6.0'
     testImplementation 'org.hamcrest:hamcrest:2.2'
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
 }
 
 test {
