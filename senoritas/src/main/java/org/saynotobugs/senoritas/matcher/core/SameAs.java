@@ -6,7 +6,7 @@ import org.saynotobugs.senoritas.verdict.PassIf;
 
 
 @StaticFactories("Core")
-public final class SameAs<T> extends DelegatingMatcher<T>
+public final class SameAs<T> extends MatcherComposition<T>
 {
     public SameAs(T expected)
     {

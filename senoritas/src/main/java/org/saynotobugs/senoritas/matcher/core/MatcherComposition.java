@@ -6,12 +6,15 @@ import org.saynotobugs.senoritas.Matcher;
 import org.saynotobugs.senoritas.Verdict;
 
 
-public abstract class DelegatingMatcher<T> implements Matcher<T>
+/**
+ * A {@link Matcher} for easy composition.
+ */
+public abstract class MatcherComposition<T> implements Matcher<T>
 {
     private final Matcher<T> mDelegate;
 
 
-    public DelegatingMatcher(Function<? super T, ? extends Verdict> testFunction, Description expectation)
+    public MatcherComposition(Function<? super T, ? extends Verdict> testFunction, Description expectation)
     {
         this(new Matcher<T>()
         {
@@ -31,7 +34,7 @@ public abstract class DelegatingMatcher<T> implements Matcher<T>
     }
 
 
-    public DelegatingMatcher(Matcher<T> delegate)
+    public MatcherComposition(Matcher<T> delegate)
     {
         mDelegate = delegate;
     }

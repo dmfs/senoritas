@@ -4,6 +4,8 @@ import java.lang.reflect.Array;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+import static org.dmfs.jems2.iterator.EmptyIterator.emptyIterator;
+
 
 /**
  * An Iterable to iterate any array.
@@ -22,7 +24,8 @@ public final class ArrayIterable implements Iterable<Object>
     @Override
     public Iterator<Object> iterator()
     {
-        return new Iterator<Object>()
+        return mArray.getClass().isArray()
+            ? new Iterator<Object>()
         {
             private int mPos;
 
@@ -43,6 +46,7 @@ public final class ArrayIterable implements Iterable<Object>
                 }
                 return Array.get(mArray, mPos++);
             }
-        };
+        }
+            : emptyIterator();
     }
 }

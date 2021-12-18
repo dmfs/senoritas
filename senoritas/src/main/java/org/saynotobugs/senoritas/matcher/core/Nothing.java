@@ -12,8 +12,11 @@ import org.saynotobugs.senoritas.verdict.Fail;
  * This may be useful for testing {@link Matcher}s.
  */
 @StaticFactories("Core")
-public final class Nothing extends DelegatingMatcher<Object>
+public final class Nothing extends MatcherComposition<Object>
 {
+    /**
+     * Creates a {@link Matcher} that never matches.
+     */
     public Nothing()
     {
         super(actual -> new Fail(new TextDescription("was something")), new TextDescription("<nothing>"));

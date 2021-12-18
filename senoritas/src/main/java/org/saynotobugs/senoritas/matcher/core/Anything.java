@@ -6,7 +6,7 @@ import org.saynotobugs.senoritas.verdict.Pass;
 
 
 @StaticFactories("Core")
-public final class Anything extends DelegatingMatcher<Object>
+public final class Anything extends MatcherComposition<Object>
 {
     public Anything()
     {

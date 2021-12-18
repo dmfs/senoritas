@@ -12,7 +12,7 @@ import static org.saynotobugs.senoritas.description.LiteralDescription.EMPTY;
 
 
 @StaticFactories("Core")
-public final class AnyOf<T> extends DelegatingMatcher<T>
+public final class AnyOf<T> extends MatcherComposition<T>
 {
     @SafeVarargs
     public AnyOf(T... values)

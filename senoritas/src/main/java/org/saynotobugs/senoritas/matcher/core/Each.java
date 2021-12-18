@@ -13,7 +13,7 @@ import static org.saynotobugs.senoritas.description.LiteralDescription.COMMA_NEW
 
 
 @StaticFactories("Core")
-public final class Each<T> extends DelegatingMatcher<Iterable<T>>
+public final class Each<T> extends MatcherComposition<Iterable<T>>
 {
 
     @SafeVarargs

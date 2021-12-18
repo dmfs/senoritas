@@ -11,7 +11,7 @@ import java.util.Optional;
 
 
 @StaticFactories("Core")
-public final class Present<T> extends DelegatingMatcher<Optional<T>>
+public final class Present<T> extends MatcherComposition<Optional<T>>
 {
     /**
      * Matches present {@link Optional}s ith any value.

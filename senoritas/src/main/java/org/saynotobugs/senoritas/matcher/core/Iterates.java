@@ -1,6 +1,7 @@
 package org.saynotobugs.senoritas.matcher.core;
 
 import org.dmfs.jems2.iterable.Mapped;
+import org.dmfs.jems2.iterable.OuterZipped;
 import org.dmfs.jems2.iterable.Seq;
 import org.dmfs.jems2.optional.Zipped;
 import org.dmfs.jems2.single.Backed;
@@ -12,7 +13,6 @@ import org.saynotobugs.senoritas.description.Delimited;
 import org.saynotobugs.senoritas.description.StructuredDescription;
 import org.saynotobugs.senoritas.description.TextDescription;
 import org.saynotobugs.senoritas.description.ValueDescription;
-import org.saynotobugs.senoritas.utils.OuterZipped;
 import org.saynotobugs.senoritas.verdict.AllPassed;
 import org.saynotobugs.senoritas.verdict.Fail;
 import org.saynotobugs.senoritas.verdict.iterable.Numbered;
@@ -52,12 +52,13 @@ public final class Iterates<T> implements Matcher<Iterable<T>>
         return new AllPassed(new TextDescription("iterated [ "), COMMA_NEW_LINE, new TextDescription(" ]"),
             new Numbered(
                 new OuterZipped<>(
+                    mDelegates,
+                    actual,
                     (left, right) -> new Backed<>(new Zipped<>(left, right, Matcher::match),
                         () -> new Fail(left.isPresent()
                             ? new Delimited(new TextDescription("missing"), left.value().expectation())
-                            : new Delimited(new TextDescription("unexpected"), new ValueDescription(right.value())))).value(),
-                    mDelegates,
-                    actual)));
+                            : new Delimited(new TextDescription("unexpected"), new ValueDescription(right.value())))).value()
+                )));
     }
 
 

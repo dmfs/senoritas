@@ -17,6 +17,7 @@ allprojects {
     version gitVersion()
     repositories {
         mavenCentral()
+        mavenLocal()
     }
 }
 

@@ -10,7 +10,7 @@ import java.util.Optional;
 
 
 @StaticFactories("Core")
-public final class Absent<T> extends DelegatingMatcher<Optional<T>>
+public final class Absent<T> extends MatcherComposition<Optional<T>>
 {
     /**
      * Matches empty {@link Optional}s.

@@ -14,14 +14,31 @@ import org.saynotobugs.senoritas.verdict.Fail;
 
 
 @StaticFactories("Core")
-public final class Contains<T> extends DelegatingMatcher<Iterable<T>>
+public final class Contains<T> extends MatcherComposition<Iterable<? extends T>>
 {
+
+    /**
+     * Creates a {@link Matcher} that checks if the {@link Iterable} under test contains at least one element that equals the given value.
+     * <p>
+     * Example
+     * <pre>
+     * assertThat(asList("foo", "bar", "baz"), contains("bar"));
+     * </pre>
+     */
     public Contains(T value)
     {
         this(new EqualTo<>(value));
     }
 
 
+    /**
+     * Creates a {@link Matcher} that checks if the {@link Iterable} under test contains at least one element that matches the given {@link Matcher}.
+     * <p>
+     * Example
+     * <pre>
+     * assertThat(asList("foo", "bar", "baz"), contains(equalTo("bar")));
+     * </pre>
+     */
     public Contains(Matcher<? super T> delegate)
     {
         super(actual -> new Backed<>(
@@ -32,6 +49,14 @@ public final class Contains<T> extends DelegatingMatcher<Iterable<T>>
     }
 
 
+    /**
+     * Creates a {@link Matcher} that, for each given values, checks if the {@link Iterable} under test contains at least one element that equals that value.
+     * <p>
+     * Example
+     * <pre>
+     * assertThat(asList("foo", "bar", "baz"), contains("foo", "bar"));
+     * </pre>
+     */
     @SafeVarargs
     public Contains(T... values)
     {

@@ -10,7 +10,7 @@ import org.saynotobugs.senoritas.verdict.MismatchPrepended;
 
 
 @StaticFactories("Core")
-public final class Having<T, V> extends DelegatingMatcher<T>
+public final class Having<T, V> extends MatcherComposition<T>
 {
     public Having(String featureName, Function<? super T, ? extends V> featureFunction, Matcher<? super V> delegate)
     {

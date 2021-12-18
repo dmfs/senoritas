@@ -6,13 +6,13 @@ import org.saynotobugs.senoritas.Matcher;
 import org.saynotobugs.senoritas.Verdict;
 import org.saynotobugs.senoritas.description.Delimited;
 import org.saynotobugs.senoritas.description.TextDescription;
-import org.saynotobugs.senoritas.matcher.core.DelegatingMatcher;
+import org.saynotobugs.senoritas.matcher.core.MatcherComposition;
 import org.saynotobugs.senoritas.verdict.Fail;
 import org.saynotobugs.senoritas.verdict.MismatchPrepended;
 
 
 @StaticFactories("Test")
-public final class Failure extends DelegatingMatcher<Verdict>
+public final class Failure extends MatcherComposition<Verdict>
 {
     public Failure(Matcher<? super Description> mismatchDescription)
     {

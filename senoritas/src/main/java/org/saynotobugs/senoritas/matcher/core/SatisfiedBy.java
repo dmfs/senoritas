@@ -10,7 +10,7 @@ import java.util.function.Predicate;
 
 
 @StaticFactories("Core")
-public final class SatisfiedBy<T> extends DelegatingMatcher<Predicate<T>>
+public final class SatisfiedBy<T> extends MatcherComposition<Predicate<T>>
 {
     public SatisfiedBy(T testee)
     {
