@@ -5,12 +5,22 @@ import org.dmfs.jems2.Predicate;
 import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 import org.saynotobugs.senoritas.Description;
 import org.saynotobugs.senoritas.Matcher;
+import org.saynotobugs.senoritas.description.ValueDescription;
 import org.saynotobugs.senoritas.verdict.PassIf;
 
 
 @StaticFactories("Core")
 public final class Satisfies<T> extends MatcherComposition<T>
 {
+    public Satisfies(
+        Predicate<? super T> predicate,
+        Description matchDescription)
+    {
+        super(actual -> new PassIf(predicate.satisfiedBy(actual), () -> new ValueDescription(actual)),
+            matchDescription);
+    }
+
+
     /**
      * Creates a {@link Matcher} that matches any value that satisfies the given {@link Predicate}.
      * <p>

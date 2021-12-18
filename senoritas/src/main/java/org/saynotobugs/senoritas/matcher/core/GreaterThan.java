@@ -5,7 +5,6 @@ import org.saynotobugs.senoritas.Matcher;
 import org.saynotobugs.senoritas.description.Delimited;
 import org.saynotobugs.senoritas.description.TextDescription;
 import org.saynotobugs.senoritas.description.ValueDescription;
-import org.saynotobugs.senoritas.verdict.PassIf;
 
 
 @StaticFactories("Core")
@@ -21,7 +20,8 @@ public final class GreaterThan<T extends Comparable<T>> extends MatcherCompositi
      */
     public GreaterThan(T expected)
     {
-        super(actual -> new PassIf(expected.compareTo(actual) < 0, new ValueDescription(actual)),
-            new Delimited(new TextDescription("greater than"), new ValueDescription(expected)));
+        super(new Satisfies<>(
+            actual -> expected.compareTo(actual) < 0,
+            new Delimited(new TextDescription("greater than"), new ValueDescription(expected))));
     }
 }
