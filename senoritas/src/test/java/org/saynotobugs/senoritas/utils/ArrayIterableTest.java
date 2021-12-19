@@ -1,7 +1,9 @@
 package org.saynotobugs.senoritas.utils;
 
 import org.junit.jupiter.api.Test;
+import org.saynotobugs.senoritas.matcher.core.InstanceOf;
 import org.saynotobugs.senoritas.matcher.core.Iterates;
+import org.saynotobugs.senoritas.matcher.core.Throwing;
 
 import static org.saynotobugs.senoritas.Assertion.assertThat;
 
@@ -44,4 +46,11 @@ class ArrayIterableTest
             new Iterates<>(new int[] { 1, 2 }, new int[] { 3, 4 }));
     }
 
+
+    @Test
+    void testNonArray()
+    {
+        assertThat(() -> new ArrayIterable("abc"),
+            new Throwing(new InstanceOf<>(RuntimeException.class)));
+    }
 }
