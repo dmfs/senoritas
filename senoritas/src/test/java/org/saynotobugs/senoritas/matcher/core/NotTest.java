@@ -17,13 +17,13 @@ class NotTest
     {
         assertThat(new Not<>(new Anything()),
             new AllOf<>(
-                new Mismatches<>("123", new DescribesAs("\"123\" <anything>")),
-                new Expects("not <anything>")));
+                new Mismatches<>("123", new DescribesAs("\"123\" ( <anything> )")),
+                new Expects("not ( <anything> )")));
 
         assertThat(new Not<>(new Nothing()),
             new AllOf<>(
                 new Matches<>("123"),
-                new Expects("not <nothing>")));
+                new Expects("not ( <nothing> )")));
     }
 
 }

@@ -43,9 +43,8 @@ public final class Not<T> implements Matcher<T>
             @Override
             public Description description()
             {
-                return new Delimited(new ValueDescription(actual), mDelegate.expectation());
+                return new Delimited(new ValueDescription(actual), new TextDescription("("), mDelegate.expectation(), new TextDescription(")"));
             }
-
         };
     }
 
@@ -53,6 +52,6 @@ public final class Not<T> implements Matcher<T>
     @Override
     public Description expectation()
     {
-        return new Delimited(new TextDescription("not"), mDelegate.expectation());
+        return new Delimited(new TextDescription("not ("), mDelegate.expectation(), new TextDescription(")"));
     }
 }

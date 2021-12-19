@@ -14,6 +14,7 @@ import org.saynotobugs.senoritas.verdict.PassIf;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import static java.util.Arrays.asList;
 import static java.util.Optional.empty;
 import static java.util.Optional.of;
 import static org.hamcrest.Matchers.contains;
@@ -95,6 +96,20 @@ public final class Examples
     void testIn()
     {
         assertThat(3, new Is<>(new In<>(4, 5, 6)));
+    }
+
+
+    @Test
+    void testInMatchers()
+    {
+        assertThat(3, new Is<>(new In<>(new LessThan<>(2), new GreaterThan<>(6), new EqualTo<>(5))));
+    }
+
+
+    @Test
+    void testInCollection()
+    {
+        assertThat(3, new Is<>(new In<>(asList(4, 5, 6))));
     }
 
 
@@ -226,7 +241,31 @@ public final class Examples
     @Test
     void testNotAnyOf()
     {
+        assertThat(new Seq<>(1, 2, 10, 11, 4),
+            new Each<>(new Not<>(new AnyOf<>(new EqualTo<>(77), new EqualTo<>(10), new EqualTo<>(22), new GreaterThan<>(9)))));
+    }
+
+
+    @Test
+    void testNoneOf()
+    {
         assertThat(new Seq<>(1, 2, 10, 11, 4), new Each<>(new NoneOf<>(new EqualTo<>(77), new EqualTo<>(10), new EqualTo<>(22), new GreaterThan<>(9))));
+    }
+
+
+    @Test
+    void testAnyOf()
+    {
+        assertThat(new Seq<>(1, 2, 10, 11, 4),
+            new Each<>(new AnyOf<>(new EqualTo<>(77), new EqualTo<>(12), new EqualTo<>(22), new GreaterThan<>(99))));
+    }
+
+
+    @Test
+    void testEachIn()
+    {
+        assertThat(new Seq<>(1, 2, 10, 11, 4),
+            new Each<>(new In<>(new EqualTo<>(77), new EqualTo<>(10), new EqualTo<>(22), new GreaterThan<>(9))));
     }
 
 }

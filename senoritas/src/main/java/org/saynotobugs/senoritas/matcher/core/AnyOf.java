@@ -30,10 +30,10 @@ public final class AnyOf<T> extends MatcherComposition<T>
 
     public AnyOf(Iterable<? extends Matcher<? super T>> delegates)
     {
-        super(actual -> new AnyPassed(EMPTY, new TextDescription("or"),
+        super(actual -> new AnyPassed(EMPTY, new TextDescription(" or "),
                 new Mapped<>(
                     d -> d.match(actual),
                     delegates)),
-            new StructuredDescription(new TextDescription(" or"), new Mapped<>(Matcher::expectation, delegates)));
+            new StructuredDescription(new TextDescription(" or "), new Mapped<>(Matcher::expectation, delegates)));
     }
 }

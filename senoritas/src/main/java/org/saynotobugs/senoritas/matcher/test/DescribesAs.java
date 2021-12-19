@@ -9,14 +9,17 @@ import org.saynotobugs.senoritas.description.Composite;
 import org.saynotobugs.senoritas.description.DescriptionDescription;
 import org.saynotobugs.senoritas.description.TextDescription;
 import org.saynotobugs.senoritas.matcher.core.EqualTo;
+import org.saynotobugs.senoritas.matcher.core.MatchesPattern;
 import org.saynotobugs.senoritas.scribe.StringBuilderScribe;
 import org.saynotobugs.senoritas.verdict.MismatchUpdated;
+
+import java.util.regex.Pattern;
 
 
 @StaticFactories("Test")
 public final class DescribesAs implements Matcher<Description>
 {
-    private final Matcher<String> mDelegate;
+    private final Matcher<? super String> mDelegate;
 
 
     public DescribesAs(String description)
@@ -25,7 +28,13 @@ public final class DescribesAs implements Matcher<Description>
     }
 
 
-    public DescribesAs(Matcher<String> delegate)
+    public DescribesAs(Pattern description)
+    {
+        this(new MatchesPattern(description));
+    }
+
+
+    public DescribesAs(Matcher<? super String> delegate)
     {
         mDelegate = delegate;
     }
