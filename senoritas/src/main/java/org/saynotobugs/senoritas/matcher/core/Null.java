@@ -14,7 +14,7 @@ public final class Null extends MatcherComposition<Object>
     /**
      * Creates a {@link Matcher} that passes if the value under test is {@code null}.
      */
-    @StaticFactory(value = "Core", methodName = "isNull")
+    @StaticFactory(value = "Core", methodName = "nullValue")
     public Null()
     {
         super(new Satisfies<>(actual -> actual == null, NULL));

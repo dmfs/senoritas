@@ -11,17 +11,14 @@ Senoritas is a composable Assertion Framework. It's very much inspired by Hamcre
 * Senoritas makes it easier to produce comprehensible descriptions, closer to what Assertj or Google Truth produce
 * In Senoritas the "Contains" Matcher has the same semantics as Java `Collection.contains(Object)`
 * Senoritas has out ouf the box support for testing Matchers.
+* By design, static matcher factory methods are generated, not manually coded.
 
 
 Note, this library is still in its initial phase and things, including design and names, might change without notice.
 
 ## Things still to come
 
-* static factory methods like Hamcrest uses them
-* more and improved matchers
-* even better mismatch descriptions
-
-
+* feature parity with Hamcrest Core (a few matchers are still missing)
 
 
 ## Examples
@@ -150,3 +147,24 @@ values [
 ]
 ```
 
+## Senoritas vs Hamcest
+
+This section gives an overview over some notable differences between Senoritas and Hamcrest.
+
+General note on matching arrays: arrays (including ones of primitive types) can be matched with matchers to match `Iterable`s decorated with `arrayThat(…)`.
+
+| Hamcrest | Senoritas |
+|---|---|
+| `contains(...)` | `iterates(...)` |
+| `containsInAnyOrder(...)` | `iteratesInAnyOrder(...)` |
+| `iterableWithSize(...)` | `hasNumberOfElements(...)` |
+| `hasItem(...)` | `contains(...)` |
+| `hasItems(...)` | `contains(...)` |
+| `everyItem(...)` | `each(...)` |
+| `sameInstance(...)`, `theInstance(...)` | `sameAs(...)` |
+| `matchesRegex(...)`, `matchesPattern(...)` | `matchesPattern(...)` |
+| `array(...)` | `arrayThat(iterates(...))`* |
+| `hasItemInArray(...)` | `arrayThat(contains(...))`* | 
+| `arrayWithSize(...)` | `arrayThat(hasNumberOfElements(...))`* |
+
+*works with arrays of primitive types
