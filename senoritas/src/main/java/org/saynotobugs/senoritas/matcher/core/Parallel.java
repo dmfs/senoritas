@@ -51,17 +51,20 @@ public final class Parallel<T> implements Matcher<T>
         List<Verdict> results = Collections.synchronizedList(new ArrayList<>(mThreadCount));
         new ForEach<>(new First<>(mThreadCount, new Sequence<>(0, i -> i + 1)))
             .process(
-                i -> executor.execute(() -> {
-                    try
-                    {
-                        results.add(new MismatchPrepended(new TextDescription("#" + i + " in thread " + Thread.currentThread().getName()),
-                            mDelegate.match(actual)));
-                    }
-                    catch (Exception e)
-                    {
-                        results.add(new Fail(new TextDescription(e.getMessage())));
-                    }
-                })
+                i -> {
+                    results.add(i, new Fail(new TextDescription("missing result " + i)));
+                    executor.execute(() -> {
+                        try
+                        {
+                            results.set(i, new MismatchPrepended(new TextDescription("#" + i + " in thread " + Thread.currentThread().getName()),
+                                mDelegate.match(actual)));
+                        }
+                        catch (Exception e)
+                        {
+                            results.set(i, new Fail(new TextDescription(e.getMessage())));
+                        }
+                    });
+                }
             );
         executor.shutdown();
         try
