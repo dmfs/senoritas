@@ -9,6 +9,7 @@ import org.saynotobugs.senoritas.Matcher;
 import org.saynotobugs.senoritas.Verdict;
 import org.saynotobugs.senoritas.description.Delimited;
 import org.saynotobugs.senoritas.description.TextDescription;
+import org.saynotobugs.senoritas.description.ValueDescription;
 import org.saynotobugs.senoritas.verdict.AllPassed;
 import org.saynotobugs.senoritas.verdict.Fail;
 import org.saynotobugs.senoritas.verdict.MismatchPrepended;
@@ -61,7 +62,8 @@ public final class Parallel<T> implements Matcher<T>
                         }
                         catch (Exception e)
                         {
-                            results.set(i, new Fail(new TextDescription(e.getMessage())));
+                            results.set(i, new Fail(new Delimited(new TextDescription("#" + i + " in thread " + Thread.currentThread().getName()),
+                                new ValueDescription(e))));
                         }
                     });
                 }

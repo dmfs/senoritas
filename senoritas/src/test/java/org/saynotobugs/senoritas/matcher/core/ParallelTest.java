@@ -24,6 +24,18 @@ class ParallelTest
                 new Mismatches<>(
                     () -> integer.incrementAndGet() % 1000,
                     new DescribesAs(new MatchesPattern("executions: ...\\R .+ supplied value <999>\\R  ..."))),
+                new Mismatches<>(
+                    () -> {
+                        if (integer.incrementAndGet() % 999 == 0)
+                        {
+                            throw new RuntimeException("error");
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    },
+                    new DescribesAs(new MatchesPattern("executions: ...\\R .+ <java.lang.RuntimeException: error>\\R  ..."))),
                 new Expects("running 1000 parallel execution, each supplies value less than <999>")
             ));
     }
