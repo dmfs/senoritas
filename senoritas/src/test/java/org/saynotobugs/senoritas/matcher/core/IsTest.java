@@ -11,6 +11,17 @@ import static org.saynotobugs.senoritas.Assertion.assertThat;
 class IsTest
 {
     @Test
+    void testValue()
+    {
+        assertThat(new Is<>(3),
+            new AllOf<>(
+                new Matches<>(3),
+                new Mismatches<>(4, "<4>"),
+                new Expects("<3>")));
+    }
+
+
+    @Test
     void testMatch()
     {
         assertThat(new Is<>(new Anything()),
