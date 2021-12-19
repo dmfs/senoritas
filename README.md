@@ -4,15 +4,16 @@
 
 # Senoritas
 
-Senoritas is a composable Assertion Framework. It's very much inspired by Hamcrest and based on the same idea. There are a couple of important differences though:
+Senoritas is a composable Assertion Framework. It's very much inspired by Hamcrest and based on the same idea. There are a couple of important differences
+though:
 
-* In case of a mismatch, Hamcrest (for Java) needs to run the matcher again to get a mismatch description, Senoritas returns the result and (in case of a mismatch) the mismatch description in one go.
+* In case of a mismatch, Hamcrest (for Java) needs to run the matcher again to get a mismatch description, Senoritas returns the result and (in case of a
+  mismatch) the mismatch description in one go.
 * Hamcrest Matchers (usually) stops at the first mismatch, Senoritas returns a complete picture.
 * Senoritas makes it easier to produce comprehensible descriptions, closer to what Assertj or Google Truth produce
 * In Senoritas the "Contains" Matcher has the same semantics as Java `Collection.contains(Object)`
 * Senoritas has out ouf the box support for testing Matchers.
 * By design, static matcher factory methods are generated, not manually coded.
-
 
 Note, this library is still in its initial phase and things, including design and names, might change without notice.
 
@@ -20,37 +21,40 @@ Note, this library is still in its initial phase and things, including design an
 
 * feature parity with Hamcrest Core (a few matchers are still missing)
 
-
 ## Examples
-
 
 ### Simple mismatch description
 
 ```java
-assertThat(List.of(1, 2, 10, 3, 4), new ContainsAllOf<>(1, 32, 11, 4));
+assertThat(asList(1,2,10,3,4),contains(1,32,11,4));
 ```
 
 ```text
 Expected:
 
-contains <1> and
-contains <32> and
-contains <11> and
-contains <4>
+contains <1>
+  and
+  contains <32>
+  and
+  contains <11>
+  and
+  contains <4>
 
 Actual:   
 
-...
-did not contain <32> and
-did not contain <11>
-...
+{ ...
+  did not contain <32>
+  and
+  did not contain <11>
+  ... }
 ```
 
 ### Structured (nested) mismatch description
 
 ```java
-assertThat(new Integer[][] { new Integer[] { 1, 2, 3 }, new Integer[] { 4, 55, 6 }, new Integer[] { 6, 7, 88 } },
-    new EqualTo<>(new Integer[][] { new Integer[] { 1, 2, 3 }, new Integer[] { 4, 5, 6 }, new Integer[] { 6, 7, 8 } }));
+assertThat(
+    new int[][]{new int[]{1,2,3},new int[]{4,7,8},new int[]{6,7,8,9}},
+    equalTo(new int[][]{new int[]{1,2,3},new int[]{4,5,6},new int[]{6,7,8}}));
 ```
 
 returns:
@@ -58,45 +62,30 @@ returns:
 ```text
 Expected:
 
-[
-  [
-    <1>,
+[ [ <1>,
     <2>,
-    <3>
-  ],
-  [
-    <4>,
+    <3> ],
+  [ <4>,
     <5>,
-    <6>
-  ],
-  [
-    <6>,
+    <6> ],
+  [ <6>,
     <7>,
-    <8>
-  ]
-]
+    <8> ] ]
 
 Actual:   
 
-array that iterated [
-  ...
-  1: array that iterated [
-    ...
-    1: <55>
-    ...
-  ],
-  2: array that iterated [
-    ...
-    2: <88>
-  ]
-]
+array that iterated [ ...
+  1: array that iterated [ ...
+    1: <7>,
+    2: <8> ],
+  2: array that iterated [ ...
+    3: unexpected <9> ] ]
 ```
-
 
 ### Hamcrest compatibility
 
 ```java
-assertThat(new Seq<>(1, 2, 5, 10, 11), new Hamcrest<>(contains(1, 2, 3, 10, 12)));
+assertThat(new Seq<>(1,2,5,10,11),hamcrest(contains(1,2,3,10,12)));
 ```
 
 ```text
@@ -109,45 +98,39 @@ Actual:
 item 2: was <5>
 ```
 
+## Simple implementation of a Matcher
 
-### Another structured mismatch description
+Writing new Matchers can be as simple as
 
 ```java
-assertThat(List.of(1, 2, 10, 11, 4),
-    new Each<>(
-        new NoneOf<>(
-            new EqualTo<>(77),
-            new EqualTo<>(10),
-            new EqualTo<>(22),
-            new GreaterThan<>(9))));
+
+@StaticFactories("Core")
+public final class EmptyString extends MatcherComposition<String>
+{
+
+    public EmptyString()
+    {
+        super(new Satisfies<>(
+            String::isEmpty,
+            new TextDescription("an empty String")
+        ));
+    }
+}
 ```
 
-```text
-Expected:
+This creates a new Matcher composition based on an existing Matcher `Satisfies`.
+`Satisfies` takes a ` Predicate` that must be satisfied for the Matcher to match and a `Description` of the expectation. By default, the mismatch `Description`
+is the actual value, but `Satisfies` takes an optional argument to create a more adequate mismatch `Description` for a given actual value.
 
-each value none of:
-  <77>,
-  <10>,
-  <22>,
-  greater than <9>
+The annotation `@StaticFactories("Core")` ensures a static factory methods like the following is automatically created in a class called `Core`:
 
-Actual:   
-
-values [
-  ...
-  2:  was
-    ...
-    <10>
-    ...
-    greater than <9>,
-  3:  was
-    ...
-    greater than <9>
-  ...
-]
+```java
+  public static EmptyString emptyString(){
+    return new EmptyString();
+    }
 ```
 
-## Senoritas vs Hamcest
+## Senoritas vs Hamcrest
 
 This section gives an overview over some notable differences between Senoritas and Hamcrest.
 
