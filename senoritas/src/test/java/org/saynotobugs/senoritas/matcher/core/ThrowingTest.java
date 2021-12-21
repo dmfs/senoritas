@@ -37,4 +37,16 @@ class ThrowingTest
                 new Expects(new DescribesAs("throws <nothing>"))
             ));
     }
+
+
+    @Test
+    void testClass()
+    {
+        assertThat(new Throwing(NoSuchElementException.class),
+            new AllOf<>(
+                new Matches<>((Fragile<Object, NoSuchElementException>) () -> {throw new NoSuchElementException();}),
+                new Mismatches<>(() -> "123", new DescribesAs("did not throw instance of <class java.util.NoSuchElementException>")),
+                new Expects(new DescribesAs("throws instance of <class java.util.NoSuchElementException>"))
+            ));
+    }
 }

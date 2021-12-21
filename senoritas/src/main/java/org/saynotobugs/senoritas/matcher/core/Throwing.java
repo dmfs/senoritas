@@ -14,10 +14,16 @@ import org.saynotobugs.senoritas.verdict.MismatchPrepended;
 @StaticFactories("Core")
 public final class Throwing implements Matcher<Fragile<?, ?>>
 {
-    private final Matcher<? super Exception> mDelegate;
+    private final Matcher<? super Throwable> mDelegate;
 
 
-    public Throwing(Matcher<? super Exception> delegate)
+    public Throwing(Class<? extends Throwable> exception)
+    {
+        this(new InstanceOf<>(exception));
+    }
+
+
+    public Throwing(Matcher<? super Throwable> delegate)
     {
         mDelegate = delegate;
     }
@@ -31,7 +37,7 @@ public final class Throwing implements Matcher<Fragile<?, ?>>
             actual.value();
             return new Fail(new Delimited(new TextDescription("did not throw"), mDelegate.expectation()));
         }
-        catch (Exception e)
+        catch (Throwable e)
         {
             return new MismatchPrepended(new TextDescription("threw"), mDelegate.match(e));
         }
