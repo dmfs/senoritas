@@ -47,7 +47,7 @@ public final class NoneOf<T> implements Matcher<T>
     public Verdict match(T actual)
     {
         return new AllPassed(
-            new TextDescription("was"), new Composite(new TextDescription(" and"), NEW_LINE), EMPTY,
+            new TextDescription("was "), new Composite(new TextDescription(" and"), NEW_LINE), EMPTY,
             new Mapped<>(
                 delegate -> {
                     Verdict result = delegate.match(actual);
