@@ -15,6 +15,11 @@ class NotTest
     @Test
     void test()
     {
+        assertThat(new Not<>("123"),
+            new AllOf<>(
+                new Mismatches<>("123", new DescribesAs("\"123\" ( \"123\" )")),
+                new Expects("not ( \"123\" )")));
+
         assertThat(new Not<>(new Anything()),
             new AllOf<>(
                 new Mismatches<>("123", new DescribesAs("\"123\" ( <anything> )")),
