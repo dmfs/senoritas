@@ -13,7 +13,7 @@ def gitVersion = { ->
 }
 
 allprojects {
-    group 'org.dmfs'
+    group 'org.saynotobugs'
     version gitVersion()
     repositories {
         mavenCentral()

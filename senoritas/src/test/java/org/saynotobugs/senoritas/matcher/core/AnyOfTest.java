@@ -13,7 +13,7 @@ class AnyOfTest
     @Test
     void test()
     {
-        assertThat(new AnyOf<>(new EqualTo<>(1), new AnyOf<>(2), new AnyOf<>(3)),
+        assertThat(new AnyOf<>(new EqualTo<>(1), new EqualTo<>(2), new EqualTo<>(3)),
             new AllOf<>(
                 new Matches<>(1, 2, 3),
                 new Mismatches<>(0, "<0> neither <1> nor \n  <2> nor \n  <3>"),
