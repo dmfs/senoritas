@@ -51,4 +51,14 @@ class AnyPassedTest
                 new Fail(new TextDescription("f3"))),
             new Failure(new DescribesAs("ef1xf2xf3")));
     }
+
+
+    @Test
+    void testMultipleFailWithExitTest()
+    {
+        assertThat(new AnyPassed(new TextDescription("e"), new TextDescription("x"), new TextDescription("--"), new Fail(new TextDescription("f1")),
+                new Fail(new TextDescription("f2")),
+                new Fail(new TextDescription("f3"))),
+            new Failure(new DescribesAs("ef1xf2xf3--")));
+    }
 }
