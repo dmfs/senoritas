@@ -4,8 +4,8 @@ import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 import org.saynotobugs.senoritas.Description;
 import org.saynotobugs.senoritas.Matcher;
 import org.saynotobugs.senoritas.description.TextDescription;
-import org.saynotobugs.senoritas.matcher.MatcherComposition;
 import org.saynotobugs.senoritas.matcher.core.Having;
+import org.saynotobugs.senoritas.matcher.core.MatcherComposition;
 
 import java.util.regex.Pattern;
 

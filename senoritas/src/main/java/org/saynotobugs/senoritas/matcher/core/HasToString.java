@@ -3,7 +3,6 @@ package org.saynotobugs.senoritas.matcher.core;
 import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 import org.saynotobugs.senoritas.Matcher;
 import org.saynotobugs.senoritas.description.TextDescription;
-import org.saynotobugs.senoritas.matcher.MatcherComposition;
 
 
 @StaticFactories("Core")

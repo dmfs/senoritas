@@ -5,7 +5,6 @@ import org.saynotobugs.senoritas.description.CharSequenceDescription;
 import org.saynotobugs.senoritas.description.Delimited;
 import org.saynotobugs.senoritas.description.TextDescription;
 import org.saynotobugs.senoritas.description.ValueDescription;
-import org.saynotobugs.senoritas.matcher.MatcherComposition;
 
 import java.util.regex.Pattern;
 
