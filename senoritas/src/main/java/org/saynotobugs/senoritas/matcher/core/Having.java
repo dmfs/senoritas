@@ -12,6 +12,14 @@ import org.saynotobugs.senoritas.verdict.MismatchPrepended;
 @StaticFactories("Core")
 public final class Having<T, V> extends MatcherComposition<T>
 {
+
+    public Having(Function<? super T, ? extends V> featureFunction, Matcher<? super V> delegate)
+    {
+        super(actual -> delegate.match(featureFunction.value(actual)),
+            delegate.expectation());
+    }
+
+
     public Having(String featureName, Function<? super T, ? extends V> featureFunction, Matcher<? super V> delegate)
     {
         this(new Delimited(new TextDescription("having"), new TextDescription(featureName)),

@@ -1,14 +1,12 @@
 package org.saynotobugs.senoritas.matcher.rxjava3;
 
+import org.dmfs.jems2.iterable.Mapped;
 import org.dmfs.jems2.iterable.Seq;
 import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 import org.reactivestreams.Publisher;
 import org.saynotobugs.senoritas.Matcher;
-import org.saynotobugs.senoritas.description.TextDescription;
-import org.saynotobugs.senoritas.matcher.core.Guarded;
 import org.saynotobugs.senoritas.matcher.core.Having;
 import org.saynotobugs.senoritas.matcher.core.MatcherComposition;
-import org.saynotobugs.senoritas.matcher.rxjava3.utils.AckSubscriber;
 import org.saynotobugs.senoritas.matcher.rxjava3.utils.RxTestAdapter;
 
 
@@ -24,13 +22,8 @@ public final class PublisherThat<T> extends MatcherComposition<Publisher<T>>
 
     public PublisherThat(Iterable<? extends Matcher<? super RxTestAdapter<T>>> events)
     {
-        super(new Having<>(new TextDescription("Flowable that"),
-            new TextDescription("Flowable that"),
-            actual -> {
-                AckSubscriber<T> subscriber = new AckSubscriber<>();
-                actual.subscribe(subscriber);
-                return subscriber;
-            },
-            new Guarded<>(events)));
+        super(new Having<>(
+            matcher -> ignoredScheduler -> matcher,
+            new PublisherWithSchedulerThat<T>(new Mapped<>(event -> ignoredScheduler -> event, events))));
     }
 }

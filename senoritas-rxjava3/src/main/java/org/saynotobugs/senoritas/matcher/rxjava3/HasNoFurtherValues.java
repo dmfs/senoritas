@@ -5,7 +5,6 @@ import org.saynotobugs.senoritas.description.TextDescription;
 import org.saynotobugs.senoritas.matcher.core.HasSize;
 import org.saynotobugs.senoritas.matcher.core.Having;
 import org.saynotobugs.senoritas.matcher.core.MatcherComposition;
-import org.saynotobugs.senoritas.matcher.rxjava3.utils.AckSubscriber;
 import org.saynotobugs.senoritas.matcher.rxjava3.utils.RxTestAdapter;
 
 

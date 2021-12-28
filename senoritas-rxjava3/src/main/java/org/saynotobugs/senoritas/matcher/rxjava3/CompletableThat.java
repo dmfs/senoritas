@@ -7,10 +7,9 @@ import org.saynotobugs.senoritas.description.TextDescription;
 import org.saynotobugs.senoritas.matcher.core.Guarded;
 import org.saynotobugs.senoritas.matcher.core.Having;
 import org.saynotobugs.senoritas.matcher.core.MatcherComposition;
-import org.saynotobugs.senoritas.matcher.rxjava3.utils.AckObserver;
+import org.saynotobugs.senoritas.matcher.rxjava3.utils.RxTestObserver;
 import org.saynotobugs.senoritas.matcher.rxjava3.utils.RxTestAdapter;
 
-import io.reactivex.rxjava3.core.Completable;
 import io.reactivex.rxjava3.core.CompletableSource;
 
 
@@ -26,10 +25,10 @@ public final class CompletableThat<T> extends MatcherComposition<CompletableSour
 
     public CompletableThat(Iterable<? extends Matcher<? super RxTestAdapter<T>>> events)
     {
-        super(new Having<>(new TextDescription("Flowable that"),
-            new TextDescription("Flowable that"),
+        super(new Having<>(new TextDescription("Completable that"),
+            new TextDescription("Completable that"),
             actual -> {
-                AckObserver<T> observer = new AckObserver<>();
+                RxTestObserver<T> observer = new RxTestObserver<>();
                 actual.subscribe(observer);
                 return observer;
             },

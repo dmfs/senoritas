@@ -8,7 +8,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import io.reactivex.rxjava3.observers.TestObserver;
 
 
-public final class AckObserver<T> extends TestObserver<T> implements RxTestAdapter<T>
+public final class RxTestObserver<T> extends TestObserver<T> implements RxTestAdapter<T>
 {
     private final AtomicInteger mAcknowledged = new AtomicInteger(0);
 

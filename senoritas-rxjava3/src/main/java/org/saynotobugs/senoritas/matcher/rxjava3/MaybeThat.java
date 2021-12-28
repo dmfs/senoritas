@@ -7,7 +7,7 @@ import org.saynotobugs.senoritas.description.TextDescription;
 import org.saynotobugs.senoritas.matcher.core.Guarded;
 import org.saynotobugs.senoritas.matcher.core.Having;
 import org.saynotobugs.senoritas.matcher.core.MatcherComposition;
-import org.saynotobugs.senoritas.matcher.rxjava3.utils.AckObserver;
+import org.saynotobugs.senoritas.matcher.rxjava3.utils.RxTestObserver;
 import org.saynotobugs.senoritas.matcher.rxjava3.utils.RxTestAdapter;
 
 import io.reactivex.rxjava3.core.MaybeSource;
@@ -25,10 +25,10 @@ public final class MaybeThat<T> extends MatcherComposition<MaybeSource<T>>
 
     public MaybeThat(Iterable<? extends Matcher<? super RxTestAdapter<T>>> events)
     {
-        super(new Having<>(new TextDescription("Flowable that"),
-            new TextDescription("Flowable that"),
+        super(new Having<>(new TextDescription("Maybe that"),
+            new TextDescription("Maybe that"),
             actual -> {
-                AckObserver<T> observer = new AckObserver<>();
+                RxTestObserver<T> observer = new RxTestObserver<>();
                 actual.subscribe(observer);
                 return observer;
             },
