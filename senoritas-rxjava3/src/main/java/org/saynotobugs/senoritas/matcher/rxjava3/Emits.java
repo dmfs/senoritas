@@ -1,37 +1,25 @@
 package org.saynotobugs.senoritas.matcher.rxjava3;
 
-import org.dmfs.jems2.Function;
+import org.dmfs.jems2.function.DelegatingFunction;
 import org.dmfs.jems2.iterable.Mapped;
 import org.dmfs.jems2.iterable.Seq;
 import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
-import org.saynotobugs.senoritas.Description;
 import org.saynotobugs.senoritas.Matcher;
-import org.saynotobugs.senoritas.Verdict;
-import org.saynotobugs.senoritas.description.Delimited;
-import org.saynotobugs.senoritas.description.NumberDescription;
-import org.saynotobugs.senoritas.description.TextDescription;
 import org.saynotobugs.senoritas.matcher.core.EqualTo;
 import org.saynotobugs.senoritas.matcher.core.Iterates;
 import org.saynotobugs.senoritas.matcher.rxjava3.utils.RxTestAdapter;
-import org.saynotobugs.senoritas.verdict.MismatchPrepended;
-
-import java.util.Collection;
 
 import io.reactivex.rxjava3.schedulers.TestScheduler;
 
 
 @StaticFactories("RxJava3")
-public final class Emits<T> implements Matcher<RxTestAdapter<T>>, Function<TestScheduler, Matcher<RxTestAdapter<T>>>
+public final class Emits<T> extends DelegatingFunction<TestScheduler, Matcher<RxTestAdapter<? extends T>>>
 {
 
-    private final int mEmissionCount;
-    private final Matcher<? super Iterable<T>> mEmissionMatchers;
-
-
     @SafeVarargs
-    public Emits(T... emissionMatchers)
+    public Emits(T... emissions)
     {
-        this(emissionMatchers.length, new Mapped<>(EqualTo::new, new Seq<>(emissionMatchers)));
+        this(emissions.length, new Mapped<>(EqualTo::new, new Seq<>(emissions)));
     }
 
 
@@ -48,46 +36,8 @@ public final class Emits<T> implements Matcher<RxTestAdapter<T>>, Function<TestS
     }
 
 
-    public Emits(int emissionCount, Matcher<? super Iterable<T>> emissionMatchers)
+    public Emits(int emissionCount, Matcher<? super Iterable<? extends T>> emissionsMatcher)
     {
-        mEmissionCount = emissionCount;
-        mEmissionMatchers = emissionMatchers;
-    }
-
-
-    @Override
-    public Verdict match(RxTestAdapter<T> actual)
-    {
-        actual.awaitNext(mEmissionCount);
-        Collection<T> values = actual.newValues(mEmissionCount);
-        Verdict result = mEmissionMatchers.match(values);
-        if (result.isSuccess())
-        {
-            actual.ack(values.size());
-        }
-        return new MismatchPrepended(
-            new Delimited(
-                new TextDescription("emitted"),
-                new NumberDescription(values.size()),
-                new TextDescription("items that")),
-            result);
-    }
-
-
-    @Override
-    public Description expectation()
-    {
-        return new Delimited(
-            new TextDescription("emits"),
-            new NumberDescription(mEmissionCount),
-            new TextDescription("items that"),
-            mEmissionMatchers.expectation());
-    }
-
-
-    @Override
-    public Matcher<RxTestAdapter<T>> value(TestScheduler testScheduler)
-    {
-        return this;
+        super(testScheduler -> new org.saynotobugs.senoritas.matcher.rxjava3.internal.Emits<>(emissionCount, emissionsMatcher));
     }
 }

@@ -13,7 +13,7 @@ import org.saynotobugs.senoritas.verdict.MismatchUpdated;
 
 
 @StaticFactories("Test")
-public final class Mismatches<T> implements Matcher<Matcher<T>>
+public final class Mismatches<T> implements Matcher<Matcher<? super T>>
 {
     private final T mMismatchingValue;
     private final Matcher<? super Description> mDiffMatcher;
@@ -39,7 +39,7 @@ public final class Mismatches<T> implements Matcher<Matcher<T>>
 
 
     @Override
-    public Verdict match(Matcher<T> actual)
+    public Verdict match(Matcher<? super T> actual)
     {
         Verdict matcherVerdict = actual.match(mMismatchingValue);
         return matcherVerdict.isSuccess()

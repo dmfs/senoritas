@@ -36,7 +36,7 @@ class ExpectsTest
                         return new TextDescription("abc");
                     }
                 }),
-                new Mismatches<>(new Matcher<Object>()
+                new Mismatches<Matcher<Object>>(new Matcher<Object>()
                 {
                     @Override
                     public Verdict match(Object actual)
@@ -76,7 +76,7 @@ class ExpectsTest
                         return new TextDescription("1abc2");
                     }
                 }),
-                new Mismatches<>(new Matcher<Object>()
+                new Mismatches<Matcher<Object>>(new Matcher<Object>()
                 {
                     @Override
                     public Verdict match(Object actual)

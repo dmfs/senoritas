@@ -21,7 +21,7 @@ import static org.saynotobugs.senoritas.description.LiteralDescription.COMMA_NEW
 
 
 @StaticFactories("Core")
-public final class Iterates<T> implements Matcher<Iterable<T>>
+public final class Iterates<T> implements Matcher<Iterable<? extends T>>
 {
     private final Iterable<? extends Matcher<? super T>> mDelegates;
 
@@ -47,7 +47,7 @@ public final class Iterates<T> implements Matcher<Iterable<T>>
 
 
     @Override
-    public Verdict match(Iterable<T> actual)
+    public Verdict match(Iterable<? extends T> actual)
     {
         return new AllPassed(new TextDescription("iterated [ "), COMMA_NEW_LINE, new TextDescription(" ]"),
             new Numbered(

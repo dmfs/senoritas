@@ -1,6 +1,7 @@
 package org.saynotobugs.senoritas.matcher.rxjava3;
 
 import org.dmfs.jems2.Function;
+import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 import org.saynotobugs.senoritas.Description;
 import org.saynotobugs.senoritas.Matcher;
 import org.saynotobugs.senoritas.Verdict;
@@ -14,13 +15,14 @@ import java.util.concurrent.TimeUnit;
 import io.reactivex.rxjava3.schedulers.TestScheduler;
 
 
-public final class After<T> implements Function<TestScheduler, Matcher<T>>
+@StaticFactories("RxJava3")
+public final class Within<T> implements Function<TestScheduler, Matcher<T>>
 {
     private final Duration mDuration;
-    private final Matcher<? super T> mDelegate;
+    private final Function<? super TestScheduler, ? extends Matcher<? super T>> mDelegate;
 
 
-    public After(Duration duration, Matcher<? super T> delegate)
+    public Within(Duration duration, Function<? super TestScheduler, ? extends Matcher<? super T>> delegate)
     {
         mDuration = duration;
         mDelegate = delegate;
@@ -30,6 +32,7 @@ public final class After<T> implements Function<TestScheduler, Matcher<T>>
     @Override
     public Matcher<T> value(TestScheduler testScheduler)
     {
+        Matcher<? super T> delegate = mDelegate.value(testScheduler);
         return new Matcher<T>()
         {
             @Override
@@ -37,14 +40,14 @@ public final class After<T> implements Function<TestScheduler, Matcher<T>>
             {
                 testScheduler.advanceTimeBy(mDuration.toMillis(), TimeUnit.MILLISECONDS);
                 testScheduler.triggerActions();
-                return new MismatchPrepended(new TextDescription("after " + mDuration), mDelegate.match(actual));
+                return new MismatchPrepended(new TextDescription("after " + mDuration), delegate.match(actual));
             }
 
 
             @Override
             public Description expectation()
             {
-                return new Delimited(new TextDescription("after " + mDuration), mDelegate.expectation());
+                return new Delimited(new TextDescription("after " + mDuration), delegate.expectation());
             }
         };
     }

@@ -19,10 +19,8 @@ class PresentTest
     {
         assertThat(new Present<>(),
             new AllOf<>(
-                new Matches<>(Optional.of(123)),
-                new Matches<Optional<Object>>(Optional.of(1234)),
-                new Matches<Optional<Object>>(Optional.of("abc")),
-                new Mismatches<Optional<Object>>(Optional.empty(), new DescribesAs("was absent")),
+                new Matches<Optional<Object>>(Optional.of(123), Optional.of(1234), Optional.of("abc")),
+                new Mismatches<>(Optional.empty(), new DescribesAs("was absent")),
                 new Expects("is present <anything>")));
     }
 

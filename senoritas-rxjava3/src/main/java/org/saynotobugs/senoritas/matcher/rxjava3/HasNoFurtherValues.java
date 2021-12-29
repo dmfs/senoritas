@@ -9,7 +9,7 @@ import org.saynotobugs.senoritas.matcher.rxjava3.utils.RxTestAdapter;
 
 
 @StaticFactories("RxJava3")
-public final class HasNoFurtherValues<T> extends MatcherComposition<RxTestAdapter<T>>
+public final class HasNoFurtherValues<T> extends MatcherComposition<RxTestAdapter<? extends T>>
 {
     public HasNoFurtherValues()
     {

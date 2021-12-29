@@ -151,3 +151,32 @@ General note on matching arrays: arrays (including ones of primitive types) can 
 | `arrayWithSize(...)` | `arrayThat(hasNumberOfElements(...))`* |
 
 *works with arrays of primitive types
+
+## Experimental RXJava3 support
+
+Although RXJava comes with built-in test support it can be tedious to test.
+Senoritas gives you the means to focus on the "what" so you don't have to care about the "how".
+
+### Example
+
+This is how a test of an RXJava Flowable would look like.
+
+```java
+assertThat((TestScheduler scheduler) -> Flowable.interval(10, TimeUnit.SECONDS, scheduler).take(10),
+    is(publisherThat(
+        immediately(emitsNothing()),
+        within(ofSeconds(10), emits(0L)),
+        within(ofSeconds(10), emits(1L)),
+        within(ofSeconds(10), emits(2L)),
+        within(ofSeconds(10), emits(3L)),
+        within(ofSeconds(10), emits(4L)),
+        within(ofSeconds(10), emits(5L)),
+        within(ofSeconds(10), emits(6L)),
+        within(ofSeconds(10), emits(7L)),
+        within(ofSeconds(10), emits(8L)),
+        within(ofSeconds(10), emits(9L)),
+        immediately(completes())
+    )));
+```
+
+RXJava 3 support is still in an early, experimental state and may be subject to change.

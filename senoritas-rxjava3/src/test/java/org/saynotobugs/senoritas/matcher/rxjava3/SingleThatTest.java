@@ -21,10 +21,10 @@ class SingleThatTest
     {
         assertThat(new SingleThat<>(new Emits<>(new EqualTo<>(123))),
             new AllOf<>(
-                new Matches<>(Single.just(123)),
-                new Mismatches<>(Single.<Integer>error(IOException::new), "Single that emitted <0> items that iterated [ 0: missing <123> ]"),
-                new Mismatches<>(Single.just(124), "Single that emitted <1> items that iterated [ 0: <124> ]"),
-                new Expects("Single that emits <1> items that iterates [ 0: <123> ]")
+                new Matches<>(ignored -> Single.just(123)),
+                new Mismatches<>(ignored -> Single.error(IOException::new), "Single that (0) emitted <0> items that iterated [ 0: missing <123> ]"),
+                new Mismatches<>(ignored -> Single.just(124), "Single that (0) emitted <1> items that iterated [ 0: <124> ]"),
+                new Expects("Single that (0) emits <1> items that iterates [ 0: <123> ]")
             ));
     }
 }

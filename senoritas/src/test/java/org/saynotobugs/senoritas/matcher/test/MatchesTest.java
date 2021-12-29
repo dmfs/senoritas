@@ -20,7 +20,7 @@ class MatchesTest
     {
         assertThat(new Matches<>(1, 2, 3),
             new AllOf<>(
-                new Matches<>(new Matcher<Integer>()
+                new Matches<Matcher<Integer>>(new Matcher<Integer>()
                 {
                     @Override
                     public Verdict match(Integer actual)

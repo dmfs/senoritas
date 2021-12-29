@@ -16,7 +16,7 @@ public final class ArrayThat extends MatcherComposition<Object>
     public <T> ArrayThat(Matcher<? super Iterable<? extends T>> delegate)
     {
         super(
-            new Guarded<>(
+            new AllOfFailingFast<>(
                 new Satisfies<>(a -> a.getClass().isArray(), ignored -> new TextDescription("not an array"), new TextDescription("an array")),
                 new Having<>(new TextDescription("array that"), new TextDescription("array that"), a -> (Iterable<T>) new ArrayIterable(a), delegate)));
     }

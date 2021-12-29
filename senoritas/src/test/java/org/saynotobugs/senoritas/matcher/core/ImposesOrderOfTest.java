@@ -19,7 +19,7 @@ class ImposesOrderOfTest
     {
         assertThat(new ImposesOrderOf<>(1, 2, 3, 4, 5),
             new AllOf<>(
-                new Matches<>(naturalOrder()),
+                new Matches<Comparator<Integer>>(naturalOrder()),
                 // construct broken comparators
                 new Mismatches<Comparator<Integer>>((l, r) -> l.equals(2) && r.equals(3) ? 1 : l - r,
                     "Comparator ...\n  compared elements <2> at index 1 and <3> at index 2 incorrectly to <1>\n  ..."),

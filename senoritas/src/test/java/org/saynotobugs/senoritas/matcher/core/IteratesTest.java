@@ -31,7 +31,7 @@ class IteratesTest
     {
         assertThat(new Iterates<>(1),
             new AllOf<>(
-                new Matches<>(new Seq<>(1), new Seq<>(1)),
+                new Matches<Iterable<Integer>>(new Seq<>(1), new Seq<>(1)),
                 new Mismatches<Iterable<Integer>>(new EmptyIterable<>(), "iterated [ 0: missing <1> ]"),
                 new Mismatches<Iterable<Integer>>(new Seq<>(1, 2, 3), "iterated [ ...\n  1: unexpected <2>,\n  2: unexpected <3> ]"),
                 new Expects("iterates [ 0: <1> ]")

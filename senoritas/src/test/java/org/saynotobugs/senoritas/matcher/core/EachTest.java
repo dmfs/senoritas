@@ -29,7 +29,7 @@ class EachTest
     {
         assertThat(new Each<>(new LessThan<>(3), new GreaterThan<>(0)),
             new AllOf<>(
-                new Matches<>(asList(1, 1, 2), asList(2, 2, 2), emptyList()),
+                new Matches<Iterable<Integer>>(asList(1, 1, 2), asList(2, 2, 2), emptyList()),
                 new Mismatches<Iterable<Integer>>(asList(0, 4, 2), "elements [0:  { ...\n    <0> },\n  1:  { <4>\n    ... }\n  ...]"),
                 new Mismatches<Iterable<Integer>>(asList(1, 4, 2), "elements [...\n  1:  { <4>\n    ... }\n  ...]"),
                 new Expects("each element less than <3>\n  and\n  greater than <0>")

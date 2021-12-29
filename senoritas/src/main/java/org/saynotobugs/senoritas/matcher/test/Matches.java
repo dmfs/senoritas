@@ -15,7 +15,7 @@ import static org.saynotobugs.senoritas.description.LiteralDescription.NEW_LINE;
 
 
 @StaticFactories("Test")
-public final class Matches<T> implements Matcher<Matcher<T>>
+public final class Matches<T> implements Matcher<Matcher<? super T>>
 {
     private final Iterable<? extends T> mMatchingValues;
 
@@ -34,7 +34,7 @@ public final class Matches<T> implements Matcher<Matcher<T>>
 
 
     @Override
-    public Verdict match(Matcher<T> actual)
+    public Verdict match(Matcher<? super T> actual)
     {
         return new AllPassed(new TextDescription("matched"), new Composite(NEW_LINE, new TextDescription("and"), NEW_LINE), EMPTY,
             new Mapped<>(

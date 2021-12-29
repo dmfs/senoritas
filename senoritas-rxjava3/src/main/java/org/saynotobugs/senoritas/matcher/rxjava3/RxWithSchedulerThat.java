@@ -6,7 +6,7 @@ import org.saynotobugs.senoritas.Description;
 import org.saynotobugs.senoritas.Matcher;
 import org.saynotobugs.senoritas.Verdict;
 import org.saynotobugs.senoritas.description.Delimited;
-import org.saynotobugs.senoritas.matcher.core.Guarded;
+import org.saynotobugs.senoritas.matcher.core.AllOfFailingFast;
 import org.saynotobugs.senoritas.matcher.core.ReDescribed;
 import org.saynotobugs.senoritas.matcher.rxjava3.utils.RxTestAdapter;
 
@@ -25,7 +25,7 @@ public final class RxWithSchedulerThat<T, RxType> implements Matcher<Function<? 
         mTestAdapterFunction = testAdapterFunction;
         mDelegate = scheduler -> new ReDescribed<>(
             orig -> new Delimited(description, orig),
-            new Guarded<>(new Mapped<>(event -> new ActionTriggering<>(event).value(scheduler), events)));
+            new AllOfFailingFast<>(new Mapped<>(event -> new ActionTriggering<>(event).value(scheduler), events)));
     }
 
 

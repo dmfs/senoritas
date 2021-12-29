@@ -1,6 +1,7 @@
 package org.saynotobugs.senoritas.matcher.rxjava3;
 
 import org.dmfs.jems2.Function;
+import org.dmfs.jems2.function.DelegatingFunction;
 import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 import org.saynotobugs.senoritas.Description;
 import org.saynotobugs.senoritas.Matcher;
@@ -14,39 +15,28 @@ import io.reactivex.rxjava3.schedulers.TestScheduler;
 
 
 @StaticFactories("RxJava3")
-public final class When<T> implements Matcher<RxTestAdapter<T>>, Function<TestScheduler, Matcher<RxTestAdapter<T>>>
+public final class When<T> extends DelegatingFunction<TestScheduler, Matcher<RxTestAdapter<? extends T>>>
 {
-    private final Description mTriggerDescription;
-    private final Runnable mTrigger;
-    private final Matcher<? super RxTestAdapter<T>> mDelegate;
 
-
-    public When(Description triggerDescription, Runnable trigger, Matcher<? super RxTestAdapter<T>> delegate)
+    public When(Description triggerDescription, Runnable trigger, Function<? super TestScheduler, ? extends Matcher<? super RxTestAdapter<? extends T>>> delegate)
     {
-        mTriggerDescription = triggerDescription;
-        mTrigger = trigger;
-        mDelegate = delegate;
-    }
+        super(testScheduler -> new Matcher<RxTestAdapter<? extends T>>()
+        {
+            @Override
+            public Verdict match(RxTestAdapter<? extends T> actual)
+            {
+                trigger.run();
+                return new MismatchPrepended(
+                    new Delimited(new TextDescription("when"), triggerDescription),
+                    new ActionTriggering<>(delegate).value(testScheduler).match(actual));
+            }
 
 
-    @Override
-    public Verdict match(RxTestAdapter<T> actual)
-    {
-        mTrigger.run();
-        return new MismatchPrepended(new Delimited(new TextDescription("when"), mTriggerDescription), mDelegate.match(actual));
-    }
-
-
-    @Override
-    public Description expectation()
-    {
-        return new Delimited(new TextDescription("when"), mTriggerDescription, mDelegate.expectation());
-    }
-
-
-    @Override
-    public Matcher<RxTestAdapter<T>> value(TestScheduler scheduler)
-    {
-        return this;
+            @Override
+            public Description expectation()
+            {
+                return new Delimited(new TextDescription("when"), triggerDescription, delegate.value(testScheduler).expectation());
+            }
+        });
     }
 }
