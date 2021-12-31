@@ -10,7 +10,7 @@ import io.reactivex.rxjava3.schedulers.TestScheduler;
 
 
 @StaticFactories("RxJava3")
-public final class Errors extends DelegatingFunction<TestScheduler, Matcher<RxTestAdapter<?>>>
+public final class Errors<T> extends TestEventComposition<T>
 {
     public Errors(Class<? extends Throwable> error)
     {
@@ -20,6 +20,6 @@ public final class Errors extends DelegatingFunction<TestScheduler, Matcher<RxTe
 
     public Errors(Matcher<? super Throwable> errorMatcher)
     {
-        super(testScheduler -> new org.saynotobugs.senoritas.matcher.rxjava3.internal.Errors(errorMatcher));
+        super(testScheduler -> new org.saynotobugs.senoritas.matcher.rxjava3.internal.Errors<>(errorMatcher));
     }
 }

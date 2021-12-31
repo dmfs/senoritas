@@ -17,13 +17,13 @@ import io.reactivex.rxjava3.schedulers.TestScheduler;
 public final class SingleThat<T> extends MatcherComposition<Function<? super TestScheduler, ? extends SingleSource<T>>>
 {
     @SafeVarargs
-    public SingleThat(Function<? super TestScheduler, ? extends Matcher<? super RxTestAdapter<? extends T>>>... events)
+    public SingleThat(TestEvent<T>... events)
     {
         this(new Seq<>(events));
     }
 
 
-    public SingleThat(Iterable<? extends Function<? super TestScheduler, ? extends Matcher<? super RxTestAdapter<? extends T>>>> events)
+    public SingleThat(Iterable<? extends TestEvent<T>> events)
     {
         super(new RxWithSchedulerThat<>(
             new TextDescription("Single that"),

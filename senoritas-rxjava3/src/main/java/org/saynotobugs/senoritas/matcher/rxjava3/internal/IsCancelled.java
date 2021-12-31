@@ -11,7 +11,7 @@ import org.saynotobugs.senoritas.matcher.rxjava3.utils.RxTestAdapter;
 import io.reactivex.rxjava3.schedulers.TestScheduler;
 
 
-public final class IsCancelled extends MatcherComposition<RxTestAdapter<?>>
+public final class IsCancelled<T> extends MatcherComposition<RxTestAdapter<T>>
 {
     public IsCancelled()
     {

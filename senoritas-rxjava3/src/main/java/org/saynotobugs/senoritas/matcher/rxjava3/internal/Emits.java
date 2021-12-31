@@ -12,7 +12,7 @@ import org.saynotobugs.senoritas.verdict.MismatchPrepended;
 import java.util.Collection;
 
 
-public final class Emits<T> implements Matcher<RxTestAdapter<? extends T>>
+public final class Emits<T> implements Matcher<RxTestAdapter<T>>
 {
 
     private final int mEmissionCount;
@@ -27,10 +27,10 @@ public final class Emits<T> implements Matcher<RxTestAdapter<? extends T>>
 
 
     @Override
-    public Verdict match(RxTestAdapter<? extends T> actual)
+    public Verdict match(RxTestAdapter<T> actual)
     {
         actual.awaitNext(mEmissionCount);
-        Collection<? extends T> values = actual.newValues(mEmissionCount);
+        Collection<T> values = actual.newValues(mEmissionCount);
         Verdict result = mEmissionMatchers.match(values);
         if (result.isSuccess())
         {

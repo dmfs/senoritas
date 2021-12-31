@@ -9,10 +9,10 @@ import io.reactivex.rxjava3.schedulers.TestScheduler;
 
 
 @StaticFactories("RxJava3")
-public final class EmitsNothing extends DelegatingFunction<TestScheduler, Matcher<RxTestAdapter<?>>>
+public final class EmitsNothing<T> extends TestEventComposition<T>
 {
     public EmitsNothing()
     {
-        super(testScheduler -> new org.saynotobugs.senoritas.matcher.rxjava3.internal.EmitsNothing());
+        super(testScheduler -> new org.saynotobugs.senoritas.matcher.rxjava3.internal.EmitsNothing<>());
     }
 }

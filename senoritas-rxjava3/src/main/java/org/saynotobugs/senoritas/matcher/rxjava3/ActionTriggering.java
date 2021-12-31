@@ -1,41 +1,41 @@
 package org.saynotobugs.senoritas.matcher.rxjava3;
 
-import org.dmfs.jems2.Function;
 import org.saynotobugs.senoritas.Description;
 import org.saynotobugs.senoritas.Matcher;
 import org.saynotobugs.senoritas.Verdict;
+import org.saynotobugs.senoritas.matcher.rxjava3.utils.RxTestAdapter;
 
 import io.reactivex.rxjava3.schedulers.TestScheduler;
 
 
-public final class ActionTriggering<T> implements Function<TestScheduler, Matcher<T>>
+public final class ActionTriggering<T> implements TestEvent<T>
 {
-    private final Function<? super TestScheduler, ? extends Matcher<? super T>> mDelegate;
+    private final TestEvent<T> mDelegate;
 
 
-    public ActionTriggering(Function<? super TestScheduler, ? extends Matcher<? super T>> delegate)
+    public ActionTriggering(TestEvent<T> delegate)
     {
         mDelegate = delegate;
     }
 
 
     @Override
-    public Matcher<T> value(TestScheduler testScheduler)
+    public Matcher<RxTestAdapter<T>> matcher(TestScheduler testScheduler)
     {
-        return new Matcher<T>()
+        return new Matcher<RxTestAdapter<T>>()
         {
             @Override
-            public Verdict match(T actual)
+            public Verdict match(RxTestAdapter<T> actual)
             {
                 testScheduler.triggerActions();
-                return mDelegate.value(testScheduler).match(actual);
+                return mDelegate.matcher(testScheduler).match(actual);
             }
 
 
             @Override
             public Description expectation()
             {
-                return mDelegate.value(testScheduler).expectation();
+                return mDelegate.matcher(testScheduler).expectation();
             }
         };
     }

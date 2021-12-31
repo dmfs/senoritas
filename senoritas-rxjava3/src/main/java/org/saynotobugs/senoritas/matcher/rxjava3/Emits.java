@@ -13,7 +13,7 @@ import io.reactivex.rxjava3.schedulers.TestScheduler;
 
 
 @StaticFactories("RxJava3")
-public final class Emits<T> extends DelegatingFunction<TestScheduler, Matcher<RxTestAdapter<? extends T>>>
+public final class Emits<T> extends TestEventComposition<T>
 {
 
     @SafeVarargs

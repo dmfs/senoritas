@@ -14,7 +14,7 @@ import io.reactivex.rxjava3.schedulers.TestScheduler;
 
 
 @StaticFactories("RxJava3")
-public final class CompletesWith<T> extends DelegatingFunction<TestScheduler, Matcher<RxTestAdapter<? extends T>>>
+public final class CompletesWith<T> extends TestEventComposition<T>
 {
     @SafeVarargs
     public CompletesWith(T... values)
@@ -35,7 +35,7 @@ public final class CompletesWith<T> extends DelegatingFunction<TestScheduler, Ma
         super(testScheduler -> new AllOf<>(
             new IsComplete(),
             new Emits<>(elementCount, values),
-            new EmitsNothing()
+            new EmitsNothing<>()
         ));
     }
 }

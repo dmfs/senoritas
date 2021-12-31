@@ -9,6 +9,7 @@ import org.saynotobugs.senoritas.description.TextDescription;
 import org.saynotobugs.senoritas.matcher.core.MatcherComposition;
 import org.saynotobugs.senoritas.matcher.rxjava3.utils.RxTestAdapter;
 import org.saynotobugs.senoritas.matcher.rxjava3.utils.RxTestSubscriber;
+import org.saynotobugs.senoritas.matcher.test.Test;
 
 import io.reactivex.rxjava3.schedulers.TestScheduler;
 
@@ -18,13 +19,13 @@ public final class PublisherThat<T> extends MatcherComposition<Function<? super 
 {
 
     @SafeVarargs
-    public PublisherThat(Function<? super TestScheduler, ? extends Matcher<? super RxTestAdapter<? extends T>>>... events)
+    public PublisherThat(TestEvent<T>... events)
     {
         this(new Seq<>(events));
     }
 
 
-    public PublisherThat(Iterable<? extends Function<? super TestScheduler, ? extends Matcher<? super RxTestAdapter<? extends T>>>> events)
+    public PublisherThat(Iterable<? extends TestEvent<T>> events)
     {
         super(new RxWithSchedulerThat<>(
             new TextDescription("Publisher that"),

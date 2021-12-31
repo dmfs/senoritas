@@ -12,11 +12,11 @@ import io.reactivex.rxjava3.schedulers.TestScheduler;
 
 
 @StaticFactories("RxJava3")
-public final class Immediately<T> extends DelegatingFunction<TestScheduler, Matcher<T>>
+public final class Immediately<T> extends TestEventComposition<T>
 {
-    public Immediately(Function<? super TestScheduler, ? extends Matcher<? super T>> delegate)
+    public Immediately(TestEvent<T> delegate)
     {
         super(new ActionTriggering<>(
-            testScheduler -> new ReDescribed<>(orig -> new Delimited(new TextDescription("immediately"), orig), delegate.value(testScheduler))));
+            testScheduler -> new ReDescribed<>(orig -> new Delimited(new TextDescription("immediately"), orig), delegate.matcher(testScheduler))));
     }
 }

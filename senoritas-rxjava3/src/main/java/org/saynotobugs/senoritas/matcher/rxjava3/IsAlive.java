@@ -15,14 +15,14 @@ import io.reactivex.rxjava3.schedulers.TestScheduler;
 
 
 @StaticFactories("RxJava3")
-public final class IsAlive extends DelegatingFunction<TestScheduler, Matcher<RxTestAdapter<?>>>
+public final class IsAlive<T> extends TestEventComposition<T>
 {
     public IsAlive()
     {
         super(testScheduler -> new NoneOf<>(
             new Having<>("error", RxTestAdapter::errors, new Contains<>(new Anything())),
             new IsComplete(),
-            new IsCancelled()
+            new IsCancelled<>()
         ));
     }
 }

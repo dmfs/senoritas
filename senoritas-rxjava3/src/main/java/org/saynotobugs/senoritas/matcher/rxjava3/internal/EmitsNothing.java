@@ -8,7 +8,7 @@ import org.saynotobugs.senoritas.matcher.core.Satisfies;
 import org.saynotobugs.senoritas.matcher.rxjava3.utils.RxTestAdapter;
 
 
-public final class EmitsNothing extends MatcherComposition<RxTestAdapter<?>>
+public final class EmitsNothing<T> extends MatcherComposition<RxTestAdapter<T>>
 {
     public EmitsNothing()
     {

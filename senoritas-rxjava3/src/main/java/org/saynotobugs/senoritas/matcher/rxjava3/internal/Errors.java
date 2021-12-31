@@ -8,7 +8,7 @@ import org.saynotobugs.senoritas.matcher.core.MatcherComposition;
 import org.saynotobugs.senoritas.matcher.rxjava3.utils.RxTestAdapter;
 
 
-public final class Errors extends MatcherComposition<RxTestAdapter<?>>
+public final class Errors<T> extends MatcherComposition<RxTestAdapter<T>>
 {
     public Errors(Class<Throwable> error)
     {
