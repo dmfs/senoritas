@@ -9,6 +9,5 @@ import io.reactivex.rxjava3.schedulers.TestScheduler;
 
 public interface TransformerEvent<Up, Down>
 {
-
-    Matcher<RxTestAdapter<Down>> matcher(TestScheduler scheduler, SubjectAdapter<Up> upstream);
+    Iterable<Matcher<RxTestAdapter<Down>>> matchers(TestScheduler scheduler, SubjectAdapter<Up> upstream);
 }

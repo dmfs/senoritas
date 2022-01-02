@@ -4,7 +4,6 @@ import org.dmfs.jems2.iterable.Mapped;
 import org.dmfs.jems2.iterable.Seq;
 import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 import org.saynotobugs.senoritas.Matcher;
-import org.saynotobugs.senoritas.matcher.core.AllOf;
 import org.saynotobugs.senoritas.matcher.rxjava3.adapters.RxTestAdapter;
 import org.saynotobugs.senoritas.matcher.rxjava3.adapters.SubjectAdapter;
 
@@ -31,8 +30,8 @@ public final class Downstream<Up, Down> implements TransformerEvent<Up, Down>
 
 
     @Override
-    public Matcher<RxTestAdapter<Down>> matcher(TestScheduler scheduler, SubjectAdapter<Up> upstream)
+    public Iterable<Matcher<RxTestAdapter<Down>>> matchers(TestScheduler scheduler, SubjectAdapter<Up> upstream)
     {
-        return new AllOf<>(new Mapped<>(downstreamTestEvent -> downstreamTestEvent.matcher(scheduler), mEvents));
+        return new Mapped<>(downstreamTestEvent -> downstreamTestEvent.matcher(scheduler), mEvents);
     }
 }

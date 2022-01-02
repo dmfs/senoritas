@@ -9,13 +9,13 @@ import java.util.concurrent.atomic.AtomicInteger;
 import io.reactivex.rxjava3.core.Flowable;
 import io.reactivex.rxjava3.core.Maybe;
 import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.core.Single;
 import io.reactivex.rxjava3.schedulers.TestScheduler;
 
 import static java.time.Duration.ofSeconds;
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.saynotobugs.senoritas.Assertion.assertThat;
-import static org.saynotobugs.senoritas.matcher.core.Core.instanceOf;
-import static org.saynotobugs.senoritas.matcher.core.Core.is;
+import static org.saynotobugs.senoritas.matcher.core.Core.*;
 import static org.saynotobugs.senoritas.matcher.rxjava3.RxJava3.*;
 
 
@@ -141,5 +141,20 @@ public final class Examples
                 upstream(error(IOException::new)),
                 downstream(immediately(errors(instanceOf(IOException.class))))
             )));
+    }
+
+
+    @Test
+    void testSingleTransformer()
+    {
+        assertThat((TestScheduler scheduler) -> (Single<Integer> upstream) -> upstream.delay(10, SECONDS, scheduler),
+            allOf(
+                transformsSingle(
+                    upstream(completeWith(123)),
+                    downstream(within(ofSeconds(9), emitsNothing())),
+                    downstream(within(ofSeconds(10), completesWith(123)))),
+                RxJava3.<Integer, Integer>transformsSingle(
+                    upstream(error(IOException::new)),
+                    downstream(immediately(errors(IOException.class))))));
     }
 }

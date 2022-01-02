@@ -1,7 +1,7 @@
 package org.saynotobugs.senoritas.matcher.rxjava3;
 
 import org.dmfs.jems2.Function;
-import org.dmfs.jems2.iterable.Mapped;
+import org.dmfs.jems2.iterable.Expanded;
 import org.dmfs.jems2.iterable.Seq;
 import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 import org.saynotobugs.senoritas.Description;
@@ -47,7 +47,7 @@ public final class TransformsFlowable<Up, Down> implements
         PublishProcessor<Up> upstream = PublishProcessor.create();
         actual.value(t).apply(upstream.hide()).subscribe(testAdapter);
         return new AllOfFailingFast<>(
-            new Mapped<>(e -> e.matcher(t, new FlowableSubjectAdapter<>(upstream)), mEvents)
+            new Expanded<>(e -> e.matchers(t, new FlowableSubjectAdapter<>(upstream)), mEvents)
         ).match(testAdapter);
     }
 
@@ -58,7 +58,7 @@ public final class TransformsFlowable<Up, Down> implements
         TestScheduler t = new TestScheduler();
         PublishProcessor<Up> upstream = PublishProcessor.create();
         return new ReDescribed<>(orig -> new Delimited(new TextDescription("FlowableTransformer that"), orig), new AllOfFailingFast<>(
-            new Mapped<>(e -> e.matcher(t, new FlowableSubjectAdapter<>(upstream)), mEvents)
+            new Expanded<>(e -> e.matchers(t, new FlowableSubjectAdapter<>(upstream)), mEvents)
         )).expectation();
     }
 }

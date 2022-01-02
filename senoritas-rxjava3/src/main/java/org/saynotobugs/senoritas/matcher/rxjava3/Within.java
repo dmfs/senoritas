@@ -24,6 +24,10 @@ public final class Within<T> implements TestEvent<T>
 
     public Within(Duration duration, TestEvent<T> delegate)
     {
+        if (duration.isNegative())
+        {
+            throw new IllegalArgumentException("Unsupported negative duration: " + duration);
+        }
         mDuration = duration;
         mDelegate = delegate;
     }

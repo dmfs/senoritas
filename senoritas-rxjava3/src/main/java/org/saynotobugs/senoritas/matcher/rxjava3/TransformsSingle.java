@@ -11,43 +11,43 @@ import org.saynotobugs.senoritas.description.Delimited;
 import org.saynotobugs.senoritas.description.TextDescription;
 import org.saynotobugs.senoritas.matcher.core.AllOfFailingFast;
 import org.saynotobugs.senoritas.matcher.core.ReDescribed;
-import org.saynotobugs.senoritas.matcher.rxjava3.adapters.ObservableSubjectAdapter;
 import org.saynotobugs.senoritas.matcher.rxjava3.adapters.RxTestObserver;
+import org.saynotobugs.senoritas.matcher.rxjava3.adapters.SingleSubjectAdapter;
 
-import io.reactivex.rxjava3.core.ObservableTransformer;
+import io.reactivex.rxjava3.core.SingleTransformer;
 import io.reactivex.rxjava3.schedulers.TestScheduler;
-import io.reactivex.rxjava3.subjects.PublishSubject;
+import io.reactivex.rxjava3.subjects.SingleSubject;
 
 
 @StaticFactories("RxJava3")
-public final class TransformsObservable<Up, Down> implements
-    Matcher<Function<? super TestScheduler, ? extends ObservableTransformer<Up, Down>>>
+public final class TransformsSingle<Up, Down> implements
+    Matcher<Function<? super TestScheduler, ? extends SingleTransformer<Up, Down>>>
 {
     private final Iterable<? extends TransformerEvent<Up, Down>> mEvents;
 
 
     @SafeVarargs
-    public TransformsObservable(TransformerEvent<Up, Down>... events)
+    public TransformsSingle(TransformerEvent<Up, Down>... events)
     {
         this(new Seq<>(events));
     }
 
 
-    public TransformsObservable(Iterable<? extends TransformerEvent<Up, Down>> events)
+    public TransformsSingle(Iterable<? extends TransformerEvent<Up, Down>> events)
     {
         mEvents = events;
     }
 
 
     @Override
-    public Verdict match(Function<? super TestScheduler, ? extends ObservableTransformer<Up, Down>> actual)
+    public Verdict match(Function<? super TestScheduler, ? extends SingleTransformer<Up, Down>> actual)
     {
         TestScheduler t = new TestScheduler();
         RxTestObserver<Down> testAdapter = new RxTestObserver<>();
-        PublishSubject<Up> upstream = PublishSubject.create();
+        SingleSubject<Up> upstream = SingleSubject.create();
         actual.value(t).apply(upstream.hide()).subscribe(testAdapter);
         return new AllOfFailingFast<>(
-            new Expanded<>(e -> e.matchers(t, new ObservableSubjectAdapter<>(upstream)), mEvents)
+            new Expanded<>(e -> e.matchers(t, new SingleSubjectAdapter<>(upstream)), mEvents)
         ).match(testAdapter);
     }
 
@@ -56,9 +56,9 @@ public final class TransformsObservable<Up, Down> implements
     public Description expectation()
     {
         TestScheduler t = new TestScheduler();
-        PublishSubject<Up> upstream = PublishSubject.create();
-        return new ReDescribed<>(orig -> new Delimited(new TextDescription("ObservableTransformer that"), orig), new AllOfFailingFast<>(
-            new Expanded<>(e -> e.matchers(t, new ObservableSubjectAdapter<>(upstream)), mEvents)
+        SingleSubject<Up> upstream = SingleSubject.create();
+        return new ReDescribed<>(orig -> new Delimited(new TextDescription("SingleTransformer that"), orig), new AllOfFailingFast<>(
+            new Expanded<>(e -> e.matchers(t, new SingleSubjectAdapter<>(upstream)), mEvents)
         )).expectation();
     }
 }

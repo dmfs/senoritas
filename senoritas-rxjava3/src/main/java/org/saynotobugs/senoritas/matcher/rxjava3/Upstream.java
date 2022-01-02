@@ -5,11 +5,12 @@ import org.dmfs.jems2.iterable.Seq;
 import org.dmfs.jems2.procedure.Composite;
 import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 import org.saynotobugs.senoritas.Matcher;
-import org.saynotobugs.senoritas.matcher.core.AllOf;
 import org.saynotobugs.senoritas.matcher.rxjava3.adapters.RxTestAdapter;
 import org.saynotobugs.senoritas.matcher.rxjava3.adapters.SubjectAdapter;
 
 import io.reactivex.rxjava3.schedulers.TestScheduler;
+
+import static org.dmfs.jems2.iterable.EmptyIterable.emptyIterable;
 
 
 @StaticFactories("RxJava3")
@@ -32,9 +33,9 @@ public final class Upstream<Up, Down> implements TransformerEvent<Up, Down>
 
 
     @Override
-    public Matcher<RxTestAdapter<Down>> matcher(TestScheduler scheduler, SubjectAdapter<Up> upstream)
+    public Iterable<Matcher<RxTestAdapter<Down>>> matchers(TestScheduler scheduler, SubjectAdapter<Up> upstream)
     {
         new Composite<>(mEvents).process(upstream);
-        return new AllOf<>();
+        return emptyIterable();
     }
 }
