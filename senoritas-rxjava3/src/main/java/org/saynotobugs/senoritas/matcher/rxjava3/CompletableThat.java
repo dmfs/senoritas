@@ -7,8 +7,8 @@ import org.saynotobugs.senoritas.description.TextDescription;
 import org.saynotobugs.senoritas.matcher.core.AllOfFailingFast;
 import org.saynotobugs.senoritas.matcher.core.Having;
 import org.saynotobugs.senoritas.matcher.core.MatcherComposition;
-import org.saynotobugs.senoritas.matcher.rxjava3.utils.RxTestAdapter;
-import org.saynotobugs.senoritas.matcher.rxjava3.utils.RxTestObserver;
+import org.saynotobugs.senoritas.matcher.rxjava3.adapters.RxTestAdapter;
+import org.saynotobugs.senoritas.matcher.rxjava3.adapters.RxTestObserver;
 
 import io.reactivex.rxjava3.core.CompletableSource;
 

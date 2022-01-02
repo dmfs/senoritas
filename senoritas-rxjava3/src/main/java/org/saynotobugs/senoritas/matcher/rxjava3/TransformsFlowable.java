@@ -11,7 +11,8 @@ import org.saynotobugs.senoritas.description.Delimited;
 import org.saynotobugs.senoritas.description.TextDescription;
 import org.saynotobugs.senoritas.matcher.core.AllOfFailingFast;
 import org.saynotobugs.senoritas.matcher.core.ReDescribed;
-import org.saynotobugs.senoritas.matcher.rxjava3.utils.RxTestSubscriber;
+import org.saynotobugs.senoritas.matcher.rxjava3.adapters.FlowableSubjectAdapter;
+import org.saynotobugs.senoritas.matcher.rxjava3.adapters.RxTestSubscriber;
 
 import io.reactivex.rxjava3.core.FlowableTransformer;
 import io.reactivex.rxjava3.processors.PublishProcessor;
@@ -19,20 +20,20 @@ import io.reactivex.rxjava3.schedulers.TestScheduler;
 
 
 @StaticFactories("RxJava3")
-public final class Transforms<Up, Down> implements
+public final class TransformsFlowable<Up, Down> implements
     Matcher<Function<? super TestScheduler, ? extends FlowableTransformer<Up, Down>>>
 {
     private final Iterable<? extends TransformerEvent<Up, Down>> mEvents;
 
 
     @SafeVarargs
-    public Transforms(TransformerEvent<Up, Down>... events)
+    public TransformsFlowable(TransformerEvent<Up, Down>... events)
     {
         this(new Seq<>(events));
     }
 
 
-    public Transforms(Iterable<? extends TransformerEvent<Up, Down>> events)
+    public TransformsFlowable(Iterable<? extends TransformerEvent<Up, Down>> events)
     {
         mEvents = events;
     }
@@ -46,7 +47,7 @@ public final class Transforms<Up, Down> implements
         PublishProcessor<Up> upstream = PublishProcessor.create();
         actual.value(t).apply(upstream.hide()).subscribe(testAdapter);
         return new AllOfFailingFast<>(
-            new Mapped<>(e -> e.matcher(t, upstream), mEvents)
+            new Mapped<>(e -> e.matcher(t, new FlowableSubjectAdapter<>(upstream)), mEvents)
         ).match(testAdapter);
     }
 
@@ -57,7 +58,7 @@ public final class Transforms<Up, Down> implements
         TestScheduler t = new TestScheduler();
         PublishProcessor<Up> upstream = PublishProcessor.create();
         return new ReDescribed<>(orig -> new Delimited(new TextDescription("FlowableTransformer that"), orig), new AllOfFailingFast<>(
-            new Mapped<>(e -> e.matcher(t, upstream), mEvents)
+            new Mapped<>(e -> e.matcher(t, new FlowableSubjectAdapter<>(upstream)), mEvents)
         )).expectation();
     }
 }

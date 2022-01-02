@@ -15,7 +15,7 @@ class GreaterThanOrEqualToTest
     {
         assertThat(new GreaterThanOrEqualTo<>(10),
             new AllOf<>(
-                new Matches<>(10,11,12,100,1000),
+                new Matches<>(10, 11, 12, 100, 1000),
                 new Mismatches<>(9, "<9>"),
                 new Expects("greater than or equal to <10>")
             ));

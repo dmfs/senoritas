@@ -5,7 +5,7 @@ import org.saynotobugs.senoritas.matcher.core.Having;
 import org.saynotobugs.senoritas.matcher.core.InstanceOf;
 import org.saynotobugs.senoritas.matcher.core.Iterates;
 import org.saynotobugs.senoritas.matcher.core.MatcherComposition;
-import org.saynotobugs.senoritas.matcher.rxjava3.utils.RxTestAdapter;
+import org.saynotobugs.senoritas.matcher.rxjava3.adapters.RxTestAdapter;
 
 
 public final class Errors<T> extends MatcherComposition<RxTestAdapter<T>>

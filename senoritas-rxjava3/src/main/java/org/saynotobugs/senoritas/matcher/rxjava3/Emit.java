@@ -4,12 +4,11 @@ import org.dmfs.jems2.Procedure;
 import org.dmfs.jems2.iterable.Seq;
 import org.dmfs.jems2.procedure.Batch;
 import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
-
-import io.reactivex.rxjava3.processors.PublishProcessor;
+import org.saynotobugs.senoritas.matcher.rxjava3.adapters.SubjectAdapter;
 
 
 @StaticFactories("RxJava3")
-public final class Emit<Up> implements Procedure<PublishProcessor<Up>>
+public final class Emit<Up> implements Procedure<SubjectAdapter<Up>>
 {
     private final Iterable<Up> mEmissions;
 
@@ -28,7 +27,7 @@ public final class Emit<Up> implements Procedure<PublishProcessor<Up>>
 
 
     @Override
-    public void process(PublishProcessor<Up> arg)
+    public void process(SubjectAdapter<Up> arg)
     {
         new Batch<>(arg::onNext).process(mEmissions);
     }

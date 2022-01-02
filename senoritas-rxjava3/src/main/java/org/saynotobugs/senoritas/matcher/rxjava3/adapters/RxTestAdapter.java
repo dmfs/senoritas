@@ -1,4 +1,4 @@
-package org.saynotobugs.senoritas.matcher.rxjava3.utils;
+package org.saynotobugs.senoritas.matcher.rxjava3.adapters;
 
 import java.util.Collection;
 

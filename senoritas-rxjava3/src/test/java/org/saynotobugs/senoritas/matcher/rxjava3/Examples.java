@@ -8,11 +8,13 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import io.reactivex.rxjava3.core.Flowable;
 import io.reactivex.rxjava3.core.Maybe;
+import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.schedulers.TestScheduler;
 
 import static java.time.Duration.ofSeconds;
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.saynotobugs.senoritas.Assertion.assertThat;
+import static org.saynotobugs.senoritas.matcher.core.Core.instanceOf;
 import static org.saynotobugs.senoritas.matcher.core.Core.is;
 import static org.saynotobugs.senoritas.matcher.rxjava3.RxJava3.*;
 
@@ -84,7 +86,25 @@ public final class Examples
     void testFlowableTransformer()
     {
         assertThat((TestScheduler scheduler) -> (Flowable<Integer> upstream) -> upstream.delay(10, SECONDS, scheduler),
-            transforms(
+            transformsFlowable(
+                upstream(emit(1, 2, 3)),
+                downstream(
+                    within(ofSeconds(9), emitsNothing()),
+                    within(ofSeconds(10), emits(1)),
+                    within(ofSeconds(10), emits(2)),
+                    within(ofSeconds(10), emits(3)),
+                    isAlive()),
+                upstream(complete()),
+                downstream(within(ofSeconds(10), completes()))
+            ));
+    }
+
+
+    @Test
+    void testObservableTransformer()
+    {
+        assertThat((TestScheduler scheduler) -> (Observable<Integer> upstream) -> upstream.delay(10, SECONDS, scheduler),
+            transformsObservable(
                 upstream(emit(1, 2, 3)),
                 downstream(
                     within(ofSeconds(9), emitsNothing()),
@@ -102,11 +122,24 @@ public final class Examples
     void testTrivialFlowableTransformer()
     {
         assertThat((Flowable<Integer> upstream) -> upstream,
-           unscheduled(transforms(
+            unscheduled(transformsFlowable(
                 upstream(emit(1, 2, 3)),
                 downstream(emits(1, 2, 3)),
                 upstream(complete()),
                 downstream(immediately(completes()))
+            )));
+    }
+
+
+    @Test
+    void testFlowableTransformerWithError()
+    {
+        assertThat((Flowable<Integer> upstream) -> upstream,
+            unscheduled(transformsFlowable(
+                upstream(emit(1, 2, 3)),
+                downstream(emits(1, 2, 3)),
+                upstream(error(IOException::new)),
+                downstream(immediately(errors(instanceOf(IOException.class))))
             )));
     }
 }

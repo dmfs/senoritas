@@ -1,14 +1,10 @@
 package org.saynotobugs.senoritas.utils;
 
-import org.hamcrest.Matcher;
-import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.api.Test;
 import org.saynotobugs.senoritas.matcher.core.InstanceOf;
 import org.saynotobugs.senoritas.matcher.core.Iterates;
 import org.saynotobugs.senoritas.matcher.core.Throwing;
 
-import static org.hamcrest.Matchers.arrayContaining;
-import static org.hamcrest.Matchers.equalTo;
 import static org.saynotobugs.senoritas.Assertion.assertThat;
 
 

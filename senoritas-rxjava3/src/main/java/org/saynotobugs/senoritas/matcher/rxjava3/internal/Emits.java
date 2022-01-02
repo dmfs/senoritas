@@ -6,7 +6,7 @@ import org.saynotobugs.senoritas.Verdict;
 import org.saynotobugs.senoritas.description.Delimited;
 import org.saynotobugs.senoritas.description.NumberDescription;
 import org.saynotobugs.senoritas.description.TextDescription;
-import org.saynotobugs.senoritas.matcher.rxjava3.utils.RxTestAdapter;
+import org.saynotobugs.senoritas.matcher.rxjava3.adapters.RxTestAdapter;
 import org.saynotobugs.senoritas.verdict.MismatchPrepended;
 
 import java.util.Collection;

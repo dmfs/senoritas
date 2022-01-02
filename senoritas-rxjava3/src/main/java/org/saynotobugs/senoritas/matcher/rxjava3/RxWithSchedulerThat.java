@@ -8,7 +8,7 @@ import org.saynotobugs.senoritas.Verdict;
 import org.saynotobugs.senoritas.description.Delimited;
 import org.saynotobugs.senoritas.matcher.core.AllOfFailingFast;
 import org.saynotobugs.senoritas.matcher.core.ReDescribed;
-import org.saynotobugs.senoritas.matcher.rxjava3.utils.RxTestAdapter;
+import org.saynotobugs.senoritas.matcher.rxjava3.adapters.RxTestAdapter;
 
 import io.reactivex.rxjava3.schedulers.TestScheduler;
 

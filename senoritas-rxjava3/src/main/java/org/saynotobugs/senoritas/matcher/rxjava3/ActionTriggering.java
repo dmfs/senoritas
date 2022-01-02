@@ -3,7 +3,7 @@ package org.saynotobugs.senoritas.matcher.rxjava3;
 import org.saynotobugs.senoritas.Description;
 import org.saynotobugs.senoritas.Matcher;
 import org.saynotobugs.senoritas.Verdict;
-import org.saynotobugs.senoritas.matcher.rxjava3.utils.RxTestAdapter;
+import org.saynotobugs.senoritas.matcher.rxjava3.adapters.RxTestAdapter;
 
 import io.reactivex.rxjava3.schedulers.TestScheduler;
 

@@ -3,11 +3,9 @@ package org.saynotobugs.senoritas.matcher.rxjava3;
 import org.dmfs.jems2.Function;
 import org.dmfs.jems2.iterable.Seq;
 import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
-import org.saynotobugs.senoritas.Matcher;
 import org.saynotobugs.senoritas.description.TextDescription;
 import org.saynotobugs.senoritas.matcher.core.MatcherComposition;
-import org.saynotobugs.senoritas.matcher.rxjava3.utils.RxTestAdapter;
-import org.saynotobugs.senoritas.matcher.rxjava3.utils.RxTestObserver;
+import org.saynotobugs.senoritas.matcher.rxjava3.adapters.RxTestObserver;
 
 import io.reactivex.rxjava3.core.SingleSource;
 import io.reactivex.rxjava3.schedulers.TestScheduler;
