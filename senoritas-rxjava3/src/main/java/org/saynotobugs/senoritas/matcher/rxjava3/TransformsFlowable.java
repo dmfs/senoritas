@@ -11,7 +11,7 @@ import org.saynotobugs.senoritas.description.Delimited;
 import org.saynotobugs.senoritas.description.TextDescription;
 import org.saynotobugs.senoritas.matcher.core.AllOfFailingFast;
 import org.saynotobugs.senoritas.matcher.core.ReDescribed;
-import org.saynotobugs.senoritas.matcher.rxjava3.adapters.FlowableSubjectAdapter;
+import org.saynotobugs.senoritas.matcher.rxjava3.adapters.PublishProcessorAdapter;
 import org.saynotobugs.senoritas.matcher.rxjava3.adapters.RxTestSubscriber;
 
 import io.reactivex.rxjava3.core.FlowableTransformer;
@@ -20,20 +20,19 @@ import io.reactivex.rxjava3.schedulers.TestScheduler;
 
 
 @StaticFactories("RxJava3")
-public final class TransformsFlowable<Up, Down> implements
-    Matcher<Function<? super TestScheduler, ? extends FlowableTransformer<Up, Down>>>
+public final class TransformsFlowable<Up, Down> implements Matcher<Function<? super TestScheduler, ? extends FlowableTransformer<Up, Down>>>
 {
-    private final Iterable<? extends TransformerEvent<Up, Down>> mEvents;
+    private final Iterable<? extends TransformerTestStep<Up, Down>> mEvents;
 
 
     @SafeVarargs
-    public TransformsFlowable(TransformerEvent<Up, Down>... events)
+    public TransformsFlowable(TransformerTestStep<Up, Down>... events)
     {
         this(new Seq<>(events));
     }
 
 
-    public TransformsFlowable(Iterable<? extends TransformerEvent<Up, Down>> events)
+    public TransformsFlowable(Iterable<? extends TransformerTestStep<Up, Down>> events)
     {
         mEvents = events;
     }
@@ -47,7 +46,7 @@ public final class TransformsFlowable<Up, Down> implements
         PublishProcessor<Up> upstream = PublishProcessor.create();
         actual.value(t).apply(upstream.hide()).subscribe(testAdapter);
         return new AllOfFailingFast<>(
-            new Expanded<>(e -> e.matchers(t, new FlowableSubjectAdapter<>(upstream)), mEvents)
+            new Expanded<>(e -> e.matchers(t, new PublishProcessorAdapter<>(upstream)), mEvents)
         ).match(testAdapter);
     }
 
@@ -58,7 +57,7 @@ public final class TransformsFlowable<Up, Down> implements
         TestScheduler t = new TestScheduler();
         PublishProcessor<Up> upstream = PublishProcessor.create();
         return new ReDescribed<>(orig -> new Delimited(new TextDescription("FlowableTransformer that"), orig), new AllOfFailingFast<>(
-            new Expanded<>(e -> e.matchers(t, new FlowableSubjectAdapter<>(upstream)), mEvents)
+            new Expanded<>(e -> e.matchers(t, new PublishProcessorAdapter<>(upstream)), mEvents)
         )).expectation();
     }
 }

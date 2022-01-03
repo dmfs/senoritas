@@ -11,10 +11,31 @@ import org.saynotobugs.senoritas.verdict.MismatchPrepended;
 
 
 @StaticFactories("RxJava3")
-public final class When<T> extends TestEventComposition<T>
+public final class When<T> extends RxExpectationComposition<T>
 {
 
-    public When(Description triggerDescription, Runnable trigger, TestEvent<T> delegate)
+    /**
+     * Creates an {@link RxExpectation} that runs the given {@link Runnable} before delegating to the given {@link RxExpectation}.
+     */
+    public When(Runnable trigger, RxExpectation<T> delegate)
+    {
+        this("triggered", trigger, delegate);
+    }
+
+
+    /**
+     * Creates an {@link RxExpectation} that runs the given {@link Runnable} before delegating to the given {@link RxExpectation}.
+     */
+    public When(String triggerDescription, Runnable trigger, RxExpectation<T> delegate)
+    {
+        this(new TextDescription(triggerDescription), trigger, delegate);
+    }
+
+
+    /**
+     * Creates an {@link RxExpectation} that runs the given {@link Runnable} before delegating to the given {@link RxExpectation}.
+     */
+    public When(Description triggerDescription, Runnable trigger, RxExpectation<T> delegate)
     {
         super(testScheduler -> new Matcher<RxTestAdapter<T>>()
         {

@@ -10,7 +10,7 @@ import org.saynotobugs.senoritas.matcher.rxjava3.internal.IsComplete;
 
 
 @StaticFactories("RxJava3")
-public final class CompletesWith<T> extends TestEventComposition<T>
+public final class CompletesWith<T> extends RxExpectationComposition<T>
 {
     @SafeVarargs
     public CompletesWith(T... values)

@@ -3,12 +3,12 @@ package org.saynotobugs.senoritas.matcher.rxjava3.adapters;
 import io.reactivex.rxjava3.subjects.PublishSubject;
 
 
-public final class ObservableSubjectAdapter<T> implements SubjectAdapter<T>
+public final class PublishSubjectAdapter<T> implements RxSubjectAdapter<T>
 {
     private final PublishSubject<T> mDelegate;
 
 
-    public ObservableSubjectAdapter(PublishSubject<T> delegate)
+    public PublishSubjectAdapter(PublishSubject<T> delegate)
     {
         mDelegate = delegate;
     }

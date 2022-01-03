@@ -5,32 +5,32 @@ import org.dmfs.jems2.iterable.Seq;
 import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 import org.saynotobugs.senoritas.Matcher;
 import org.saynotobugs.senoritas.matcher.rxjava3.adapters.RxTestAdapter;
-import org.saynotobugs.senoritas.matcher.rxjava3.adapters.SubjectAdapter;
+import org.saynotobugs.senoritas.matcher.rxjava3.adapters.RxSubjectAdapter;
 
 import io.reactivex.rxjava3.schedulers.TestScheduler;
 
 
 @StaticFactories("RxJava3")
-public final class Downstream<Up, Down> implements TransformerEvent<Up, Down>
+public final class Downstream<Up, Down> implements TransformerTestStep<Up, Down>
 {
-    private final Iterable<? extends TestEvent<Down>> mEvents;
+    private final Iterable<? extends RxExpectation<Down>> mEvents;
 
 
     @SafeVarargs
-    public Downstream(TestEvent<Down>... events)
+    public Downstream(RxExpectation<Down>... events)
     {
         this(new Seq<>(events));
     }
 
 
-    public Downstream(Iterable<? extends TestEvent<Down>> events)
+    public Downstream(Iterable<? extends RxExpectation<Down>> events)
     {
         mEvents = events;
     }
 
 
     @Override
-    public Iterable<Matcher<RxTestAdapter<Down>>> matchers(TestScheduler scheduler, SubjectAdapter<Up> upstream)
+    public Iterable<Matcher<RxTestAdapter<Down>>> matchers(TestScheduler scheduler, RxSubjectAdapter<Up> upstream)
     {
         return new Mapped<>(downstreamTestEvent -> downstreamTestEvent.matcher(scheduler), mEvents);
     }

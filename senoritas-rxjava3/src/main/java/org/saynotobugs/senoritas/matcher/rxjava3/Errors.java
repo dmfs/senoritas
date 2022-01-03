@@ -6,7 +6,7 @@ import org.saynotobugs.senoritas.matcher.core.InstanceOf;
 
 
 @StaticFactories("RxJava3")
-public final class Errors<T> extends TestEventComposition<T>
+public final class Errors<T> extends RxExpectationComposition<T>
 {
     public Errors(Class<? extends Throwable> error)
     {

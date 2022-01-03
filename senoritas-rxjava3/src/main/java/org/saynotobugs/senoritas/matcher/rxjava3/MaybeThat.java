@@ -15,13 +15,13 @@ import io.reactivex.rxjava3.schedulers.TestScheduler;
 public final class MaybeThat<T> extends MatcherComposition<Function<? super TestScheduler, ? extends MaybeSource<T>>>
 {
     @SafeVarargs
-    public MaybeThat(TestEvent<T>... events)
+    public MaybeThat(RxExpectation<T>... events)
     {
         this(new Seq<>(events));
     }
 
 
-    public MaybeThat(Iterable<? extends TestEvent<T>> events)
+    public MaybeThat(Iterable<? extends RxExpectation<T>> events)
     {
         super(new RxWithSchedulerThat<>(
             new TextDescription("Maybe that"),

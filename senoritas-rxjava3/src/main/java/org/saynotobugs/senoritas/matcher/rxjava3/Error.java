@@ -3,11 +3,11 @@ package org.saynotobugs.senoritas.matcher.rxjava3;
 import org.dmfs.jems2.Procedure;
 import org.dmfs.jems2.Single;
 import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
-import org.saynotobugs.senoritas.matcher.rxjava3.adapters.SubjectAdapter;
+import org.saynotobugs.senoritas.matcher.rxjava3.adapters.RxSubjectAdapter;
 
 
 @StaticFactories("RxJava3")
-public final class Error<Up> implements Procedure<SubjectAdapter<Up>>
+public final class Error<Up> implements Procedure<RxSubjectAdapter<Up>>
 {
     private final Single<Throwable> error;
 
@@ -25,7 +25,7 @@ public final class Error<Up> implements Procedure<SubjectAdapter<Up>>
 
 
     @Override
-    public void process(SubjectAdapter<Up> arg)
+    public void process(RxSubjectAdapter<Up> arg)
     {
         arg.onError(error.value());
     }

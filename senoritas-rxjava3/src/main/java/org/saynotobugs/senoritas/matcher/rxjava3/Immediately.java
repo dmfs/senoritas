@@ -7,9 +7,9 @@ import org.saynotobugs.senoritas.matcher.core.ReDescribed;
 
 
 @StaticFactories("RxJava3")
-public final class Immediately<T> extends TestEventComposition<T>
+public final class Immediately<T> extends RxExpectationComposition<T>
 {
-    public Immediately(TestEvent<T> delegate)
+    public Immediately(RxExpectation<T> delegate)
     {
         super(new ActionTriggering<>(
             testScheduler -> new ReDescribed<>(orig -> new Delimited(new TextDescription("immediately"), orig), delegate.matcher(testScheduler))));

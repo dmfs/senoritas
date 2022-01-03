@@ -23,17 +23,17 @@ import io.reactivex.rxjava3.subjects.SingleSubject;
 public final class TransformsSingle<Up, Down> implements
     Matcher<Function<? super TestScheduler, ? extends SingleTransformer<Up, Down>>>
 {
-    private final Iterable<? extends TransformerEvent<Up, Down>> mEvents;
+    private final Iterable<? extends TransformerTestStep<Up, Down>> mEvents;
 
 
     @SafeVarargs
-    public TransformsSingle(TransformerEvent<Up, Down>... events)
+    public TransformsSingle(TransformerTestStep<Up, Down>... events)
     {
         this(new Seq<>(events));
     }
 
 
-    public TransformsSingle(Iterable<? extends TransformerEvent<Up, Down>> events)
+    public TransformsSingle(Iterable<? extends TransformerTestStep<Up, Down>> events)
     {
         mEvents = events;
     }

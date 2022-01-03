@@ -1,7 +1,6 @@
 package org.saynotobugs.senoritas.matcher.rxjava3;
 
 import org.junit.jupiter.api.Test;
-import org.saynotobugs.senoritas.description.TextDescription;
 
 import java.io.IOException;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -53,7 +52,8 @@ public final class Examples
                 within(ofSeconds(10), emits(5)),
                 within(ofSeconds(10), emits(5)),
                 within(ofSeconds(10), emits(5)),
-                when(new TextDescription("Value set to 10"), () -> value.set(10), within(ofSeconds(10), emits(10))),
+                when("Value is set to 10", () -> value.set(10),
+                    within(ofSeconds(10), emits(10))),
                 within(ofSeconds(10), emits(10)),
                 within(ofSeconds(10), emits(10)),
                 within(ofSeconds(10), emits(10)),
@@ -154,6 +154,27 @@ public final class Examples
                     downstream(within(ofSeconds(9), emitsNothing())),
                     downstream(within(ofSeconds(10), completesWith(123)))),
                 RxJava3.<Integer, Integer>transformsSingle(
+                    upstream(error(IOException::new)),
+                    downstream(immediately(errors(IOException.class))))));
+    }
+
+
+    @Test
+    void testMaybeTransformer()
+    {
+        assertThat((TestScheduler scheduler) -> (Maybe<Integer> upstream) -> upstream.delay(10, SECONDS, scheduler),
+            allOf(
+                transformsMaybe(
+                    upstream(completeWith(123)),
+                    downstream(within(ofSeconds(9), emitsNothing())),
+                    downstream(within(ofSeconds(10), completesWith(123)))),
+                RxJava3.<Integer, Integer>transformsMaybe(
+                    upstream(complete()),
+                    downstream(
+                        within(ofSeconds(9), isAlive()),
+                        within(ofSeconds(10), completes()),
+                        hasNoFurtherValues())),
+                RxJava3.<Integer, Integer>transformsMaybe(
                     upstream(error(IOException::new)),
                     downstream(immediately(errors(IOException.class))))));
     }

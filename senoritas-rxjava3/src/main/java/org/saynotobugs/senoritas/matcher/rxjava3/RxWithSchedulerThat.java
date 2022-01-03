@@ -20,7 +20,7 @@ public final class RxWithSchedulerThat<T, RxType> implements Matcher<Function<? 
 
 
     public RxWithSchedulerThat(Description description, Function<? super RxType, ? extends RxTestAdapter<T>> testAdapterFunction,
-        Iterable<? extends TestEvent<T>> events)
+        Iterable<? extends RxExpectation<T>> events)
     {
         mTestAdapterFunction = testAdapterFunction;
         mDelegate = scheduler -> new ReDescribed<>(

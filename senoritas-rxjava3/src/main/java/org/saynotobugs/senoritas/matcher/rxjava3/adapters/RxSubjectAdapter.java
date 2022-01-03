@@ -14,7 +14,7 @@ import io.reactivex.rxjava3.core.SingleObserver;
  * <p>
  * This allows us to use the same tools to test all of them.
  */
-public interface SubjectAdapter<T>
+public interface RxSubjectAdapter<T>
 {
     void onNext(T next);
 

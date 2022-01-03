@@ -3,7 +3,7 @@ package org.saynotobugs.senoritas.matcher.rxjava3.adapters;
 import io.reactivex.rxjava3.subjects.MaybeSubject;
 
 
-public final class MaybeSubjectAdapter<T> implements SubjectAdapter<T>
+public final class MaybeSubjectAdapter<T> implements RxSubjectAdapter<T>
 {
     private final MaybeSubject<T> mDelegate;
 

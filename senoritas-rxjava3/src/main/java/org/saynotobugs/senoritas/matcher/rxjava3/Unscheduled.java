@@ -15,7 +15,7 @@ public final class Unscheduled<RxType> extends MatcherComposition<RxType>
     /**
      * Creates a {@link Matcher} to test RX type implementations that don't require a scheduler.
      * <p>
-     * Scheduler events like {@link Within} will effectively be ignored.
+     * Scheduler events like {@link Within} will be ignored.
      */
     public Unscheduled(Matcher<? super Function<? super TestScheduler, ? extends RxType>> delegate)
     {

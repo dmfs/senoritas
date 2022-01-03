@@ -8,12 +8,16 @@ import org.saynotobugs.senoritas.matcher.rxjava3.adapters.RxTestAdapter;
 import io.reactivex.rxjava3.schedulers.TestScheduler;
 
 
-public final class ActionTriggering<T> implements TestEvent<T>
+/**
+ * A decorator to an {@link RxExpectation} that triggers the actions of the {@link TestScheduler} before delegating to the {@link Matcher}
+ * returned by the decorated {@link RxExpectation}.
+ */
+public final class ActionTriggering<T> implements RxExpectation<T>
 {
-    private final TestEvent<T> mDelegate;
+    private final RxExpectation<T> mDelegate;
 
 
-    public ActionTriggering(TestEvent<T> delegate)
+    public ActionTriggering(RxExpectation<T> delegate)
     {
         mDelegate = delegate;
     }

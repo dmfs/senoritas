@@ -3,12 +3,16 @@ package org.saynotobugs.senoritas.matcher.rxjava3.adapters;
 import io.reactivex.rxjava3.subjects.CompletableSubject;
 
 
-public final class CompleteableSubjectAdapter<T> implements SubjectAdapter<T>
+/**
+ * An {@link RxSubjectAdapter} to a {@link CompletableSubject}. {@link CompletableSubject}s don't have values,
+ * so calls to {@link #onNext(T)} are ignored.
+ */
+public final class CompletableSubjectAdapter<T> implements RxSubjectAdapter<T>
 {
     private final CompletableSubject mDelegate;
 
 
-    public CompleteableSubjectAdapter(CompletableSubject delegate)
+    public CompletableSubjectAdapter(CompletableSubject delegate)
     {
         mDelegate = delegate;
     }

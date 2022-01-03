@@ -4,7 +4,7 @@ import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 
 
 @StaticFactories("RxJava3")
-public final class IsCancelled<T> extends TestEventComposition<T>
+public final class IsCancelled<T> extends RxExpectationComposition<T>
 {
     public IsCancelled()
     {

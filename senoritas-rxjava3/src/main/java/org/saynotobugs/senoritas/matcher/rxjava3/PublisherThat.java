@@ -16,13 +16,13 @@ public final class PublisherThat<T> extends MatcherComposition<Function<? super 
 {
 
     @SafeVarargs
-    public PublisherThat(TestEvent<T>... events)
+    public PublisherThat(RxExpectation<T>... events)
     {
         this(new Seq<>(events));
     }
 
 
-    public PublisherThat(Iterable<? extends TestEvent<T>> events)
+    public PublisherThat(Iterable<? extends RxExpectation<T>> events)
     {
         super(new RxWithSchedulerThat<>(
             new TextDescription("Publisher that"),

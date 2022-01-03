@@ -16,13 +16,18 @@ import io.reactivex.rxjava3.schedulers.TestScheduler;
 
 
 @StaticFactories("RxJava3")
-public final class Within<T> implements TestEvent<T>
+public final class Within<T> implements RxExpectation<T>
 {
     private final Duration mDuration;
-    private final TestEvent<T> mDelegate;
+    private final RxExpectation<T> mDelegate;
 
 
-    public Within(Duration duration, TestEvent<T> delegate)
+    /**
+     * Creates an {@link RxExpectation} that expects the given {@link RxExpectation} to match within the given {@link Duration}.
+     * <p>
+     * It does so by forwarding the {@link TestScheduler} by the given {@link Duration} and delegating to the given {@link RxExpectation}.
+     */
+    public Within(Duration duration, RxExpectation<T> delegate)
     {
         if (duration.isNegative())
         {

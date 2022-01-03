@@ -6,12 +6,16 @@ import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 import org.saynotobugs.senoritas.Matcher;
 import org.saynotobugs.senoritas.matcher.core.EqualTo;
 import org.saynotobugs.senoritas.matcher.core.Iterates;
+import org.saynotobugs.senoritas.matcher.rxjava3.adapters.RxTestAdapter;
 
 
 @StaticFactories("RxJava3")
-public final class Emits<T> extends TestEventComposition<T>
+public final class Emits<T> extends RxExpectationComposition<T>
 {
 
+    /**
+     * Creates an {@link RxExpectation} that verifies whether the {@link RxTestAdapter} contains the given emissions.
+     */
     @SafeVarargs
     public Emits(T... emissions)
     {

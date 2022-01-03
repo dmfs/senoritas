@@ -6,7 +6,7 @@ import org.saynotobugs.senoritas.matcher.rxjava3.internal.EmitsNothing;
 
 
 @StaticFactories("RxJava3")
-public final class Completes<T> extends TestEventComposition<T>
+public final class Completes<T> extends RxExpectationComposition<T>
 {
     public Completes()
     {

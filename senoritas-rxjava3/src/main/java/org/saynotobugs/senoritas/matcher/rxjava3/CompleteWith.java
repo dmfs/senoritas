@@ -4,11 +4,11 @@ import org.dmfs.jems2.iterable.Seq;
 import org.dmfs.jems2.procedure.Composite;
 import org.dmfs.jems2.procedure.DelegatingProcedure;
 import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
-import org.saynotobugs.senoritas.matcher.rxjava3.adapters.SubjectAdapter;
+import org.saynotobugs.senoritas.matcher.rxjava3.adapters.RxSubjectAdapter;
 
 
 @StaticFactories("RxJava3")
-public final class CompleteWith<Up> extends DelegatingProcedure<SubjectAdapter<Up>>
+public final class CompleteWith<Up> extends DelegatingProcedure<RxSubjectAdapter<Up>>
 {
 
     @SafeVarargs

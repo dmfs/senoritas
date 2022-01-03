@@ -20,20 +20,19 @@ import io.reactivex.rxjava3.subjects.MaybeSubject;
 
 
 @StaticFactories("RxJava3")
-public final class TransformsMaybe<Up, Down> implements
-    Matcher<Function<? super TestScheduler, ? extends MaybeTransformer<Up, Down>>>
+public final class TransformsMaybe<Up, Down> implements Matcher<Function<? super TestScheduler, ? extends MaybeTransformer<Up, Down>>>
 {
-    private final Iterable<? extends TransformerEvent<Up, Down>> mEvents;
+    private final Iterable<? extends TransformerTestStep<Up, Down>> mEvents;
 
 
     @SafeVarargs
-    public TransformsMaybe(TransformerEvent<Up, Down>... events)
+    public TransformsMaybe(TransformerTestStep<Up, Down>... events)
     {
         this(new Seq<>(events));
     }
 
 
-    public TransformsMaybe(Iterable<? extends TransformerEvent<Up, Down>> events)
+    public TransformsMaybe(Iterable<? extends TransformerTestStep<Up, Down>> events)
     {
         mEvents = events;
     }

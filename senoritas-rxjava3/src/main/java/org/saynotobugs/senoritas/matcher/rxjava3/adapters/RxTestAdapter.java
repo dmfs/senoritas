@@ -11,13 +11,21 @@ import io.reactivex.rxjava3.subscribers.TestSubscriber;
  */
 public interface RxTestAdapter<T>
 {
-    long completions();
-
-    Collection<T> newValues(int count);
-
+    /**
+     * Waits (at most 5 seconds) for at least count values to be emitted.
+     * This methods returns without an error even if no {@code count} have been emitted.
+     */
     void awaitNext(int count);
 
+    /**
+     * Returns the next count values that have not been acknowledged so far.
+     * The result will have fewer elements if no {@code count} elements have been emitted.
+     */
+    Collection<T> newValues(int count);
+
     void ack(int count);
+
+    long completions();
 
     Iterable<Throwable> errors();
 

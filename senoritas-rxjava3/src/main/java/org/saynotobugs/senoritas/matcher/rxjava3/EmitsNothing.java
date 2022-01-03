@@ -4,7 +4,7 @@ import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 
 
 @StaticFactories("RxJava3")
-public final class EmitsNothing<T> extends TestEventComposition<T>
+public final class EmitsNothing<T> extends RxExpectationComposition<T>
 {
     public EmitsNothing()
     {

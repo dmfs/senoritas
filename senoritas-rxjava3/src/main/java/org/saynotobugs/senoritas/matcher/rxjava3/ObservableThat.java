@@ -15,13 +15,13 @@ import io.reactivex.rxjava3.schedulers.TestScheduler;
 public final class ObservableThat<T> extends MatcherComposition<Function<? super TestScheduler, ? extends ObservableSource<T>>>
 {
     @SafeVarargs
-    public ObservableThat(TestEvent<T>... events)
+    public ObservableThat(RxExpectation<T>... events)
     {
         this(new Seq<>(events));
     }
 
 
-    public ObservableThat(Iterable<? extends TestEvent<T>> events)
+    public ObservableThat(Iterable<? extends RxExpectation<T>> events)
     {
         super(new RxWithSchedulerThat<>(
             new TextDescription("Observable that"),

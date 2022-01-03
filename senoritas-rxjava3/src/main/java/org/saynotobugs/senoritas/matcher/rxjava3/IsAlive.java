@@ -9,8 +9,12 @@ import org.saynotobugs.senoritas.matcher.rxjava3.internal.IsComplete;
 
 
 @StaticFactories("RxJava3")
-public final class IsAlive<T> extends TestEventComposition<T>
+public final class IsAlive<T> extends RxExpectationComposition<T>
 {
+    /**
+     * Returns an {@link RxExpectation} that expects a {@link RxTestAdapter} that's still alive,
+     * i.e. did not complete, did not error nor has been cancelled.
+     */
     public IsAlive()
     {
         super(testScheduler -> new ReDescribed<>(
