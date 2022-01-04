@@ -5,7 +5,7 @@ import io.reactivex.rxjava3.subjects.CompletableSubject;
 
 /**
  * An {@link RxSubjectAdapter} to a {@link CompletableSubject}. {@link CompletableSubject}s don't have values,
- * so calls to {@link #onNext(T)} are ignored.
+ * so calls to {@link #onNext(Object)} are ignored.
  */
 public final class CompletableSubjectAdapter<T> implements RxSubjectAdapter<T>
 {
