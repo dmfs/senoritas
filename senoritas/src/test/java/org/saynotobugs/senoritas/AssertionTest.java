@@ -17,7 +17,6 @@ class AssertionTest
         assertThat(() -> {
                 assertThat("123", new Nothing());
                 // I guess throwing needs a dedicated interface to test
-                return this;
             },
             new Is<>(new Throwing(AssertionError.class)));
     }

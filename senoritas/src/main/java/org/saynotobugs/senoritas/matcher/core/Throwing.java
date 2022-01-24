@@ -1,6 +1,5 @@
 package org.saynotobugs.senoritas.matcher.core;
 
-import org.dmfs.jems2.Fragile;
 import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 import org.saynotobugs.senoritas.Description;
 import org.saynotobugs.senoritas.Matcher;
@@ -12,8 +11,14 @@ import org.saynotobugs.senoritas.verdict.MismatchPrepended;
 
 
 @StaticFactories("Core")
-public final class Throwing implements Matcher<Fragile<?, ?>>
+public final class Throwing implements Matcher<Throwing.Breakable>
 {
+    public interface Breakable
+    {
+        void run() throws Throwable;
+    }
+
+
     private final Matcher<? super Throwable> mDelegate;
 
 
@@ -30,11 +35,11 @@ public final class Throwing implements Matcher<Fragile<?, ?>>
 
 
     @Override
-    public Verdict match(Fragile<?, ?> actual)
+    public Verdict match(Throwing.Breakable actual)
     {
         try
         {
-            actual.value();
+            actual.run();
             return new Fail(new Delimited(new TextDescription("did not throw"), mDelegate.expectation()));
         }
         catch (Throwable e)

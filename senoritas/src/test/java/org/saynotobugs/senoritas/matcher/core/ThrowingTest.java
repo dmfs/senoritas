@@ -1,6 +1,5 @@
 package org.saynotobugs.senoritas.matcher.core;
 
-import org.dmfs.jems2.Fragile;
 import org.junit.jupiter.api.Test;
 import org.saynotobugs.senoritas.matcher.test.DescribesAs;
 import org.saynotobugs.senoritas.matcher.test.Expects;
@@ -20,8 +19,8 @@ class ThrowingTest
     {
         assertThat(new Throwing(new Anything()),
             new AllOf<>(
-                new Matches<>((Fragile<Object, NoSuchElementException>) () -> {throw new NoSuchElementException();}),
-                new Mismatches<>(() -> "123", new DescribesAs("did not throw <anything>")),
+                new Matches<>((Throwing.Breakable) () -> {throw new NoSuchElementException();}),
+                new Mismatches<>(() -> {}, new DescribesAs("did not throw <anything>")),
                 new Expects(new DescribesAs("throws <anything>"))
             ));
     }
@@ -33,7 +32,7 @@ class ThrowingTest
         assertThat(new Throwing(new Nothing()),
             new AllOf<>(
                 new Mismatches<>(() -> {throw new NoSuchElementException();}, new DescribesAs("threw was something")),
-                new Mismatches<>(() -> "123", new DescribesAs("did not throw <nothing>")),
+                new Mismatches<>(() -> {}, new DescribesAs("did not throw <nothing>")),
                 new Expects(new DescribesAs("throws <nothing>"))
             ));
     }
@@ -44,8 +43,8 @@ class ThrowingTest
     {
         assertThat(new Throwing(NoSuchElementException.class),
             new AllOf<>(
-                new Matches<>((Fragile<Object, NoSuchElementException>) () -> {throw new NoSuchElementException();}),
-                new Mismatches<>(() -> "123", new DescribesAs("did not throw instance of <class java.util.NoSuchElementException>")),
+                new Matches<>((Throwing.Breakable) () -> {throw new NoSuchElementException();}),
+                new Mismatches<>(() -> {}, new DescribesAs("did not throw instance of <class java.util.NoSuchElementException>")),
                 new Expects(new DescribesAs("throws instance of <class java.util.NoSuchElementException>"))
             ));
     }
