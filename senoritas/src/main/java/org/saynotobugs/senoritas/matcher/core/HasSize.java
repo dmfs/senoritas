@@ -1,11 +1,13 @@
 package org.saynotobugs.senoritas.matcher.core;
 
+import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 import org.saynotobugs.senoritas.Matcher;
 import org.saynotobugs.senoritas.description.TextDescription;
 
 import java.util.Collection;
 
 
+@StaticFactories("Core")
 public final class HasSize extends MatcherComposition<Collection<?>>
 {
     /**

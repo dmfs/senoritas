@@ -1,9 +1,11 @@
 package org.saynotobugs.senoritas.matcher.core;
 
+import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 import org.saynotobugs.senoritas.Matcher;
 import org.saynotobugs.senoritas.description.TextDescription;
 
 
+@StaticFactories("Core")
 public final class HasLength extends MatcherComposition<CharSequence>
 {
     /**

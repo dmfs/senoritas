@@ -2,6 +2,7 @@ package org.saynotobugs.senoritas.matcher.rxjava3;
 
 import org.dmfs.jems2.Function;
 import org.dmfs.jems2.iterable.Mapped;
+import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 import org.saynotobugs.senoritas.Description;
 import org.saynotobugs.senoritas.Matcher;
 import org.saynotobugs.senoritas.Verdict;
@@ -13,6 +14,7 @@ import org.saynotobugs.senoritas.matcher.rxjava3.adapters.RxTestAdapter;
 import io.reactivex.rxjava3.schedulers.TestScheduler;
 
 
+@StaticFactories("RxJava3")
 public final class RxWithSchedulerThat<T, RxType> implements Matcher<Function<? super TestScheduler, ? extends RxType>>
 {
     private final Function<? super RxType, ? extends RxTestAdapter<T>> mTestAdapterFunction;

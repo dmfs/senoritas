@@ -7,6 +7,7 @@ import org.dmfs.jems2.iterable.Mapped;
 import org.dmfs.jems2.iterable.Numbered;
 import org.dmfs.jems2.iterable.Seq;
 import org.dmfs.jems2.pair.ValuePair;
+import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 import org.saynotobugs.senoritas.Description;
 import org.saynotobugs.senoritas.Matcher;
 import org.saynotobugs.senoritas.Verdict;
@@ -24,6 +25,7 @@ import static org.saynotobugs.senoritas.description.LiteralDescription.COMMA_NEW
 import static org.saynotobugs.senoritas.description.LiteralDescription.EMPTY;
 
 
+@StaticFactories("Core")
 public final class ImposesOrderOf<T> implements Matcher<Comparator<T>>
 {
 

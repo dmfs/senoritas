@@ -1,12 +1,14 @@
 package org.saynotobugs.senoritas.matcher.core;
 
 import org.dmfs.jems2.Function;
+import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 import org.saynotobugs.senoritas.Description;
 import org.saynotobugs.senoritas.Matcher;
 import org.saynotobugs.senoritas.Verdict;
 import org.saynotobugs.senoritas.verdict.MismatchUpdated;
 
 
+@StaticFactories("Core")
 public final class ReDescribed<T> implements Matcher<T>
 {
     private final Function<Description, ? extends Description> mMismatchUpdate;

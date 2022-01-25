@@ -1,11 +1,13 @@
 package org.saynotobugs.senoritas.matcher.core;
 
 import org.dmfs.jems2.single.Reduced;
+import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 import org.saynotobugs.senoritas.Matcher;
 import org.saynotobugs.senoritas.description.Delimited;
 import org.saynotobugs.senoritas.description.TextDescription;
 
 
+@StaticFactories("Core")
 public final class HasNumberOfElements extends MatcherComposition<Iterable<?>>
 {
     /**
