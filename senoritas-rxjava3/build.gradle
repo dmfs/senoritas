@@ -1,7 +1,9 @@
 plugins {
-    id 'java'
+    id 'java-library'
 }
+
 apply from: '../jacoco.gradle'
+apply from: '../publish.gradle'
 
 sourceCompatibility = 1.8
 

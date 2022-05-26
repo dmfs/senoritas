@@ -1,11 +1,15 @@
 package org.saynotobugs.senoritas.verdict;
 
+import org.dmfs.jems2.iterable.Frozen;
 import org.dmfs.jems2.iterable.Seq;
 import org.dmfs.jems2.optional.First;
 import org.dmfs.jems2.predicate.Not;
+import org.dmfs.jems2.single.Collected;
 import org.saynotobugs.senoritas.Description;
 import org.saynotobugs.senoritas.Verdict;
 import org.saynotobugs.senoritas.description.MismatchesDescription;
+
+import java.util.ArrayList;
 
 import static org.saynotobugs.senoritas.description.LiteralDescription.EMPTY;
 
@@ -43,7 +47,7 @@ public final class AllPassed implements Verdict
     {
         mEntry = entry;
         mDelimiter = delimiter;
-        mResults = results;
+        mResults = new Frozen<>(results);
         mExit = exit;
     }
 

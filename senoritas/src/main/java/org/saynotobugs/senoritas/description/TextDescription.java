@@ -6,7 +6,7 @@ import org.saynotobugs.senoritas.Description;
 /**
  * A plain text {@link Description}.
  * <p>
- * Note that certain control characters and {@code /} will be escaped in the result.
+ * Note that certain control characters and {@code \} will be escaped in the result.
  */
 public final class TextDescription extends DescriptionComposition
 {

@@ -6,6 +6,9 @@ import org.saynotobugs.senoritas.Verdict;
 import static org.saynotobugs.senoritas.description.LiteralDescription.EMPTY;
 
 
+/**
+ * An unconditional pass {@link Verdict}.
+ */
 public final class Pass implements Verdict
 {
     @Override
