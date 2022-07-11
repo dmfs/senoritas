@@ -4,7 +4,7 @@ plugins {
 apply from: '../jacoco.gradle'
 apply from: '../publish.gradle'
 
-sourceCompatibility = 1.8
+sourceCompatibility = JavaVersion.VERSION_1_8
 
 configurations {
     provided
@@ -15,8 +15,8 @@ sourceSets {
 }
 
 dependencies {
-    implementation 'org.dmfs:srcless-annotations:0.0.5'
-    annotationProcessor 'org.dmfs:srcless-processors:0.0.5'
+    compileOnly 'org.dmfs:srcless-annotations:0.1.0'
+    annotationProcessor 'org.dmfs:srcless-processors:0.1.0'
     provided 'org.hamcrest:hamcrest:2.2'
     implementation 'org.dmfs:jems2:2.8.0'
     testImplementation 'org.dmfs:jems2-testing:2.8.0'
