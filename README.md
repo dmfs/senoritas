@@ -7,13 +7,13 @@
 Senoritas is a composable Assertion Framework. It's very much inspired by Hamcrest and based on the same idea. There are a couple of important differences
 though:
 
-* In case of a mismatch, Hamcrest (for Java) needs to run the quality again to get a mismatch description, Senoritas returns the result and (in case of a
+* In case of a mismatch, Hamcrest (for Java) needs to run the matcher again to get a mismatch description, Senoritas returns the result and (in case of a
   mismatch) the mismatch description in one go.
 * Hamcrest Matchers (usually) stops at the first mismatch, Senoritas returns a complete picture.
 * Senoritas makes it easier to produce comprehensible descriptions, closer to what Assertj or Google Truth produce
 * In Senoritas the "Contains" Matcher has the same semantics as Java `Collection.contains(Object)`
 * Senoritas has out ouf the box support for testing Matchers.
-* By design, static quality factory methods are generated, not manually coded.
+* By design, static matcher factory methods are generated, not manually coded.
 
 Note, this library is still in its initial phase and things, including design and names, might change without notice.
 
