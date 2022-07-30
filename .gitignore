@@ -58,3 +58,5 @@ build/
 
 *.class
 pom.xml*
+
+*.exec

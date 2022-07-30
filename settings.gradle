@@ -1,5 +1,5 @@
 rootProject.name = 'noexcuses'
-include 'senoritas'
+include 'senoritas-core'
 include 'senoritas-rxjava3'
 include 'senoritas-android'
 

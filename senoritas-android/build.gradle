@@ -1,0 +1,71 @@
+apply plugin: 'com.android.library'
+apply from: 'publish.gradle'
+
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.1.3'
+        classpath 'digital.wup:android-maven-publish:3.6.2'
+    }
+}
+
+
+repositories {
+    mavenCentral()
+    google()
+}
+
+
+android {
+    compileSdkVersion 31
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 31
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        debug {
+            testCoverageEnabled = true
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES.txt'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/dependencies.txt'
+        exclude 'META-INF/LGPL2.1'
+    }
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+    compileOnly 'org.dmfs:srcless-annotations:0.1.0'
+    annotationProcessor 'org.dmfs:srcless-processors:0.1.0'
+    implementation 'org.dmfs:jems2:2.8.0'
+    implementation project(':senoritas-core')
+    testImplementation 'org.robolectric:robolectric:4.8'
+    testImplementation 'junit:junit:4.13.2' // robolectric doesn't seem to support JUnit5 yet
+}
