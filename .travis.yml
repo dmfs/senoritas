@@ -1,6 +1,17 @@
-language: java
+language: android
+jdk: openjdk11
 
-script: ./gradlew check javadoc
+android:
+  components:
+    - tools
+    - platform-tools
+    - tools
+    - build-tools-29.0.2
+    - android-29
+    - extra
+    - extra-android-m2repository
+
+script: ./gradlew check javadoc senoritas-android:jacocoTestReport
 
 # upload JaCoCo report to codecov
 after_success:
