@@ -5,7 +5,7 @@ import io.reactivex.rxjava3.subjects.CompletableSubject;
 
 /**
  * An {@link RxSubjectAdapter} to a {@link CompletableSubject}. {@link CompletableSubject}s don't have values,
- * so calls to {@link #onNext(Object)} are ignored.
+ * so calls to {@link #onNext(Object)} throw an {@link UnsupportedOperationException}.
  */
 public final class CompletableSubjectAdapter<T> implements RxSubjectAdapter<T>
 {
@@ -21,7 +21,8 @@ public final class CompletableSubjectAdapter<T> implements RxSubjectAdapter<T>
     @Override
     public void onNext(T next)
     {
-        // Completables don't take values.
+        throw new UnsupportedOperationException(
+            String.format("CompletableSubjectAdapter.onNext() called with %s, but Completables don't take any values.", next));
     }
 
 

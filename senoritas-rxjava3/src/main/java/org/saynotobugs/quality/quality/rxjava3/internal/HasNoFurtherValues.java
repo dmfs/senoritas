@@ -8,7 +8,6 @@ import org.saynotobugs.quality.quality.core.QualityComposition;
 import org.saynotobugs.quality.quality.rxjava3.adapters.RxTestAdapter;
 
 
-@StaticFactories("RxJava3")
 public final class HasNoFurtherValues<T> extends QualityComposition<RxTestAdapter<T>>
 {
     public HasNoFurtherValues()

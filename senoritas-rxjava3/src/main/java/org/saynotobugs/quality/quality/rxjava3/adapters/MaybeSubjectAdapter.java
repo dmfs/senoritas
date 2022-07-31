@@ -24,10 +24,7 @@ public final class MaybeSubjectAdapter<T> implements RxSubjectAdapter<T>
     @Override
     public void onComplete()
     {
-        if (!mDelegate.hasComplete()) // the subject may have been completed by onSuccess above.
-        {
-            mDelegate.onComplete();
-        }
+        mDelegate.onComplete();
     }
 
 
