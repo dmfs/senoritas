@@ -2,7 +2,7 @@ package org.saynotobugs.quality.quality.rxjava3;
 
 import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 import org.saynotobugs.quality.Quality;
-import org.saynotobugs.quality.quality.core.InstanceOf;
+import org.saynotobugs.quality.quality.InstanceOf;
 
 
 @StaticFactories("RxJava3")

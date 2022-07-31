@@ -1,8 +1,8 @@
 package org.saynotobugs.quality.quality.rxjava3.internal;
 
 import org.saynotobugs.quality.description.TextDescription;
-import org.saynotobugs.quality.quality.core.QualityComposition;
-import org.saynotobugs.quality.quality.core.Satisfies;
+import org.saynotobugs.quality.quality.QualityComposition;
+import org.saynotobugs.quality.quality.Satisfies;
 import org.saynotobugs.quality.quality.rxjava3.adapters.RxTestAdapter;
 
 

@@ -2,7 +2,7 @@ package org.saynotobugs.quality.quality.rxjava3;
 
 import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 import org.saynotobugs.quality.description.TextDescription;
-import org.saynotobugs.quality.quality.core.*;
+import org.saynotobugs.quality.quality.*;
 import org.saynotobugs.quality.quality.rxjava3.adapters.RxTestAdapter;
 import org.saynotobugs.quality.quality.rxjava3.internal.IsCancelled;
 import org.saynotobugs.quality.quality.rxjava3.internal.IsComplete;

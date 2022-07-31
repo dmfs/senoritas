@@ -2,7 +2,7 @@ package org.saynotobugs.quality.description;
 
 import org.dmfs.jems2.iterable.Seq;
 import org.junit.jupiter.api.Test;
-import org.saynotobugs.quality.quality.test.DescribesAs;
+import org.saynotobugs.quality.test.quality.DescribesAs;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,7 +10,6 @@ import java.util.Map;
 import static java.util.Optional.empty;
 import static java.util.Optional.of;
 import static org.saynotobugs.quality.Assertion.assertThat;
-import static org.saynotobugs.quality.quality.test.Test.describesAs;
 
 
 class ValueDescriptionTest
@@ -45,7 +44,7 @@ class ValueDescriptionTest
                 throw new AssertionError("unexpected call to setValue");
             }
 
-        }), describesAs("\"abc\": <123>"));
+        }), new DescribesAs("\"abc\": <123>"));
         assertThat(new ValueDescription(empty()), new DescribesAs("<empty>"));
         assertThat(new ValueDescription(of(123)), new DescribesAs("<present <123>>"));
         assertThat(new ValueDescription(new String[] { "a", "b", "c" }), new DescribesAs("[ \"a\",\n  \"b\",\n  \"c\" ]"));

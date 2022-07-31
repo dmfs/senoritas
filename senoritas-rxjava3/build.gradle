@@ -14,6 +14,7 @@ dependencies {
     compileOnly 'io.reactivex.rxjava3:rxjava:3.1.5'
     implementation 'org.dmfs:jems2:2.8.0'
     implementation project(':senoritas-core')
+    testImplementation project(':senoritas-test')
     testImplementation 'io.reactivex.rxjava3:rxjava:3.1.5'
     testImplementation 'org.dmfs:jems2-testing:2.8.0'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'

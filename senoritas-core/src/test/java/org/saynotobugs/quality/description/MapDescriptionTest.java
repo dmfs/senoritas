@@ -1,7 +1,7 @@
 package org.saynotobugs.quality.description;
 
 import org.junit.jupiter.api.Test;
-import org.saynotobugs.quality.quality.test.DescribesAs;
+import org.saynotobugs.quality.test.quality.DescribesAs;
 
 import java.util.HashMap;
 import java.util.Map;

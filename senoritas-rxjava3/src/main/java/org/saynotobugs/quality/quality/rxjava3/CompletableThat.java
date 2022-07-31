@@ -4,9 +4,9 @@ import org.dmfs.jems2.iterable.Seq;
 import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 import org.saynotobugs.quality.Quality;
 import org.saynotobugs.quality.description.TextDescription;
-import org.saynotobugs.quality.quality.core.AllOfFailingFast;
-import org.saynotobugs.quality.quality.core.Having;
-import org.saynotobugs.quality.quality.core.QualityComposition;
+import org.saynotobugs.quality.quality.AllOfFailingFast;
+import org.saynotobugs.quality.quality.Having;
+import org.saynotobugs.quality.quality.QualityComposition;
 import org.saynotobugs.quality.quality.rxjava3.adapters.RxTestAdapter;
 import org.saynotobugs.quality.quality.rxjava3.adapters.RxTestObserver;
 

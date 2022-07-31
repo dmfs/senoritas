@@ -1,10 +1,9 @@
 package org.saynotobugs.quality.quality.rxjava3.internal;
 
-import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 import org.saynotobugs.quality.description.TextDescription;
-import org.saynotobugs.quality.quality.core.HasSize;
-import org.saynotobugs.quality.quality.core.Having;
-import org.saynotobugs.quality.quality.core.QualityComposition;
+import org.saynotobugs.quality.quality.HasSize;
+import org.saynotobugs.quality.quality.Having;
+import org.saynotobugs.quality.quality.QualityComposition;
 import org.saynotobugs.quality.quality.rxjava3.adapters.RxTestAdapter;
 
 

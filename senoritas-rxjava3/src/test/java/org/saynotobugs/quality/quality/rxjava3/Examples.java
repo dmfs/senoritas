@@ -14,7 +14,7 @@ import io.reactivex.rxjava3.schedulers.TestScheduler;
 import static java.time.Duration.ofSeconds;
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.saynotobugs.quality.Assertion.assertThat;
-import static org.saynotobugs.quality.quality.core.Core.*;
+import static org.saynotobugs.quality.quality.Core.*;
 import static org.saynotobugs.quality.quality.rxjava3.RxJava3.*;
 
 

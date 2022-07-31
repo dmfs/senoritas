@@ -1,9 +1,9 @@
 package org.saynotobugs.quality;
 
 import org.junit.jupiter.api.Test;
-import org.saynotobugs.quality.quality.core.Is;
-import org.saynotobugs.quality.quality.core.Nothing;
-import org.saynotobugs.quality.quality.core.Throwing;
+import org.saynotobugs.quality.quality.Is;
+import org.saynotobugs.quality.quality.Nothing;
+import org.saynotobugs.quality.quality.Throwing;
 
 import static org.saynotobugs.quality.Assertion.assertThat;
 

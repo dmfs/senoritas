@@ -2,7 +2,7 @@ package org.saynotobugs.quality.description;
 
 import org.dmfs.jems2.iterable.Seq;
 import org.junit.jupiter.api.Test;
-import org.saynotobugs.quality.quality.test.DescribesAs;
+import org.saynotobugs.quality.test.quality.DescribesAs;
 
 import java.util.Map;
 

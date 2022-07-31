@@ -2,10 +2,10 @@ package org.saynotobugs.quality.assessment;
 
 import org.junit.jupiter.api.Test;
 import org.saynotobugs.quality.description.TextDescription;
-import org.saynotobugs.quality.quality.core.Is;
-import org.saynotobugs.quality.quality.test.DescribesAs;
-import org.saynotobugs.quality.quality.test.Failure;
-import org.saynotobugs.quality.quality.test.Passed;
+import org.saynotobugs.quality.quality.Is;
+import org.saynotobugs.quality.test.quality.DescribesAs;
+import org.saynotobugs.quality.test.quality.Failure;
+import org.saynotobugs.quality.test.quality.Passed;
 
 import static org.saynotobugs.quality.Assertion.assertThat;
 

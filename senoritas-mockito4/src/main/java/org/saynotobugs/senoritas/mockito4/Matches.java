@@ -4,8 +4,8 @@ import org.mockito.ArgumentMatcher;
 import org.saynotobugs.quality.description.Delimited;
 import org.saynotobugs.quality.description.TextDescription;
 import org.saynotobugs.quality.description.ValueDescription;
-import org.saynotobugs.quality.quality.core.QualityComposition;
-import org.saynotobugs.quality.quality.core.Satisfies;
+import org.saynotobugs.quality.quality.QualityComposition;
+import org.saynotobugs.quality.quality.Satisfies;
 
 
 public final class Matches<T> extends QualityComposition<ArgumentMatcher<T>>

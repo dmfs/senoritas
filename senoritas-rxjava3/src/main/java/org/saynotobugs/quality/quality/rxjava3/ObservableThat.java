@@ -4,7 +4,7 @@ import org.dmfs.jems2.Function;
 import org.dmfs.jems2.iterable.Seq;
 import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 import org.saynotobugs.quality.description.TextDescription;
-import org.saynotobugs.quality.quality.core.QualityComposition;
+import org.saynotobugs.quality.quality.QualityComposition;
 import org.saynotobugs.quality.quality.rxjava3.adapters.RxTestObserver;
 
 import io.reactivex.rxjava3.core.ObservableSource;

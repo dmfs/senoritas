@@ -1,10 +1,10 @@
 package org.saynotobugs.quality.quality.rxjava3.internal;
 
 import org.saynotobugs.quality.Quality;
-import org.saynotobugs.quality.quality.core.Having;
-import org.saynotobugs.quality.quality.core.InstanceOf;
-import org.saynotobugs.quality.quality.core.Iterates;
-import org.saynotobugs.quality.quality.core.QualityComposition;
+import org.saynotobugs.quality.quality.Having;
+import org.saynotobugs.quality.quality.InstanceOf;
+import org.saynotobugs.quality.quality.Iterates;
+import org.saynotobugs.quality.quality.QualityComposition;
 import org.saynotobugs.quality.quality.rxjava3.adapters.RxTestAdapter;
 
 

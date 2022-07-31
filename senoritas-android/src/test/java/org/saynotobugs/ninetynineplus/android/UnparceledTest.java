@@ -7,13 +7,13 @@ import android.os.Parcelable;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
-import org.saynotobugs.quality.quality.core.AllOf;
-import org.saynotobugs.quality.quality.core.EqualTo;
-import org.saynotobugs.quality.quality.core.MatchesPattern;
-import org.saynotobugs.quality.quality.test.DescribesAs;
-import org.saynotobugs.quality.quality.test.Expects;
-import org.saynotobugs.quality.quality.test.Fails;
-import org.saynotobugs.quality.quality.test.Passes;
+import org.saynotobugs.quality.quality.AllOf;
+import org.saynotobugs.quality.quality.EqualTo;
+import org.saynotobugs.quality.quality.MatchesPattern;
+import org.saynotobugs.quality.test.quality.DescribesAs;
+import org.saynotobugs.quality.test.quality.Expects;
+import org.saynotobugs.quality.test.quality.Fails;
+import org.saynotobugs.quality.test.quality.Passes;
 
 import static org.saynotobugs.quality.Assertion.assertThat;
 

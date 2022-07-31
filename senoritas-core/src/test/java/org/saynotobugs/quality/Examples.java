@@ -6,9 +6,9 @@ import org.junit.jupiter.api.Test;
 import org.saynotobugs.quality.description.Delimited;
 import org.saynotobugs.quality.description.NumberDescription;
 import org.saynotobugs.quality.description.TextDescription;
-import org.saynotobugs.quality.quality.core.*;
-import org.saynotobugs.quality.quality.test.Fails;
-import org.saynotobugs.quality.quality.test.Passes;
+import org.saynotobugs.quality.quality.*;
+import org.saynotobugs.quality.test.quality.Fails;
+import org.saynotobugs.quality.test.quality.Passes;
 import org.saynotobugs.quality.assessment.PassIf;
 
 import java.util.Objects;

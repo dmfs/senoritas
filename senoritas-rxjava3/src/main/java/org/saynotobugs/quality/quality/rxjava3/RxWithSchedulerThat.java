@@ -7,8 +7,8 @@ import org.saynotobugs.quality.Assessment;
 import org.saynotobugs.quality.Description;
 import org.saynotobugs.quality.Quality;
 import org.saynotobugs.quality.description.Delimited;
-import org.saynotobugs.quality.quality.core.AllOfFailingFast;
-import org.saynotobugs.quality.quality.core.ReDescribed;
+import org.saynotobugs.quality.quality.AllOfFailingFast;
+import org.saynotobugs.quality.quality.ReDescribed;
 import org.saynotobugs.quality.quality.rxjava3.adapters.RxTestAdapter;
 
 import io.reactivex.rxjava3.schedulers.TestScheduler;

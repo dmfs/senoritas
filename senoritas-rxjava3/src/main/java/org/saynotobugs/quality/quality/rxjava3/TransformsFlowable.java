@@ -9,8 +9,8 @@ import org.saynotobugs.quality.Description;
 import org.saynotobugs.quality.Quality;
 import org.saynotobugs.quality.description.Delimited;
 import org.saynotobugs.quality.description.TextDescription;
-import org.saynotobugs.quality.quality.core.AllOfFailingFast;
-import org.saynotobugs.quality.quality.core.ReDescribed;
+import org.saynotobugs.quality.quality.AllOfFailingFast;
+import org.saynotobugs.quality.quality.ReDescribed;
 import org.saynotobugs.quality.quality.rxjava3.adapters.PublishProcessorAdapter;
 import org.saynotobugs.quality.quality.rxjava3.adapters.RxTestSubscriber;
 

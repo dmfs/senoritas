@@ -4,8 +4,8 @@ import org.dmfs.jems2.iterable.Mapped;
 import org.dmfs.jems2.iterable.Seq;
 import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 import org.saynotobugs.quality.Quality;
-import org.saynotobugs.quality.quality.core.EqualTo;
-import org.saynotobugs.quality.quality.core.Iterates;
+import org.saynotobugs.quality.quality.EqualTo;
+import org.saynotobugs.quality.quality.Iterates;
 import org.saynotobugs.quality.quality.rxjava3.adapters.RxTestAdapter;
 
 

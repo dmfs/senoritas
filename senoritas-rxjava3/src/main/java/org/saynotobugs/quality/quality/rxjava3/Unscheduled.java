@@ -3,8 +3,8 @@ package org.saynotobugs.quality.quality.rxjava3;
 import org.dmfs.jems2.Function;
 import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 import org.saynotobugs.quality.Quality;
-import org.saynotobugs.quality.quality.core.Having;
-import org.saynotobugs.quality.quality.core.QualityComposition;
+import org.saynotobugs.quality.quality.Having;
+import org.saynotobugs.quality.quality.QualityComposition;
 
 import io.reactivex.rxjava3.schedulers.TestScheduler;
 

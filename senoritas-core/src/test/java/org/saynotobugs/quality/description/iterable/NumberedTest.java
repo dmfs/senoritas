@@ -4,8 +4,8 @@ import org.dmfs.jems2.iterable.Seq;
 import org.junit.jupiter.api.Test;
 import org.saynotobugs.quality.description.Delimited;
 import org.saynotobugs.quality.description.TextDescription;
-import org.saynotobugs.quality.quality.core.Iterates;
-import org.saynotobugs.quality.quality.test.DescribesAs;
+import org.saynotobugs.quality.quality.Iterates;
+import org.saynotobugs.quality.test.quality.DescribesAs;
 
 import static org.dmfs.jems2.iterable.EmptyIterable.emptyIterable;
 import static org.saynotobugs.quality.Assertion.assertThat;

@@ -1,7 +1,7 @@
 package org.saynotobugs.quality.quality.rxjava3;
 
 import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
-import org.saynotobugs.quality.quality.core.AllOf;
+import org.saynotobugs.quality.quality.AllOf;
 import org.saynotobugs.quality.quality.rxjava3.internal.EmitsNothing;
 
 

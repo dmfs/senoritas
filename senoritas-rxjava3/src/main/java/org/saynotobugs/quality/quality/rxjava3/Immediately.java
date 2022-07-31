@@ -3,7 +3,7 @@ package org.saynotobugs.quality.quality.rxjava3;
 import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 import org.saynotobugs.quality.description.Delimited;
 import org.saynotobugs.quality.description.TextDescription;
-import org.saynotobugs.quality.quality.core.ReDescribed;
+import org.saynotobugs.quality.quality.ReDescribed;
 
 
 @StaticFactories("RxJava3")

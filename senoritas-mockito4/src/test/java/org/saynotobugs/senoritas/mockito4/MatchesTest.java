@@ -1,10 +1,10 @@
 package org.saynotobugs.senoritas.mockito4;
 
 import org.junit.jupiter.api.Test;
-import org.saynotobugs.quality.quality.core.AllOf;
-import org.saynotobugs.quality.quality.test.Expects;
-import org.saynotobugs.quality.quality.test.Fails;
-import org.saynotobugs.quality.quality.test.Passes;
+import org.saynotobugs.quality.quality.AllOf;
+import org.saynotobugs.quality.test.quality.Expects;
+import org.saynotobugs.quality.test.quality.Fails;
+import org.saynotobugs.quality.test.quality.Passes;
 
 import static org.saynotobugs.quality.Assertion.assertThat;
 
