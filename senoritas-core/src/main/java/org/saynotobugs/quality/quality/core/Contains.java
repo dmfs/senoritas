@@ -15,7 +15,7 @@ import org.saynotobugs.quality.description.ValueDescription;
 
 
 @StaticFactories("Core")
-public final class Contains<T> extends QualityComposition<Iterable<? extends T>>
+public final class Contains<T> extends QualityComposition<Iterable<T>>
 {
 
     /**

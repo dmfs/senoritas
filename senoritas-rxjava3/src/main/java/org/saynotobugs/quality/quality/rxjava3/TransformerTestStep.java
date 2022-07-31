@@ -1,8 +1,8 @@
 package org.saynotobugs.quality.quality.rxjava3;
 
 import org.saynotobugs.quality.Quality;
-import org.saynotobugs.quality.quality.rxjava3.adapters.RxTestAdapter;
 import org.saynotobugs.quality.quality.rxjava3.adapters.RxSubjectAdapter;
+import org.saynotobugs.quality.quality.rxjava3.adapters.RxTestAdapter;
 
 import io.reactivex.rxjava3.schedulers.TestScheduler;
 

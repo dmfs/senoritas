@@ -36,7 +36,7 @@ public final class Emits<T> extends RxExpectationComposition<T>
     }
 
 
-    public Emits(int emissionCount, Quality<? super Iterable<? extends T>> emissionsQuality)
+    public Emits(int emissionCount, Quality<? super Iterable<T>> emissionsQuality)
     {
         super(testScheduler -> new org.saynotobugs.quality.quality.rxjava3.internal.Emits<>(emissionCount, emissionsQuality));
     }

@@ -13,7 +13,7 @@ public final class ArrayThat extends QualityComposition<Object>
      * Creates a {@link Quality} that matches any array that, when iterated, matches the given {@link Iterable} {@link Quality}.
      */
     @SuppressWarnings("unchecked")
-    public <T> ArrayThat(Quality<? super Iterable<? extends T>> delegate)
+    public <T> ArrayThat(Quality<? super Iterable<T>> delegate)
     {
         super(
             new AllOfFailingFast<>(

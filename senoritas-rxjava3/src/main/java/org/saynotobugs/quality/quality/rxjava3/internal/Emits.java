@@ -1,13 +1,13 @@
 package org.saynotobugs.quality.quality.rxjava3.internal;
 
+import org.saynotobugs.quality.Assessment;
 import org.saynotobugs.quality.Description;
 import org.saynotobugs.quality.Quality;
-import org.saynotobugs.quality.Assessment;
+import org.saynotobugs.quality.assessment.FailPrepended;
 import org.saynotobugs.quality.description.Delimited;
 import org.saynotobugs.quality.description.NumberDescription;
 import org.saynotobugs.quality.description.TextDescription;
 import org.saynotobugs.quality.quality.rxjava3.adapters.RxTestAdapter;
-import org.saynotobugs.quality.assessment.FailPrepended;
 
 import java.util.Collection;
 
@@ -16,10 +16,10 @@ public final class Emits<T> implements Quality<RxTestAdapter<T>>
 {
 
     private final int mEmissionCount;
-    private final Quality<? super Iterable<? extends T>> mEmissionQualities;
+    private final Quality<? super Iterable<T>> mEmissionQualities;
 
 
-    public Emits(int emissionCount, Quality<? super Iterable<? extends T>> emissionQualities)
+    public Emits(int emissionCount, Quality<? super Iterable<T>> emissionQualities)
     {
         mEmissionCount = emissionCount;
         mEmissionQualities = emissionQualities;

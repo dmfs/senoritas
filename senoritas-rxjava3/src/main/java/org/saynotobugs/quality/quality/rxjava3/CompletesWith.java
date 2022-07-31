@@ -26,7 +26,7 @@ public final class CompletesWith<T> extends RxExpectationComposition<T>
     }
 
 
-    public CompletesWith(int elementCount, Quality<? super Iterable<? extends T>> values)
+    public CompletesWith(int elementCount, Quality<? super Iterable<T>> values)
     {
         super(testScheduler -> new AllOf<>(
             new IsComplete(),

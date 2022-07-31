@@ -4,10 +4,10 @@ import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 import org.saynotobugs.quality.Assessment;
 import org.saynotobugs.quality.Description;
 import org.saynotobugs.quality.Quality;
+import org.saynotobugs.quality.assessment.FailPrepended;
 import org.saynotobugs.quality.description.Delimited;
 import org.saynotobugs.quality.description.TextDescription;
 import org.saynotobugs.quality.quality.rxjava3.adapters.RxTestAdapter;
-import org.saynotobugs.quality.assessment.FailPrepended;
 
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
