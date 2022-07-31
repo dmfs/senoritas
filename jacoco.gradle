@@ -5,6 +5,8 @@ jacocoTestReport {
         xml.enabled = true
         html.enabled = true
     }
+    dependsOn check
 }
 
-check.dependsOn jacocoTestReport
+check.finalizedBy jacocoTestReport
+

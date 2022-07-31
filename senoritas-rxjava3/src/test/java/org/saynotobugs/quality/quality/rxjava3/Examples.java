@@ -150,7 +150,7 @@ public final class Examples
         assertThat((TestScheduler scheduler) -> (Single<Integer> upstream) -> upstream.delay(10, SECONDS, scheduler),
             allOf(
                 transformsSingle(
-                    upstream(completeWith(123)),
+                    upstream(emit(123)),
                     downstream(within(ofSeconds(9), emitsNothing())),
                     downstream(within(ofSeconds(10), completesWith(123)))),
                 RxJava3.<Integer, Integer>transformsSingle(

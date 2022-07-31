@@ -9,6 +9,7 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:4.1.3'
         classpath 'digital.wup:android-maven-publish:3.6.2'
+        classpath 'org.jacoco:org.jacoco.core:0.8.7'
         classpath "com.dicedmelon.gradle:jacoco-android:0.1.5"
     }
 }
@@ -60,7 +61,21 @@ android {
     lintOptions {
         abortOnError false
     }
+    testOptions {
+        unitTests.all {
+            jacoco {
+                includeNoLocationClasses = true
+            }
+        }
+    }
 }
+
+tasks.withType(Test) {
+    jacoco.includeNoLocationClasses = true
+    jacoco.excludes = ['jdk.internal.*']
+}
+
+check.finalizedBy jacocoTestReport
 
 dependencies {
     compileOnly 'org.dmfs:srcless-annotations:0.1.0'
