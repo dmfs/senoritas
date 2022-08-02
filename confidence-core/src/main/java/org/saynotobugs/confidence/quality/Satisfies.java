@@ -5,8 +5,8 @@ import org.dmfs.jems2.Predicate;
 import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 import org.saynotobugs.confidence.Description;
 import org.saynotobugs.confidence.Quality;
-import org.saynotobugs.confidence.description.ValueDescription;
 import org.saynotobugs.confidence.assessment.PassIf;
+import org.saynotobugs.confidence.description.ValueDescription;
 
 
 @StaticFactories("Core")

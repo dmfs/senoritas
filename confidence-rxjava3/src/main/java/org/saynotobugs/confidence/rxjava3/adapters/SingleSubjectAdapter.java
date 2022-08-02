@@ -1,5 +1,7 @@
 package org.saynotobugs.confidence.rxjava3.adapters;
 
+import org.saynotobugs.confidence.rxjava3.RxSubjectAdapter;
+
 import io.reactivex.rxjava3.subjects.SingleSubject;
 
 

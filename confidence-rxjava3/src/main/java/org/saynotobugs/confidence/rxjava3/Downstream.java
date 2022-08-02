@@ -4,13 +4,11 @@ import org.dmfs.jems2.iterable.Mapped;
 import org.dmfs.jems2.iterable.Seq;
 import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 import org.saynotobugs.confidence.Quality;
-import org.saynotobugs.confidence.rxjava3.adapters.RxSubjectAdapter;
-import org.saynotobugs.confidence.rxjava3.adapters.RxTestAdapter;
 
 import io.reactivex.rxjava3.schedulers.TestScheduler;
 
 
-@StaticFactories("RxJava3")
+@StaticFactories(value = "RxJava3", packageName = "org.saynotobugs.confidence.rxjava3")
 public final class Downstream<Up, Down> implements TransformerTestStep<Up, Down>
 {
     private final Iterable<? extends RxExpectation<Down>> mEvents;

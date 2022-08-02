@@ -1,9 +1,9 @@
 package org.saynotobugs.confidence.quality;
 
 import org.dmfs.jems2.Function;
+import org.saynotobugs.confidence.Assessment;
 import org.saynotobugs.confidence.Description;
 import org.saynotobugs.confidence.Quality;
-import org.saynotobugs.confidence.Assessment;
 
 
 /**

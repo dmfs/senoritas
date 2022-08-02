@@ -7,7 +7,6 @@ import android.os.Parcelable;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
-import org.saynotobugs.confidence.android.quality.Unparceled;
 import org.saynotobugs.confidence.quality.AllOf;
 import org.saynotobugs.confidence.quality.EqualTo;
 import org.saynotobugs.confidence.quality.MatchesPattern;

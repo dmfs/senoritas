@@ -5,9 +5,9 @@ import org.hamcrest.StringDescription;
 import org.saynotobugs.confidence.Assessment;
 import org.saynotobugs.confidence.Description;
 import org.saynotobugs.confidence.Quality;
-import org.saynotobugs.confidence.description.TextDescription;
 import org.saynotobugs.confidence.assessment.Fail;
 import org.saynotobugs.confidence.assessment.Pass;
+import org.saynotobugs.confidence.description.TextDescription;
 
 
 @StaticFactories("Core")

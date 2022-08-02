@@ -11,13 +11,13 @@ import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 import org.saynotobugs.confidence.Assessment;
 import org.saynotobugs.confidence.Description;
 import org.saynotobugs.confidence.Quality;
+import org.saynotobugs.confidence.assessment.AllPassed;
+import org.saynotobugs.confidence.assessment.PassIf;
 import org.saynotobugs.confidence.description.Delimited;
 import org.saynotobugs.confidence.description.StructuredDescription;
 import org.saynotobugs.confidence.description.TextDescription;
 import org.saynotobugs.confidence.description.ValueDescription;
 import org.saynotobugs.confidence.utils.UnPaired;
-import org.saynotobugs.confidence.assessment.AllPassed;
-import org.saynotobugs.confidence.assessment.PassIf;
 
 import java.util.Comparator;
 

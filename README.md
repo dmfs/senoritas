@@ -2,17 +2,17 @@
 [![codecov](https://codecov.io/gh/dmfs/senoritas/branch/main/graph/badge.svg?token=3wGxOPmEEc)](https://codecov.io/gh/dmfs/senoritas)
 [![Language grade: Java](https://img.shields.io/lgtm/grade/java/g/dmfs/senoritas.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/dmfs/senoritas/context:java)
 
-# Senoritas
+# Confidence
 
-Senoritas is a composable Assertion Framework. It's very much inspired by Hamcrest and based on the same idea. There are a couple of important differences
+Confidence is a composable Assertion Framework. It's very much inspired by Hamcrest and based on the same idea. There are a couple of important differences
 though:
 
-* In case of a mismatch, Hamcrest (for Java) needs to run the matcher again to get a mismatch description, Senoritas returns the result and (in case of a
+* In case of a mismatch, Hamcrest (for Java) needs to run the matcher again to get a mismatch description, Confidence returns the result and (in case of a
   mismatch) the mismatch description in one go.
-* Hamcrest Matchers (usually) stops at the first mismatch, Senoritas returns a complete picture.
-* Senoritas makes it easier to produce comprehensible descriptions, closer to what Assertj or Google Truth produce
-* In Senoritas the "Contains" Matcher has the same semantics as Java `Collection.contains(Object)`
-* Senoritas has out ouf the box support for testing Matchers.
+* Hamcrest Matchers (usually) stops at the first mismatch, Confidence returns a complete picture.
+* Confidence makes it easier to produce comprehensible descriptions, closer to what Assertj or Google Truth produce
+* In Confidence the "Contains" Matcher has the same semantics as Java `Collection.contains(Object)`
+* Confidence has out ouf the box support for testing Matchers.
 * By design, static matcher factory methods are generated, not manually coded.
 
 Note, this library is still in its initial phase and things, including design and names, might change without notice.
@@ -130,13 +130,13 @@ The annotation `@StaticFactories("Core")` ensures a static factory methods like 
     }
 ```
 
-## Senoritas vs Hamcrest
+## Confidence vs Hamcrest
 
-This section gives an overview over some notable differences between Senoritas and Hamcrest.
+This section gives an overview over some notable differences between Confidence and Hamcrest.
 
 General note on matching arrays: arrays (including ones of primitive types) can be matched with matchers to match `Iterable`s decorated with `arrayThat(…)`.
 
-| Hamcrest | Senoritas |
+| Hamcrest | Confidence |
 |---|---|
 | `contains(...)` | `iterates(...)` |
 | `containsInAnyOrder(...)` | `iteratesInAnyOrder(...)` |
@@ -154,8 +154,8 @@ General note on matching arrays: arrays (including ones of primitive types) can 
 
 ## Experimental RXJava3 support
 
-Although RXJava comes with built-in test support it can be tedious to test.
-Senoritas gives you the means to focus on the "what" so you don't have to care about the "how".
+Although RXJava comes with built-in test support it can be tedious to test. Confidence gives you the means to focus on the "what" so you don't have to care
+about the "how".
 
 ### Example
 

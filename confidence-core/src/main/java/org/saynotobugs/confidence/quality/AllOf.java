@@ -4,10 +4,10 @@ import org.dmfs.jems2.iterable.Mapped;
 import org.dmfs.jems2.iterable.Seq;
 import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 import org.saynotobugs.confidence.Quality;
+import org.saynotobugs.confidence.assessment.AllPassed;
 import org.saynotobugs.confidence.description.Composite;
 import org.saynotobugs.confidence.description.StructuredDescription;
 import org.saynotobugs.confidence.description.TextDescription;
-import org.saynotobugs.confidence.assessment.AllPassed;
 
 import static org.saynotobugs.confidence.description.LiteralDescription.NEW_LINE;
 

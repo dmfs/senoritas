@@ -4,9 +4,9 @@ import org.dmfs.jems2.iterable.Mapped;
 import org.dmfs.jems2.iterable.Seq;
 import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 import org.saynotobugs.confidence.Quality;
-import org.saynotobugs.confidence.description.*;
 import org.saynotobugs.confidence.assessment.AnyPassed;
 import org.saynotobugs.confidence.assessment.FailUpdated;
+import org.saynotobugs.confidence.description.*;
 
 import java.util.Collection;
 

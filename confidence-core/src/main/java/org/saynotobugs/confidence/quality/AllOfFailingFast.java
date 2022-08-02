@@ -7,14 +7,14 @@ import org.dmfs.jems2.optional.First;
 import org.dmfs.jems2.predicate.Not;
 import org.dmfs.jems2.single.Backed;
 import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
-import org.saynotobugs.confidence.Quality;
 import org.saynotobugs.confidence.Assessment;
+import org.saynotobugs.confidence.Quality;
+import org.saynotobugs.confidence.assessment.FailPrepended;
+import org.saynotobugs.confidence.assessment.Pass;
 import org.saynotobugs.confidence.description.Composite;
 import org.saynotobugs.confidence.description.Delimited;
 import org.saynotobugs.confidence.description.StructuredDescription;
 import org.saynotobugs.confidence.description.TextDescription;
-import org.saynotobugs.confidence.assessment.FailPrepended;
-import org.saynotobugs.confidence.assessment.Pass;
 
 import static org.saynotobugs.confidence.description.LiteralDescription.NEW_LINE;
 

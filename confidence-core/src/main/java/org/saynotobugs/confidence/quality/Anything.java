@@ -1,8 +1,8 @@
 package org.saynotobugs.confidence.quality;
 
 import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
-import org.saynotobugs.confidence.description.TextDescription;
 import org.saynotobugs.confidence.assessment.Pass;
+import org.saynotobugs.confidence.description.TextDescription;
 
 
 @StaticFactories("Core")

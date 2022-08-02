@@ -1,5 +1,7 @@
 package org.saynotobugs.confidence.rxjava3.adapters;
 
+import org.saynotobugs.confidence.rxjava3.RxTestAdapter;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;

@@ -1,7 +1,7 @@
 package org.saynotobugs.confidence.assessment;
 
-import org.saynotobugs.confidence.Description;
 import org.saynotobugs.confidence.Assessment;
+import org.saynotobugs.confidence.Description;
 import org.saynotobugs.confidence.description.Delimited;
 
 

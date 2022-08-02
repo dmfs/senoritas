@@ -2,7 +2,6 @@ package org.saynotobugs.confidence.rxjava3;
 
 import org.dmfs.srcless.annotations.composable.Composable;
 import org.saynotobugs.confidence.Quality;
-import org.saynotobugs.confidence.rxjava3.adapters.RxTestAdapter;
 
 import io.reactivex.rxjava3.schedulers.TestScheduler;
 

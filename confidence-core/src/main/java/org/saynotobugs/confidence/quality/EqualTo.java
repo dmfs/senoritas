@@ -2,13 +2,13 @@ package org.saynotobugs.confidence.quality;
 
 import org.dmfs.jems2.iterable.Mapped;
 import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
-import org.saynotobugs.confidence.Quality;
 import org.saynotobugs.confidence.Assessment;
+import org.saynotobugs.confidence.Quality;
+import org.saynotobugs.confidence.assessment.FailPrepended;
+import org.saynotobugs.confidence.assessment.PassIf;
 import org.saynotobugs.confidence.description.TextDescription;
 import org.saynotobugs.confidence.description.ValueDescription;
 import org.saynotobugs.confidence.utils.ArrayIterable;
-import org.saynotobugs.confidence.assessment.FailPrepended;
-import org.saynotobugs.confidence.assessment.PassIf;
 
 
 @StaticFactories("Core")

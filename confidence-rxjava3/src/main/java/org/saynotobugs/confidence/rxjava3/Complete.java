@@ -2,13 +2,12 @@ package org.saynotobugs.confidence.rxjava3;
 
 import org.dmfs.jems2.Procedure;
 import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
-import org.saynotobugs.confidence.rxjava3.adapters.RxSubjectAdapter;
 
 import io.reactivex.rxjava3.core.SingleSource;
 import io.reactivex.rxjava3.core.SingleTransformer;
 
 
-@StaticFactories("RxJava3")
+@StaticFactories(value = "RxJava3", packageName = "org.saynotobugs.confidence.rxjava3")
 public final class Complete<Up> implements Procedure<RxSubjectAdapter<Up>>
 {
     /**

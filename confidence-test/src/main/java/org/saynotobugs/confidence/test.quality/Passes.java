@@ -6,9 +6,9 @@ import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 import org.saynotobugs.confidence.Assessment;
 import org.saynotobugs.confidence.Description;
 import org.saynotobugs.confidence.Quality;
-import org.saynotobugs.confidence.description.*;
 import org.saynotobugs.confidence.assessment.AllPassed;
 import org.saynotobugs.confidence.assessment.FailUpdated;
+import org.saynotobugs.confidence.description.*;
 
 import static org.saynotobugs.confidence.description.LiteralDescription.EMPTY;
 import static org.saynotobugs.confidence.description.LiteralDescription.NEW_LINE;

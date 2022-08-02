@@ -4,14 +4,13 @@ import org.dmfs.jems2.Procedure;
 import org.dmfs.jems2.iterable.Seq;
 import org.dmfs.jems2.procedure.Batch;
 import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
-import org.saynotobugs.confidence.rxjava3.adapters.RxSubjectAdapter;
 
 import io.reactivex.rxjava3.core.CompletableSource;
 import io.reactivex.rxjava3.core.MaybeSource;
 import io.reactivex.rxjava3.core.SingleSource;
 
 
-@StaticFactories("RxJava3")
+@StaticFactories(value = "RxJava3", packageName = "org.saynotobugs.confidence.rxjava3")
 public final class Emit<Up> implements Procedure<RxSubjectAdapter<Up>>
 {
     private final Iterable<Up> mEmissions;

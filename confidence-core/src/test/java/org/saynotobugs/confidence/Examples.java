@@ -3,13 +3,13 @@ package org.saynotobugs.confidence;
 import org.dmfs.jems2.iterable.Seq;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.saynotobugs.confidence.assessment.PassIf;
 import org.saynotobugs.confidence.description.Delimited;
 import org.saynotobugs.confidence.description.NumberDescription;
 import org.saynotobugs.confidence.description.TextDescription;
 import org.saynotobugs.confidence.quality.*;
 import org.saynotobugs.confidence.test.quality.Fails;
 import org.saynotobugs.confidence.test.quality.Passes;
-import org.saynotobugs.confidence.assessment.PassIf;
 
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
