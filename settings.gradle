@@ -1,7 +1,6 @@
-rootProject.name = 'noexcuses'
-include 'senoritas-test'
-include 'senoritas-core'
-include 'senoritas-rxjava3'
-include 'senoritas-android'
-include 'senoritas-mockito4'
-
+rootProject.name = 'confidence'
+include 'confidence-android'
+include 'confidence-core'
+include 'confidence-mockito4'
+include 'confidence-rxjava3'
+include 'confidence-test'
