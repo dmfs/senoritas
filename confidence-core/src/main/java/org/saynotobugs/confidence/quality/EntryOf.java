@@ -25,7 +25,7 @@ public final class EntryOf<K, V> extends QualityComposition<Map.Entry<K, V>>
 
     public EntryOf(Quality<? super K> key, Quality<? super V> value)
     {
-        super(new ReDescribed<>(description -> new Composite(
+        super(new DescriptionUpdated<>(description -> new Composite(
             new TextDescription("Entry { "),
             key.description(),
             new TextDescription(": "),

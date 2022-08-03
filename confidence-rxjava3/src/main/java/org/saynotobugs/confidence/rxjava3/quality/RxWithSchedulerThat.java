@@ -8,7 +8,7 @@ import org.saynotobugs.confidence.Description;
 import org.saynotobugs.confidence.Quality;
 import org.saynotobugs.confidence.description.Delimited;
 import org.saynotobugs.confidence.quality.AllOfFailingFast;
-import org.saynotobugs.confidence.quality.ReDescribed;
+import org.saynotobugs.confidence.quality.DescriptionUpdated;
 import org.saynotobugs.confidence.rxjava3.RxExpectation;
 import org.saynotobugs.confidence.rxjava3.RxTestAdapter;
 import org.saynotobugs.confidence.rxjava3.rxexpectation.ActionTriggering;
@@ -27,7 +27,7 @@ public final class RxWithSchedulerThat<T, RxType> implements Quality<Function<? 
         Iterable<? extends RxExpectation<T>> events)
     {
         mTestAdapterFunction = testAdapterFunction;
-        mDelegate = scheduler -> new ReDescribed<>(
+        mDelegate = scheduler -> new DescriptionUpdated<>(
             orig -> new Delimited(description, orig),
             new AllOfFailingFast<>(new Mapped<>(event -> new ActionTriggering<>(event).quality(scheduler), events)));
     }

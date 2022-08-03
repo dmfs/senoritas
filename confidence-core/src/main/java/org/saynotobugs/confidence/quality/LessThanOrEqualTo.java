@@ -8,7 +8,7 @@ import org.saynotobugs.confidence.description.ValueDescription;
 
 
 @StaticFactories("Core")
-public final class LessThanOrEqualTo<T extends Comparable<T>> extends QualityComposition<T>
+public final class LessThanOrEqualTo<T extends Comparable<? super T>> extends QualityComposition<T>
 {
 
     /**

@@ -8,9 +8,9 @@ import org.saynotobugs.confidence.assessment.FailUpdated;
 
 
 @StaticFactories("Core")
-public final class ReDescribed<T> extends QualityComposition<T>
+public final class DescriptionUpdated<T> extends QualityComposition<T>
 {
-    public ReDescribed(
+    public DescriptionUpdated(
         Function<Description, ? extends Description> descriptionUpdate,
         Quality<T> delegate)
     {
@@ -18,7 +18,7 @@ public final class ReDescribed<T> extends QualityComposition<T>
     }
 
 
-    public ReDescribed(
+    public DescriptionUpdated(
         Function<Description, ? extends Description> mismatchUpdate,
         Function<Description, ? extends Description> expectationUpdate,
         Quality<T> delegate)

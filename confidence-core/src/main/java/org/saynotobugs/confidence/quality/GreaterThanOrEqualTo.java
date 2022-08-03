@@ -8,7 +8,7 @@ import org.saynotobugs.confidence.description.ValueDescription;
 
 
 @StaticFactories("Core")
-public final class GreaterThanOrEqualTo<T extends Comparable<T>> extends QualityComposition<T>
+public final class GreaterThanOrEqualTo<T extends Comparable<? super T>> extends QualityComposition<T>
 {
     /**
      * Creates {@link Quality} that matches if the {@link Comparable} value under test is greater than or equal to the given value.

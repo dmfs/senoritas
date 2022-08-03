@@ -10,7 +10,7 @@ import org.saynotobugs.confidence.Quality;
 import org.saynotobugs.confidence.description.Delimited;
 import org.saynotobugs.confidence.description.TextDescription;
 import org.saynotobugs.confidence.quality.AllOfFailingFast;
-import org.saynotobugs.confidence.quality.ReDescribed;
+import org.saynotobugs.confidence.quality.DescriptionUpdated;
 import org.saynotobugs.confidence.rxjava3.TransformerTestStep;
 import org.saynotobugs.confidence.rxjava3.adapters.RxTestObserver;
 import org.saynotobugs.confidence.rxjava3.adapters.SingleSubjectAdapter;
@@ -58,7 +58,7 @@ public final class TransformsSingle<Up, Down> implements
     {
         TestScheduler t = new TestScheduler();
         SingleSubject<Up> upstream = SingleSubject.create();
-        return new ReDescribed<>(orig -> new Delimited(new TextDescription("SingleTransformer that"), orig), new AllOfFailingFast<>(
+        return new DescriptionUpdated<>(orig -> new Delimited(new TextDescription("SingleTransformer that"), orig), new AllOfFailingFast<>(
             new Expanded<>(e -> e.qualities(t, new SingleSubjectAdapter<>(upstream)), mEvents)
         )).description();
     }

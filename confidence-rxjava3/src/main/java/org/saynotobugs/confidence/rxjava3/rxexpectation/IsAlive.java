@@ -19,7 +19,7 @@ public final class IsAlive<T> extends RxExpectationComposition<T>
      */
     public IsAlive()
     {
-        super(testScheduler -> new ReDescribed<>(
+        super(testScheduler -> new DescriptionUpdated<>(
             orig -> orig,
             orig -> new TextDescription("alive"),
             new NoneOf<>(

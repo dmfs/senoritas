@@ -30,7 +30,7 @@ public final class HasNumberOfElements extends QualityComposition<Iterable<?>>
      */
     public HasNumberOfElements(Quality<? super Integer> delegate)
     {
-        super(new ReDescribed<>(
+        super(new DescriptionUpdated<>(
             original -> new Delimited(original, new TextDescription("elements")),
             new Having<>(
                 new TextDescription("has"),

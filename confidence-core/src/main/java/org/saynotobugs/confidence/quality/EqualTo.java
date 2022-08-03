@@ -31,5 +31,4 @@ public final class EqualTo<T> extends QualityComposition<T>
             new Iterates<>(new Mapped<>(EqualTo::new, new ArrayIterable(expected))).assessmentOf(new ArrayIterable(actual)))
             : new PassIf(expected.equals(actual), new ValueDescription(actual));
     }
-
 }
