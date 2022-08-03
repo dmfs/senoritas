@@ -1,10 +1,13 @@
-package org.saynotobugs.confidence.rxjava3;
+package org.saynotobugs.confidence.rxjava3.transformerteststep;
 
 import org.dmfs.jems2.Procedure;
 import org.dmfs.jems2.iterable.Seq;
 import org.dmfs.jems2.procedure.Composite;
 import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 import org.saynotobugs.confidence.Quality;
+import org.saynotobugs.confidence.rxjava3.RxSubjectAdapter;
+import org.saynotobugs.confidence.rxjava3.RxTestAdapter;
+import org.saynotobugs.confidence.rxjava3.TransformerTestStep;
 
 import io.reactivex.rxjava3.schedulers.TestScheduler;
 

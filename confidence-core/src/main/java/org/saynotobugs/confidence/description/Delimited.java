@@ -3,6 +3,7 @@ package org.saynotobugs.confidence.description;
 import org.dmfs.jems2.iterable.Seq;
 import org.saynotobugs.confidence.Description;
 import org.saynotobugs.confidence.Scribe;
+import org.saynotobugs.confidence.utils.Intermittent;
 
 import static org.saynotobugs.confidence.description.LiteralDescription.SPACE;
 
@@ -56,7 +57,7 @@ public final class Delimited implements Description
     @Override
     public void describeTo(Scribe scribe)
     {
-        new org.saynotobugs.confidence.utils.Delimited<Description>(() -> {},
+        new Intermittent<Description>(() -> {},
             () -> mDelimiter.describeTo(scribe),
             () -> {},
             v -> v.describeTo(scribe))

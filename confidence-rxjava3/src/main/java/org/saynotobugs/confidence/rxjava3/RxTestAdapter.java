@@ -7,13 +7,13 @@ import io.reactivex.rxjava3.subscribers.TestSubscriber;
 
 
 /**
- * A generalization of {@link TestObserver} and {@link TestSubscriber}.
+ * A generalization of {@link TestObserver} and {@link TestSubscriber}. That provides some means to "acknowledge" already seen emissions.
  */
 public interface RxTestAdapter<T>
 {
     /**
      * Waits (at most 5 seconds) for at least count values to be emitted.
-     * This methods returns without an error even if no {@code count} have been emitted.
+     * This method returns without an error even if no {@code count} have been emitted.
      */
     void awaitNext(int count);
 

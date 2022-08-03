@@ -3,7 +3,7 @@ package org.saynotobugs.confidence.utils;
 import org.dmfs.jems2.Procedure;
 
 
-public final class Delimited<T> implements Procedure<Iterable<? extends T>>
+public final class Intermittent<T> implements Procedure<Iterable<? extends T>>
 {
     private final Runnable mBefore;
     private final Runnable mBetween;
@@ -11,7 +11,7 @@ public final class Delimited<T> implements Procedure<Iterable<? extends T>>
     private final Procedure<? super T> mEach;
 
 
-    public Delimited(Runnable before, Runnable between, Runnable after, Procedure<? super T> each)
+    public Intermittent(Runnable before, Runnable between, Runnable after, Procedure<? super T> each)
     {
         mBefore = before;
         mBetween = between;

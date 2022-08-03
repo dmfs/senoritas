@@ -1,9 +1,10 @@
-package org.saynotobugs.confidence.rxjava3;
+package org.saynotobugs.confidence.rxjava3.procedure;
 
 import org.dmfs.jems2.iterable.Seq;
 import org.dmfs.jems2.procedure.Composite;
 import org.dmfs.jems2.procedure.DelegatingProcedure;
 import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
+import org.saynotobugs.confidence.rxjava3.RxSubjectAdapter;
 
 
 @StaticFactories(value = "RxJava3", packageName = "org.saynotobugs.confidence.rxjava3")

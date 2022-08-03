@@ -1,9 +1,10 @@
-package org.saynotobugs.confidence.rxjava3;
+package org.saynotobugs.confidence.rxjava3.procedure;
 
 import org.dmfs.jems2.Procedure;
 import org.dmfs.jems2.iterable.Seq;
 import org.dmfs.jems2.procedure.Batch;
 import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
+import org.saynotobugs.confidence.rxjava3.RxSubjectAdapter;
 
 import io.reactivex.rxjava3.core.CompletableSource;
 import io.reactivex.rxjava3.core.MaybeSource;

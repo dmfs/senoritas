@@ -2,7 +2,7 @@ package org.saynotobugs.confidence.description;
 
 import org.saynotobugs.confidence.Description;
 import org.saynotobugs.confidence.Scribe;
-import org.saynotobugs.confidence.utils.Delimited;
+import org.saynotobugs.confidence.utils.Intermittent;
 
 import static org.saynotobugs.confidence.description.LiteralDescription.EMPTY;
 
@@ -49,7 +49,7 @@ public final class StructuredDescription implements Description
     public void describeTo(Scribe scribe)
     {
         Scribe s = scribe.indented();
-        new Delimited<Description>(
+        new Intermittent<Description>(
             () -> mEntry.describeTo(scribe),
             () -> mDelimiter.describeTo(s),
             () -> mExit.describeTo(scribe),

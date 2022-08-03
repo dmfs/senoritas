@@ -6,7 +6,7 @@ import org.saynotobugs.confidence.test.quality.DescribesAs;
 import static org.saynotobugs.confidence.Assertion.assertThat;
 
 
-class DelimitedTest
+class IntermittentTest
 {
     @Test
     void testDefaultDelimiter()

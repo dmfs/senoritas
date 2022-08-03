@@ -12,11 +12,11 @@ import static org.saynotobugs.confidence.description.LiteralDescription.NEW_LINE
 /**
  * A {@link Description} that contains the mismatch descriptions of failing {@link Assessment}s.
  * <p>
- * Passing {@link Assessment}s are collapsed into {@code ...}.
+ * Successful {@link Assessment}s are collapsed into {@code ...}.
  */
-public final class MismatchesDescription extends DescriptionComposition
+public final class FailDescription extends DescriptionComposition
 {
-    public MismatchesDescription(Description entry, Description delimiter, Description exit, Iterable<Assessment> verdicts)
+    public FailDescription(Description entry, Description delimiter, Description exit, Iterable<Assessment> verdicts)
     {
         super(new StructuredDescription(
             entry,

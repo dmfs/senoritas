@@ -4,6 +4,9 @@ import org.saynotobugs.confidence.Description;
 import org.saynotobugs.confidence.Scribe;
 
 
+/**
+ * A {@link Description} that's printed literally. This provides certain control and frequently used punctuation characters.
+ */
 public final class LiteralDescription extends DescriptionComposition
 {
     public static final Description DQUOTES = new LiteralDescription("\"");

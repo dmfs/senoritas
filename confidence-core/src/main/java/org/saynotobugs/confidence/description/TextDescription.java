@@ -1,5 +1,6 @@
 package org.saynotobugs.confidence.description;
 
+import org.dmfs.jems2.Single;
 import org.saynotobugs.confidence.Description;
 
 
@@ -12,7 +13,13 @@ public final class TextDescription extends DescriptionComposition
 {
     public TextDescription(CharSequence text)
     {
-        super(scribe -> scribe.append(text.toString()
+        this(text::toString);
+    }
+
+
+    public TextDescription(Single<String> text)
+    {
+        super(scribe -> scribe.append(text.value()
             .replace("\\", "\\\\")
             .replace("\t", "\\t")
             .replace("\b", "\\b")

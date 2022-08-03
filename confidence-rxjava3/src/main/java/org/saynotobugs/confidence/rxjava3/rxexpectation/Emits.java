@@ -16,7 +16,7 @@ public final class Emits<T> extends RxExpectationComposition<T>
 {
 
     /**
-     * Creates an {@link RxExpectation} that verifies whether the {@link RxTestAdapter} contains the given emissions.
+     * Creates an {@link RxExpectation} that verifies whether the {@link RxTestAdapter} contains the given emissions in the given order.
      */
     @SafeVarargs
     public Emits(T... emissions)

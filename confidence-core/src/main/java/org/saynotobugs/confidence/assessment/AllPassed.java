@@ -6,7 +6,7 @@ import org.dmfs.jems2.optional.First;
 import org.dmfs.jems2.predicate.Not;
 import org.saynotobugs.confidence.Assessment;
 import org.saynotobugs.confidence.Description;
-import org.saynotobugs.confidence.description.MismatchesDescription;
+import org.saynotobugs.confidence.description.FailDescription;
 
 import static org.saynotobugs.confidence.description.LiteralDescription.EMPTY;
 
@@ -61,7 +61,7 @@ public final class AllPassed implements Assessment
     {
         return isSuccess()
             ? EMPTY
-            : new MismatchesDescription(mEntry, mDelimiter, mExit, mResults);
+            : new FailDescription(mEntry, mDelimiter, mExit, mResults);
 
     }
 

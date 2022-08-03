@@ -77,5 +77,4 @@ class IteratesTest
                 new Expects("iterates [ 0: less than <1>,\n  1: greater than <2>,\n  2: less than <3> ]")
             ));
     }
-
 }
