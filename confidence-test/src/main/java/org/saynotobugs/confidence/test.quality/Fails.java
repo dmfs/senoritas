@@ -9,7 +9,7 @@ import org.saynotobugs.confidence.assessment.FailUpdated;
 import org.saynotobugs.confidence.description.Delimited;
 import org.saynotobugs.confidence.description.TextDescription;
 import org.saynotobugs.confidence.description.ValueDescription;
-import org.saynotobugs.confidence.quality.Anything;
+import org.saynotobugs.confidence.quality.trivial.Anything;
 
 
 @StaticFactories("Test")

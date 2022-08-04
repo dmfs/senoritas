@@ -9,8 +9,8 @@ import org.saynotobugs.confidence.Description;
 import org.saynotobugs.confidence.Quality;
 import org.saynotobugs.confidence.description.Delimited;
 import org.saynotobugs.confidence.description.TextDescription;
-import org.saynotobugs.confidence.quality.AllOfFailingFast;
-import org.saynotobugs.confidence.quality.DescriptionUpdated;
+import org.saynotobugs.confidence.quality.composite.AllOfFailingFast;
+import org.saynotobugs.confidence.quality.composite.DescribedAs;
 import org.saynotobugs.confidence.rxjava3.TransformerTestStep;
 import org.saynotobugs.confidence.rxjava3.adapters.MaybeSubjectAdapter;
 import org.saynotobugs.confidence.rxjava3.adapters.RxTestObserver;
@@ -57,7 +57,7 @@ public final class TransformsMaybe<Up, Down> implements Quality<Function<? super
     {
         TestScheduler t = new TestScheduler();
         MaybeSubject<Up> upstream = MaybeSubject.create();
-        return new DescriptionUpdated<>(orig -> new Delimited(new TextDescription("MaybeTransformer that"), orig), new AllOfFailingFast<>(
+        return new DescribedAs<>(orig -> new Delimited(new TextDescription("MaybeTransformer that"), orig), new AllOfFailingFast<>(
             new Expanded<>(e -> e.qualities(t, new MaybeSubjectAdapter<>(upstream)), mEvents)
         )).description();
     }

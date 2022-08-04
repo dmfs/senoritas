@@ -1,8 +1,8 @@
 package org.saynotobugs.confidence.rxjava3.rxexpectation.internal;
 
 import org.saynotobugs.confidence.description.TextDescription;
-import org.saynotobugs.confidence.quality.QualityComposition;
-import org.saynotobugs.confidence.quality.Satisfies;
+import org.saynotobugs.confidence.quality.composite.QualityComposition;
+import org.saynotobugs.confidence.quality.object.Satisfies;
 import org.saynotobugs.confidence.rxjava3.RxTestAdapter;
 
 

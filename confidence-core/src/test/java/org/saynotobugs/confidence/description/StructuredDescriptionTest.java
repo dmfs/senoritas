@@ -29,6 +29,15 @@ class StructuredDescriptionTest
 
 
     @Test
+    void testMultipleDelimiterOnly()
+    {
+        assertThat(new StructuredDescription("del",
+                new Seq<>(new TextDescription("123"), new TextDescription("abc"), new TextDescription("xyz"))),
+            new DescribesAs("123delabcdelxyz"));
+    }
+
+
+    @Test
     void testMultiple()
     {
         assertThat(new StructuredDescription("in", "del", "out",

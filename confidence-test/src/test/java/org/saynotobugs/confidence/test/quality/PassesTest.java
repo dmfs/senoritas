@@ -7,7 +7,7 @@ import org.saynotobugs.confidence.Quality;
 import org.saynotobugs.confidence.assessment.Fail;
 import org.saynotobugs.confidence.assessment.Pass;
 import org.saynotobugs.confidence.description.TextDescription;
-import org.saynotobugs.confidence.quality.AllOf;
+import org.saynotobugs.confidence.quality.composite.AllOf;
 
 import static org.saynotobugs.confidence.Assertion.assertThat;
 

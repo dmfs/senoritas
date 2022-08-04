@@ -2,8 +2,8 @@ package org.saynotobugs.confidence.test.quality;
 
 import org.junit.jupiter.api.Test;
 import org.saynotobugs.confidence.assessment.Pass;
-import org.saynotobugs.confidence.quality.AllOf;
-import org.saynotobugs.confidence.quality.EqualTo;
+import org.saynotobugs.confidence.quality.object.EqualTo;
+import org.saynotobugs.confidence.quality.composite.AllOf;
 
 import static org.saynotobugs.confidence.Assertion.assertThat;
 

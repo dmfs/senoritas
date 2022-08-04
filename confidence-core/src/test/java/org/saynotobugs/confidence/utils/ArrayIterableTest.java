@@ -1,9 +1,9 @@
 package org.saynotobugs.confidence.utils;
 
 import org.junit.jupiter.api.Test;
-import org.saynotobugs.confidence.quality.InstanceOf;
-import org.saynotobugs.confidence.quality.Iterates;
-import org.saynotobugs.confidence.quality.Throwing;
+import org.saynotobugs.confidence.quality.object.InstanceOf;
+import org.saynotobugs.confidence.quality.object.Throwing;
+import org.saynotobugs.confidence.quality.iterable.Iterates;
 
 import static org.saynotobugs.confidence.Assertion.assertThat;
 

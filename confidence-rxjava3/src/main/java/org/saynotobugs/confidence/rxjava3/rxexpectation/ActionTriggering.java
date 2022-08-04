@@ -1,6 +1,5 @@
 package org.saynotobugs.confidence.rxjava3.rxexpectation;
 
-import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 import org.saynotobugs.confidence.Assessment;
 import org.saynotobugs.confidence.Description;
 import org.saynotobugs.confidence.Quality;

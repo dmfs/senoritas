@@ -1,7 +1,7 @@
 package org.saynotobugs.confidence.test.quality;
 
 import org.junit.jupiter.api.Test;
-import org.saynotobugs.confidence.quality.AllOf;
+import org.saynotobugs.confidence.quality.composite.AllOf;
 
 import java.util.regex.Pattern;
 

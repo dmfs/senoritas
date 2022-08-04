@@ -2,7 +2,7 @@ package org.saynotobugs.confidence.assessment;
 
 import org.junit.jupiter.api.Test;
 import org.saynotobugs.confidence.description.TextDescription;
-import org.saynotobugs.confidence.quality.Is;
+import org.saynotobugs.confidence.quality.grammar.Is;
 import org.saynotobugs.confidence.test.quality.DescribesAs;
 import org.saynotobugs.confidence.test.quality.Failure;
 import org.saynotobugs.confidence.test.quality.Passed;

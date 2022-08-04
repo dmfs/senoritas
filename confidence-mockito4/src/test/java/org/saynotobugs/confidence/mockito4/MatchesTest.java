@@ -1,7 +1,7 @@
 package org.saynotobugs.confidence.mockito4;
 
 import org.junit.jupiter.api.Test;
-import org.saynotobugs.confidence.quality.AllOf;
+import org.saynotobugs.confidence.quality.composite.AllOf;
 import org.saynotobugs.confidence.test.quality.Expects;
 import org.saynotobugs.confidence.test.quality.Fails;
 import org.saynotobugs.confidence.test.quality.Passes;

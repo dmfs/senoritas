@@ -2,7 +2,11 @@ package org.saynotobugs.confidence.rxjava3.rxexpectation;
 
 import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 import org.saynotobugs.confidence.description.TextDescription;
-import org.saynotobugs.confidence.quality.*;
+import org.saynotobugs.confidence.quality.composite.DescribedAs;
+import org.saynotobugs.confidence.quality.composite.Having;
+import org.saynotobugs.confidence.quality.composite.NoneOf;
+import org.saynotobugs.confidence.quality.iterable.Contains;
+import org.saynotobugs.confidence.quality.trivial.Anything;
 import org.saynotobugs.confidence.rxjava3.RxExpectation;
 import org.saynotobugs.confidence.rxjava3.RxExpectationComposition;
 import org.saynotobugs.confidence.rxjava3.RxTestAdapter;
@@ -19,7 +23,7 @@ public final class IsAlive<T> extends RxExpectationComposition<T>
      */
     public IsAlive()
     {
-        super(testScheduler -> new DescriptionUpdated<>(
+        super(testScheduler -> new DescribedAs<>(
             orig -> orig,
             orig -> new TextDescription("alive"),
             new NoneOf<>(

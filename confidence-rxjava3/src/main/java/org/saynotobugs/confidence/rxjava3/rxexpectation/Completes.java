@@ -1,7 +1,7 @@
 package org.saynotobugs.confidence.rxjava3.rxexpectation;
 
 import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
-import org.saynotobugs.confidence.quality.AllOf;
+import org.saynotobugs.confidence.quality.composite.AllOf;
 import org.saynotobugs.confidence.rxjava3.RxExpectationComposition;
 import org.saynotobugs.confidence.rxjava3.rxexpectation.internal.EmitsNothing;
 

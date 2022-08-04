@@ -9,8 +9,8 @@ import org.saynotobugs.confidence.assessment.FailUpdated;
 import org.saynotobugs.confidence.description.Composite;
 import org.saynotobugs.confidence.description.DescriptionDescription;
 import org.saynotobugs.confidence.description.TextDescription;
-import org.saynotobugs.confidence.quality.EqualTo;
-import org.saynotobugs.confidence.quality.MatchesPattern;
+import org.saynotobugs.confidence.quality.object.EqualTo;
+import org.saynotobugs.confidence.quality.charsequence.MatchesPattern;
 import org.saynotobugs.confidence.scribe.StringBuilderScribe;
 
 import java.util.regex.Pattern;

@@ -1,7 +1,7 @@
 package org.saynotobugs.confidence.rxjava3.quality;
 
 import org.junit.jupiter.api.Test;
-import org.saynotobugs.confidence.quality.AllOf;
+import org.saynotobugs.confidence.quality.composite.AllOf;
 import org.saynotobugs.confidence.rxjava3.rxexpectation.Emits;
 import org.saynotobugs.confidence.rxjava3.rxexpectation.Within;
 import org.saynotobugs.confidence.test.quality.Expects;
