@@ -18,7 +18,7 @@ class DescribesAsTest
             new AllOf<>(
                 new Passes<>(scribe -> scribe.append("123")),
                 new Fails<>(scribe -> scribe.append("abc"), "described as\n  ----\n  \"abc\"\n  ----"),
-                new Expects("describes as\n  ----\n  \"123\"\n  ----")
+                new HasDescription("describes as\n  ----\n  \"123\"\n  ----")
             ));
     }
 
@@ -30,7 +30,7 @@ class DescribesAsTest
             new AllOf<>(
                 new Passes<>(scribe -> scribe.append("a123b")),
                 new Fails<>(scribe -> scribe.append("ab123"), "described as\n  ----\n  \"ab123\" mismatched pattern <\\\\w123\\\\w>\n  ----"),
-                new Expects("describes as\n  ----\n  matches pattern <\\\\w123\\\\w>\n  ----")
+                new HasDescription("describes as\n  ----\n  matches pattern <\\\\w123\\\\w>\n  ----")
             ));
     }
 

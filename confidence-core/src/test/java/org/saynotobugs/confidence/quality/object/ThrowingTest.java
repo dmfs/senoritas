@@ -5,7 +5,7 @@ import org.saynotobugs.confidence.quality.composite.AllOf;
 import org.saynotobugs.confidence.quality.trivial.Anything;
 import org.saynotobugs.confidence.quality.trivial.Nothing;
 import org.saynotobugs.confidence.test.quality.DescribesAs;
-import org.saynotobugs.confidence.test.quality.Expects;
+import org.saynotobugs.confidence.test.quality.HasDescription;
 import org.saynotobugs.confidence.test.quality.Fails;
 import org.saynotobugs.confidence.test.quality.Passes;
 
@@ -24,7 +24,7 @@ class ThrowingTest
             new AllOf<>(
                 new Passes<>((Throwing.Breakable) () -> {throw new NoSuchElementException();}),
                 new Fails<>(() -> {}, new DescribesAs("not throwing <anything>")),
-                new Expects(new DescribesAs("throwing <anything>"))
+                new HasDescription(new DescribesAs("throwing <anything>"))
             ));
     }
 
@@ -36,7 +36,7 @@ class ThrowingTest
             new AllOf<>(
                 new Fails<>(() -> {throw new NoSuchElementException();}, new DescribesAs("throwing <java.util.NoSuchElementException>")),
                 new Fails<>(() -> {}, new DescribesAs("not throwing <nothing>")),
-                new Expects(new DescribesAs("throwing <nothing>"))
+                new HasDescription(new DescribesAs("throwing <nothing>"))
             ));
     }
 
@@ -48,7 +48,7 @@ class ThrowingTest
             new AllOf<>(
                 new Passes<>((Throwing.Breakable) () -> {throw new NoSuchElementException();}),
                 new Fails<>(() -> {}, new DescribesAs("not throwing instance of <class java.util.NoSuchElementException>")),
-                new Expects(new DescribesAs("throwing instance of <class java.util.NoSuchElementException>"))
+                new HasDescription(new DescribesAs("throwing instance of <class java.util.NoSuchElementException>"))
             ));
     }
 }

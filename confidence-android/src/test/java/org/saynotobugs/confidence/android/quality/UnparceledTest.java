@@ -11,7 +11,7 @@ import org.saynotobugs.confidence.quality.object.EqualTo;
 import org.saynotobugs.confidence.quality.charsequence.MatchesPattern;
 import org.saynotobugs.confidence.quality.composite.AllOf;
 import org.saynotobugs.confidence.test.quality.DescribesAs;
-import org.saynotobugs.confidence.test.quality.Expects;
+import org.saynotobugs.confidence.test.quality.HasDescription;
 import org.saynotobugs.confidence.test.quality.Fails;
 import org.saynotobugs.confidence.test.quality.Passes;
 
@@ -29,7 +29,7 @@ public class UnparceledTest
             new AllOf<>(
                 new Passes<>(new TestParcelable("abc")),
                 new Fails<>(new TestParcelable("xyz"), new DescribesAs("Parcelable that <TestParcelable(xyz)>")),
-                new Expects("Parcelable that <TestParcelable(abc)>")
+                new HasDescription("Parcelable that <TestParcelable(abc)>")
             )
         );
     }

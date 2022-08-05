@@ -2,9 +2,8 @@ package org.saynotobugs.confidence.quality.object;
 
 import org.junit.jupiter.api.Test;
 import org.saynotobugs.confidence.quality.composite.AllOf;
-import org.saynotobugs.confidence.quality.object.HasToString;
 import org.saynotobugs.confidence.test.quality.DescribesAs;
-import org.saynotobugs.confidence.test.quality.Expects;
+import org.saynotobugs.confidence.test.quality.HasDescription;
 import org.saynotobugs.confidence.test.quality.Fails;
 import org.saynotobugs.confidence.test.quality.Passes;
 
@@ -21,7 +20,7 @@ class HasToStringTest
             new AllOf<>(
                 new Passes<>("123", 123),
                 new Fails<>("1234", new DescribesAs("had toString() \"1234\"")),
-                new Expects("has toString() \"123\"")));
+                new HasDescription("has toString() \"123\"")));
     }
 
 }

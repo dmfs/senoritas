@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.saynotobugs.confidence.quality.comparable.GreaterThan;
 import org.saynotobugs.confidence.quality.comparable.LessThan;
 import org.saynotobugs.confidence.quality.composite.AllOf;
-import org.saynotobugs.confidence.test.quality.Expects;
+import org.saynotobugs.confidence.test.quality.HasDescription;
 import org.saynotobugs.confidence.test.quality.Fails;
 import org.saynotobugs.confidence.test.quality.Passes;
 
@@ -22,7 +22,7 @@ class EachTest
             new AllOf<>(
                 new Passes<>(asList(0, 1, 2), asList(0, 0, 0), emptyList()),
                 new Fails<>(asList(1, 4, 2), "elements [...\n  1:  <4>\n  ...]"),
-                new Expects("each element less than <3>")
+                new HasDescription("each element less than <3>")
             ));
     }
 
@@ -35,7 +35,7 @@ class EachTest
                 new Passes<Iterable<Integer>>(asList(1, 1, 2), asList(2, 2, 2), emptyList()),
                 new Fails<Iterable<Integer>>(asList(0, 4, 2), "elements [0:  { ...\n    <0> },\n  1:  { <4>\n    ... }\n  ...]"),
                 new Fails<Iterable<Integer>>(asList(1, 4, 2), "elements [...\n  1:  { <4>\n    ... }\n  ...]"),
-                new Expects("each element less than <3>\n  and\n  greater than <0>")
+                new HasDescription("each element less than <3>\n  and\n  greater than <0>")
             ));
     }
 }

@@ -2,9 +2,8 @@ package org.saynotobugs.confidence.quality.map;
 
 import org.junit.jupiter.api.Test;
 import org.saynotobugs.confidence.quality.composite.AllOf;
-import org.saynotobugs.confidence.quality.map.EntryOf;
 import org.saynotobugs.confidence.quality.object.EqualTo;
-import org.saynotobugs.confidence.test.quality.Expects;
+import org.saynotobugs.confidence.test.quality.HasDescription;
 import org.saynotobugs.confidence.test.quality.Fails;
 import org.saynotobugs.confidence.test.quality.Passes;
 
@@ -23,7 +22,7 @@ class EntryOfTest
             new AllOf<>(
                 new Passes<>(entry(12, "abc")),
                 new Fails<>(entry(13, "ab"), "Entry { <12>: \"abc\" }"),
-                new Expects("Entry { <12>: \"abc\" }")
+                new HasDescription("Entry { <12>: \"abc\" }")
             ));
     }
 

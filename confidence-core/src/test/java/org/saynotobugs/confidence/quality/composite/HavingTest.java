@@ -3,7 +3,7 @@ package org.saynotobugs.confidence.quality.composite;
 import org.junit.jupiter.api.Test;
 import org.saynotobugs.confidence.description.TextDescription;
 import org.saynotobugs.confidence.quality.object.EqualTo;
-import org.saynotobugs.confidence.test.quality.Expects;
+import org.saynotobugs.confidence.test.quality.HasDescription;
 import org.saynotobugs.confidence.test.quality.Fails;
 import org.saynotobugs.confidence.test.quality.Passes;
 
@@ -19,7 +19,7 @@ class HavingTest
             new AllOf<>(
                 new Passes<>("123", 123),
                 new Fails<>(124, "having toString \"124\""),
-                new Expects("having toString \"123\"")));
+                new HasDescription("having toString \"123\"")));
     }
 
 
@@ -34,6 +34,6 @@ class HavingTest
             new AllOf<>(
                 new Passes<>("123", 123),
                 new Fails<>(124, "mismatch \"124\""),
-                new Expects("match \"123\"")));
+                new HasDescription("match \"123\"")));
     }
 }

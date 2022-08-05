@@ -36,7 +36,7 @@ class PassedTest
                     }
                 }, new DescribesAs("passed but did described mismatch described as\n  ----\n  \"should not exist\"\n  ----")),
                 new Fails<>(new Fail(new TextDescription("mismatches")), new DescribesAs("mismatches")),
-                new Expects("passes")
+                new HasDescription("passes")
             ));
     }
 

@@ -2,9 +2,8 @@ package org.saynotobugs.confidence.quality.object;
 
 import org.junit.jupiter.api.Test;
 import org.saynotobugs.confidence.quality.composite.AllOf;
-import org.saynotobugs.confidence.quality.object.SameAs;
 import org.saynotobugs.confidence.test.quality.DescribesAs;
-import org.saynotobugs.confidence.test.quality.Expects;
+import org.saynotobugs.confidence.test.quality.HasDescription;
 import org.saynotobugs.confidence.test.quality.Fails;
 import org.saynotobugs.confidence.test.quality.Passes;
 
@@ -22,7 +21,7 @@ class SameAsTest
             new AllOf<>(
                 new Passes<>(i),
                 new Fails<>(123, new DescribesAs("<123>")),
-                new Expects("<123>")));
+                new HasDescription("<123>")));
     }
 
 }

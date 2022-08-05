@@ -3,7 +3,7 @@ package org.saynotobugs.confidence.quality.iterable;
 import org.junit.jupiter.api.Test;
 import org.saynotobugs.confidence.quality.comparable.LessThan;
 import org.saynotobugs.confidence.quality.composite.AllOf;
-import org.saynotobugs.confidence.test.quality.Expects;
+import org.saynotobugs.confidence.test.quality.HasDescription;
 import org.saynotobugs.confidence.test.quality.Fails;
 import org.saynotobugs.confidence.test.quality.Passes;
 
@@ -26,7 +26,7 @@ class HasNumberOfElementsTest
                 new Fails<Iterable<?>>(emptyList(), "had <0> elements"),
                 new Fails<Iterable<?>>(asList(1, 2), "had <2> elements"),
                 new Fails<Iterable<?>>(asList(1, 2, 3, 4), "had <4> elements"),
-                new Expects("has <3> elements")));
+                new HasDescription("has <3> elements")));
     }
 
 
@@ -38,7 +38,7 @@ class HasNumberOfElementsTest
                 new Passes<>(asList(1, 2, 3), new HashSet<>(asList("a", "b")), emptyList()),
                 new Fails<Iterable<?>>(asList(1, 2, 3, 4), "had <4> elements"),
                 new Fails<Iterable<?>>(asList(1, 2, 3, 4, 5), "had <5> elements"),
-                new Expects("has less than <4> elements")));
+                new HasDescription("has less than <4> elements")));
     }
 
 }

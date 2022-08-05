@@ -2,7 +2,7 @@ package org.saynotobugs.confidence.quality.composite;
 
 import org.junit.jupiter.api.Test;
 import org.saynotobugs.confidence.quality.object.EqualTo;
-import org.saynotobugs.confidence.test.quality.Expects;
+import org.saynotobugs.confidence.test.quality.HasDescription;
 import org.saynotobugs.confidence.test.quality.Fails;
 import org.saynotobugs.confidence.test.quality.Passes;
 
@@ -20,7 +20,7 @@ class NoneOfTest
                 new Fails<>(1, "was <1>\n  ..."),
                 new Fails<>(2, "was ...\n  <2>\n  ..."),
                 new Fails<>(3, "was ...\n  <3>"),
-                new Expects("None of <1>\n  and\n  <2>\n  and\n  <3>")));
+                new HasDescription("None of <1>\n  and\n  <2>\n  and\n  <3>")));
     }
 
 
@@ -33,6 +33,6 @@ class NoneOfTest
                 new Fails<>(1, "was <1>\n  ..."),
                 new Fails<>(2, "was ...\n  <2>\n  ..."),
                 new Fails<>(3, "was ...\n  <3>"),
-                new Expects("None of <1>\n  and\n  <2>\n  and\n  <3>")));
+                new HasDescription("None of <1>\n  and\n  <2>\n  and\n  <3>")));
     }
 }

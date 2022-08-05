@@ -3,7 +3,7 @@ package org.saynotobugs.confidence.quality.trivial;
 import org.junit.jupiter.api.Test;
 import org.saynotobugs.confidence.quality.composite.AllOf;
 import org.saynotobugs.confidence.test.quality.DescribesAs;
-import org.saynotobugs.confidence.test.quality.Expects;
+import org.saynotobugs.confidence.test.quality.HasDescription;
 import org.saynotobugs.confidence.test.quality.Fails;
 
 import static org.saynotobugs.confidence.Assertion.assertThat;
@@ -20,7 +20,7 @@ class NothingTest
                 new Fails<Object>("abc", new DescribesAs("\"abc\"")),
                 new Fails<Object>(123, new DescribesAs("<123>")),
                 new Fails<Object>(null, new DescribesAs("<null>")),
-                new Expects("<nothing>")));
+                new HasDescription("<nothing>")));
     }
 
 }

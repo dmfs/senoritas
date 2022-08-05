@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.saynotobugs.confidence.quality.composite.AllOf;
 import org.saynotobugs.confidence.quality.trivial.Anything;
 import org.saynotobugs.confidence.quality.trivial.Nothing;
-import org.saynotobugs.confidence.test.quality.Expects;
+import org.saynotobugs.confidence.test.quality.HasDescription;
 import org.saynotobugs.confidence.test.quality.Fails;
 import org.saynotobugs.confidence.test.quality.Passes;
 
@@ -20,7 +20,7 @@ class HasTest
             new AllOf<>(
                 new Passes<>(3),
                 new Fails<>(4, "had <4>"),
-                new Expects("has <3>")));
+                new HasDescription("has <3>")));
     }
 
 
@@ -30,7 +30,7 @@ class HasTest
         assertThat(new Has<>(new Anything()),
             new AllOf<>(
                 new Passes<>("12", 1, new Object()),
-                new Expects("has <anything>")));
+                new HasDescription("has <anything>")));
     }
 
 
@@ -40,6 +40,6 @@ class HasTest
         assertThat(new Has<>(new Nothing()),
             new AllOf<>(
                 new Fails<>(1, "had <1>"),
-                new Expects("has <nothing>")));
+                new HasDescription("has <nothing>")));
     }
 }

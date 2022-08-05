@@ -49,7 +49,7 @@ class FailsTest
                         return new TextDescription("pass");
                     }
                 }, "<123> matched pass"),
-                new Expects("mismatches <123> with diff <anything>")
+                new HasDescription("mismatches <123> with diff <anything>")
             ));
     }
 
@@ -104,7 +104,7 @@ class FailsTest
                         return new TextDescription("pass");
                     }
                 }, "<123> matched pass"),
-                new Expects("mismatches <123> with diff describes as\n  ----\n  \"mismatch\"\n  ----")
+                new HasDescription("mismatches <123> with diff describes as\n  ----\n  \"mismatch\"\n  ----")
             ));
     }
 }

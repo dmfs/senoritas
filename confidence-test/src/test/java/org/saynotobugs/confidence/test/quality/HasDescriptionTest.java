@@ -13,13 +13,13 @@ import java.util.regex.Pattern;
 import static org.saynotobugs.confidence.Assertion.assertThat;
 
 
-class ExpectsTest
+class HasDescriptionTest
 {
 
     @Test
     void test()
     {
-        assertThat(new Expects("abc"),
+        assertThat(new HasDescription("abc"),
             new AllOf<>(
                 new Passes<>(new Quality<Object>()
                 {
@@ -51,7 +51,7 @@ class ExpectsTest
                         return new TextDescription("123");
                     }
                 }, "expected described as\n  ----\n  \"123\"\n  ----"),
-                new Expects("expects describes as\n  ----\n  \"abc\"\n  ----")
+                new HasDescription("expects describes as\n  ----\n  \"abc\"\n  ----")
             ));
     }
 
@@ -59,7 +59,7 @@ class ExpectsTest
     @Test
     void testPattern()
     {
-        assertThat(new Expects(Pattern.compile("\\dabc\\d")),
+        assertThat(new HasDescription(Pattern.compile("\\dabc\\d")),
             new AllOf<>(
                 new Passes<>(new Quality<Object>()
                 {
@@ -91,7 +91,7 @@ class ExpectsTest
                         return new TextDescription("123");
                     }
                 }, "expected described as\n  ----\n  \"123\" mismatched pattern <\\\\dabc\\\\d>\n  ----"),
-                new Expects("expects describes as\n  ----\n  matches pattern <\\\\dabc\\\\d>\n  ----")
+                new HasDescription("expects describes as\n  ----\n  matches pattern <\\\\dabc\\\\d>\n  ----")
             ));
     }
 

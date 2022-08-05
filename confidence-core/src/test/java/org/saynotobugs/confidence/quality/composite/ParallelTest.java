@@ -3,11 +3,9 @@ package org.saynotobugs.confidence.quality.composite;
 import org.junit.jupiter.api.Test;
 import org.saynotobugs.confidence.quality.charsequence.MatchesPattern;
 import org.saynotobugs.confidence.quality.comparable.LessThan;
-import org.saynotobugs.confidence.quality.composite.AllOf;
-import org.saynotobugs.confidence.quality.composite.Parallel;
 import org.saynotobugs.confidence.quality.supplier.Supplies;
 import org.saynotobugs.confidence.test.quality.DescribesAs;
-import org.saynotobugs.confidence.test.quality.Expects;
+import org.saynotobugs.confidence.test.quality.HasDescription;
 import org.saynotobugs.confidence.test.quality.Fails;
 import org.saynotobugs.confidence.test.quality.Passes;
 
@@ -41,7 +39,7 @@ class ParallelTest
                         }
                     },
                     new DescribesAs(new MatchesPattern("executions: ...\\R .+ <java.lang.RuntimeException: error>\\R  ..."))),
-                new Expects("running 1000 parallel execution, each supplies value less than <999>")
+                new HasDescription("running 1000 parallel execution, each supplies value less than <999>")
             ));
     }
 }

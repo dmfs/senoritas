@@ -5,8 +5,7 @@ import org.saynotobugs.confidence.description.Delimited;
 import org.saynotobugs.confidence.description.TextDescription;
 import org.saynotobugs.confidence.description.ValueDescription;
 import org.saynotobugs.confidence.quality.composite.AllOf;
-import org.saynotobugs.confidence.quality.object.Satisfies;
-import org.saynotobugs.confidence.test.quality.Expects;
+import org.saynotobugs.confidence.test.quality.HasDescription;
 import org.saynotobugs.confidence.test.quality.Fails;
 import org.saynotobugs.confidence.test.quality.Passes;
 
@@ -24,7 +23,7 @@ class SatisfiesTest
             new AllOf<>(
                 new Passes<>(""),
                 new Fails<>("abc", "\"abc\" was not empty"),
-                new Expects("is empty")
+                new HasDescription("is empty")
             ));
     }
 

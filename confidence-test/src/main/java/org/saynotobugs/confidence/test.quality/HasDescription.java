@@ -11,22 +11,22 @@ import java.util.regex.Pattern;
 
 
 @StaticFactories("Test")
-public final class Expects extends QualityComposition<Quality<?>>
+public final class HasDescription extends QualityComposition<Quality<?>>
 {
 
-    public Expects(String expectation)
+    public HasDescription(String expectation)
     {
         this(new DescribesAs(expectation));
     }
 
 
-    public Expects(Pattern expectation)
+    public HasDescription(Pattern expectation)
     {
         this(new DescribesAs(expectation));
     }
 
 
-    public Expects(Quality<? super Description> delegate)
+    public HasDescription(Quality<? super Description> delegate)
     {
         super(new Having<>(new TextDescription("expects"), new TextDescription("expected"), Quality::description, delegate));
     }

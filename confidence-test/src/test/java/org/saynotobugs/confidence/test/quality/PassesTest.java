@@ -51,7 +51,7 @@ class PassesTest
                     }
                 },
                     "matched<1> mismatched with \n    ----\n    failed\n    ----\n  and\n  <2> mismatched with \n    ----\n    failed\n    ----\n  and\n  <3> mismatched with \n    ----\n    failed\n    ----"),
-                new Expects("matches <1>\n  and\n  <2>\n  and\n  <3>")
+                new HasDescription("matches <1>\n  and\n  <2>\n  and\n  <3>")
             ));
     }
 

@@ -2,7 +2,7 @@ package org.saynotobugs.confidence.quality.composite;
 
 import org.junit.jupiter.api.Test;
 import org.saynotobugs.confidence.quality.object.EqualTo;
-import org.saynotobugs.confidence.test.quality.Expects;
+import org.saynotobugs.confidence.test.quality.HasDescription;
 import org.saynotobugs.confidence.test.quality.Fails;
 import org.saynotobugs.confidence.test.quality.Passes;
 
@@ -19,7 +19,7 @@ class AnyOfTest
                 new Passes<>(1, 2, 3),
                 new Fails<>(0, "<0> neither <1> nor \n  <2> nor \n  <3>"),
                 new Fails<>(4, "<4> neither <1> nor \n  <2> nor \n  <3>"),
-                new Expects("<1> or <2> or <3>")
+                new HasDescription("<1> or <2> or <3>")
             ));
     }
 
@@ -32,7 +32,7 @@ class AnyOfTest
                 new Passes<>(1, 2, 3),
                 new Fails<>(0, "<0> neither <1> nor \n  <2> nor \n  <3>"),
                 new Fails<>(4, "<4> neither <1> nor \n  <2> nor \n  <3>"),
-                new Expects("<1> or <2> or <3>")
+                new HasDescription("<1> or <2> or <3>")
             ));
     }
 }
