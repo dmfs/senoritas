@@ -2,7 +2,6 @@ package org.saynotobugs.confidence.quality.object;
 
 import org.junit.jupiter.api.Test;
 import org.saynotobugs.confidence.quality.composite.AllOf;
-import org.saynotobugs.confidence.quality.object.Throwing;
 import org.saynotobugs.confidence.quality.trivial.Anything;
 import org.saynotobugs.confidence.quality.trivial.Nothing;
 import org.saynotobugs.confidence.test.quality.DescribesAs;
@@ -24,7 +23,7 @@ class ThrowingTest
         assertThat(new Throwing(new Anything()),
             new AllOf<>(
                 new Passes<>((Throwing.Breakable) () -> {throw new NoSuchElementException();}),
-                new Fails<>(() -> {}, new DescribesAs("did not throw <anything>")),
+                new Fails<>(() -> {}, new DescribesAs("not throwing <anything>")),
                 new Expects(new DescribesAs("throwing <anything>"))
             ));
     }
@@ -35,8 +34,8 @@ class ThrowingTest
     {
         assertThat(new Throwing(new Nothing()),
             new AllOf<>(
-                new Fails<>(() -> {throw new NoSuchElementException();}, new DescribesAs("threw <java.util.NoSuchElementException>")),
-                new Fails<>(() -> {}, new DescribesAs("did not throw <nothing>")),
+                new Fails<>(() -> {throw new NoSuchElementException();}, new DescribesAs("throwing <java.util.NoSuchElementException>")),
+                new Fails<>(() -> {}, new DescribesAs("not throwing <nothing>")),
                 new Expects(new DescribesAs("throwing <nothing>"))
             ));
     }
@@ -48,7 +47,7 @@ class ThrowingTest
         assertThat(new Throwing(NoSuchElementException.class),
             new AllOf<>(
                 new Passes<>((Throwing.Breakable) () -> {throw new NoSuchElementException();}),
-                new Fails<>(() -> {}, new DescribesAs("did not throw instance of <class java.util.NoSuchElementException>")),
+                new Fails<>(() -> {}, new DescribesAs("not throwing instance of <class java.util.NoSuchElementException>")),
                 new Expects(new DescribesAs("throwing instance of <class java.util.NoSuchElementException>"))
             ));
     }

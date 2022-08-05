@@ -40,11 +40,11 @@ public final class Throwing implements Quality<Throwing.Breakable>
         try
         {
             candidate.run();
-            return new Fail(new Delimited(new TextDescription("did not throw"), mDelegate.description()));
+            return new Fail(new Delimited(new TextDescription("not throwing"), mDelegate.description()));
         }
         catch (Throwable e)
         {
-            return new FailPrepended(new TextDescription("threw"), mDelegate.assessmentOf(e));
+            return new FailPrepended(new TextDescription("throwing"), mDelegate.assessmentOf(e));
         }
     }
 

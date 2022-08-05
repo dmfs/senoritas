@@ -3,10 +3,10 @@ package org.saynotobugs.confidence.quality.array;
 import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 import org.saynotobugs.confidence.Quality;
 import org.saynotobugs.confidence.description.TextDescription;
-import org.saynotobugs.confidence.quality.composite.QualityComposition;
-import org.saynotobugs.confidence.quality.object.Satisfies;
 import org.saynotobugs.confidence.quality.composite.AllOfFailingFast;
 import org.saynotobugs.confidence.quality.composite.Having;
+import org.saynotobugs.confidence.quality.composite.QualityComposition;
+import org.saynotobugs.confidence.quality.object.Satisfies;
 import org.saynotobugs.confidence.utils.ArrayIterable;
 
 
@@ -14,7 +14,7 @@ import org.saynotobugs.confidence.utils.ArrayIterable;
 public final class ArrayThat extends QualityComposition<Object>
 {
     /**
-     * Creates a {@link Quality} that matches any array that, when iterated, matches the given {@link Iterable} {@link Quality}.
+     * A {@link Quality} of an array that, when iterated, has the given {@link Iterable} {@link Quality}.
      */
     @SuppressWarnings("unchecked")
     public <T> ArrayThat(Quality<? super Iterable<T>> delegate)
