@@ -1,6 +1,11 @@
 language: android
 jdk: openjdk11
 
+before_install:
+  - sudo curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
+  - sudo apt-get -y install dpkg
+  - sudo apt-get -y install bellsoft-java11
+
 android:
   components:
     - tools
@@ -11,7 +16,8 @@ android:
     - extra
     - extra-android-m2repository
 
-script: ./gradlew check javadoc senoritas-android:jacocoTestReport
+script:
+  - ./gradlew check javadoc confidence-android:jacocoTestReport
 
 # upload JaCoCo report to codecov
 after_success:
