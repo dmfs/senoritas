@@ -2,24 +2,24 @@ package org.saynotobugs.confidence.test.quality;
 
 import org.junit.jupiter.api.Test;
 import org.saynotobugs.confidence.Assessment;
-import org.saynotobugs.confidence.Description;
 import org.saynotobugs.confidence.Quality;
 import org.saynotobugs.confidence.assessment.Pass;
 import org.saynotobugs.confidence.description.TextDescription;
 import org.saynotobugs.confidence.quality.composite.AllOf;
+import org.saynotobugs.confidence.quality.grammar.Has;
 
 import java.util.regex.Pattern;
 
 import static org.saynotobugs.confidence.Assertion.assertThat;
 
 
-class HasDescriptionTest
+class DescriptionTest
 {
 
     @Test
     void test()
     {
-        assertThat(new HasDescription("abc"),
+        assertThat(new Description("abc"),
             new AllOf<>(
                 new Passes<>(new Quality<Object>()
                 {
@@ -31,7 +31,7 @@ class HasDescriptionTest
 
 
                     @Override
-                    public Description description()
+                    public org.saynotobugs.confidence.Description description()
                     {
                         return new TextDescription("abc");
                     }
@@ -46,12 +46,12 @@ class HasDescriptionTest
 
 
                     @Override
-                    public Description description()
+                    public org.saynotobugs.confidence.Description description()
                     {
                         return new TextDescription("123");
                     }
-                }, "expected described as\n  ----\n  \"123\"\n  ----"),
-                new HasDescription("expects describes as\n  ----\n  \"abc\"\n  ----")
+                }, "description described as\n  ----\n  \"123\"\n  ----"),
+                new Has<>(new Description("description describes as\n  ----\n  \"abc\"\n  ----"))
             ));
     }
 
@@ -59,7 +59,7 @@ class HasDescriptionTest
     @Test
     void testPattern()
     {
-        assertThat(new HasDescription(Pattern.compile("\\dabc\\d")),
+        assertThat(new Description(Pattern.compile("\\dabc\\d")),
             new AllOf<>(
                 new Passes<>(new Quality<Object>()
                 {
@@ -71,7 +71,7 @@ class HasDescriptionTest
 
 
                     @Override
-                    public Description description()
+                    public org.saynotobugs.confidence.Description description()
                     {
                         return new TextDescription("1abc2");
                     }
@@ -86,12 +86,12 @@ class HasDescriptionTest
 
 
                     @Override
-                    public Description description()
+                    public org.saynotobugs.confidence.Description description()
                     {
                         return new TextDescription("123");
                     }
-                }, "expected described as\n  ----\n  \"123\" mismatched pattern <\\\\dabc\\\\d>\n  ----"),
-                new HasDescription("expects describes as\n  ----\n  matches pattern <\\\\dabc\\\\d>\n  ----")
+                }, "description described as\n  ----\n  \"123\" mismatched pattern <\\\\dabc\\\\d>\n  ----"),
+                new Has<>(new Description("description describes as\n  ----\n  matches pattern <\\\\dabc\\\\d>\n  ----"))
             ));
     }
 

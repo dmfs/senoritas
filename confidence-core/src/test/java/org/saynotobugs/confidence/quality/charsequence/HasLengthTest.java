@@ -3,7 +3,8 @@ package org.saynotobugs.confidence.quality.charsequence;
 import org.junit.jupiter.api.Test;
 import org.saynotobugs.confidence.quality.comparable.LessThan;
 import org.saynotobugs.confidence.quality.composite.AllOf;
-import org.saynotobugs.confidence.test.quality.HasDescription;
+import org.saynotobugs.confidence.quality.grammar.Has;
+import org.saynotobugs.confidence.test.quality.Description;
 import org.saynotobugs.confidence.test.quality.Fails;
 import org.saynotobugs.confidence.test.quality.Passes;
 
@@ -21,7 +22,7 @@ class HasLengthTest
                 new Fails<>("", "had length <0>"),
                 new Fails<>("12", "had length <2>"),
                 new Fails<>("1234", "had length <4>"),
-                new HasDescription("has length <3>")));
+                new Has<>(new Description("has length <3>"))));
     }
 
 
@@ -33,6 +34,6 @@ class HasLengthTest
                 new Passes<>("", "12", "abc"),
                 new Fails<>("abcd", "had length <4>"),
                 new Fails<>("abcde", "had length <5>"),
-                new HasDescription("has length less than <4>")));
+                new Has<>(new Description("has length less than <4>"))));
     }
 }

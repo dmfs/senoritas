@@ -2,7 +2,8 @@ package org.saynotobugs.confidence.quality.map;
 
 import org.junit.jupiter.api.Test;
 import org.saynotobugs.confidence.quality.composite.AllOf;
-import org.saynotobugs.confidence.test.quality.HasDescription;
+import org.saynotobugs.confidence.quality.grammar.Has;
+import org.saynotobugs.confidence.test.quality.Description;
 import org.saynotobugs.confidence.test.quality.Fails;
 import org.saynotobugs.confidence.test.quality.Passes;
 
@@ -29,7 +30,7 @@ class HasEntryTest
                 new Fails<>(new HashMap<String, String>(), "{  } did not contain Entry { \"k1\": \"v1\" }"),
                 new Fails<>(map2, "{ \"k2\": \"v2\" } did not contain Entry { \"k1\": \"v1\" }"),
                 //  new Fails<>(Map.of("k2", "v2"), new DescribesAs("")),
-                new HasDescription("contains Entry { \"k1\": \"v1\" }")
+                new Has<>(new Description("contains Entry { \"k1\": \"v1\" }"))
             ));
 
     }

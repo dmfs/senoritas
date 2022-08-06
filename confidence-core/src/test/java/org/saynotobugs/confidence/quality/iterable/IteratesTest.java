@@ -6,7 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.saynotobugs.confidence.quality.comparable.GreaterThan;
 import org.saynotobugs.confidence.quality.comparable.LessThan;
 import org.saynotobugs.confidence.quality.composite.AllOf;
-import org.saynotobugs.confidence.test.quality.HasDescription;
+import org.saynotobugs.confidence.quality.grammar.Has;
+import org.saynotobugs.confidence.test.quality.Description;
 import org.saynotobugs.confidence.test.quality.Fails;
 import org.saynotobugs.confidence.test.quality.Passes;
 
@@ -24,7 +25,7 @@ class IteratesTest
                 new Passes<>(new EmptyIterable<>()),
                 new Fails<>(new Seq<>(1), "iterated [ 0: unexpected <1> ]"),
                 new Fails<>(new Seq<>(1, 2, 3), "iterated [ 0: unexpected <1>,\n  1: unexpected <2>,\n  2: unexpected <3> ]"),
-                new HasDescription("iterates [  ]")
+                new Has<>(new Description("iterates [  ]"))
             ));
     }
 
@@ -37,7 +38,7 @@ class IteratesTest
                 new Passes<Iterable<Integer>>(new Seq<>(1), new Seq<>(1)),
                 new Fails<Iterable<Integer>>(new EmptyIterable<>(), "iterated [ 0: missing <1> ]"),
                 new Fails<Iterable<Integer>>(new Seq<>(1, 2, 3), "iterated [ ...\n  1: unexpected <2>,\n  2: unexpected <3> ]"),
-                new HasDescription("iterates [ 0: <1> ]")
+                new Has<>(new Description("iterates [ 0: <1> ]"))
             ));
     }
 
@@ -50,7 +51,7 @@ class IteratesTest
                 new Passes<>(new Seq<>(1, 2, 3), new Seq<>(1, 2, 3)),
                 new Fails<Iterable<Integer>>(new EmptyIterable<>(), "iterated [ 0: missing <1>,\n  1: missing <2>,\n  2: missing <3> ]"),
                 new Fails<Iterable<Integer>>(new Seq<>(0, 2, 3, 4), "iterated [ 0: <0>\n  ...\n  3: unexpected <4> ]"),
-                new HasDescription("iterates [ 0: <1>,\n  1: <2>,\n  2: <3> ]")
+                new Has<>(new Description("iterates [ 0: <1>,\n  1: <2>,\n  2: <3> ]"))
             ));
     }
 
@@ -63,7 +64,7 @@ class IteratesTest
                 new Passes<>(new Seq<>(-1), new Seq<>(0)),
                 new Fails<Iterable<Integer>>(new EmptyIterable<>(), "iterated [ 0: missing less than <1> ]"),
                 new Fails<Iterable<Integer>>(new Seq<>(1, 0, 3), "iterated [ 0: <1>,\n  1: unexpected <0>,\n  2: unexpected <3> ]"),
-                new HasDescription("iterates [ 0: less than <1> ]")
+                new Has<>(new Description("iterates [ 0: less than <1> ]"))
             ));
     }
 
@@ -77,7 +78,7 @@ class IteratesTest
                 new Fails<Iterable<Integer>>(new EmptyIterable<>(),
                     "iterated [ 0: missing less than <1>,\n  1: missing greater than <2>,\n  2: missing less than <3> ]"),
                 new Fails<Iterable<Integer>>(new Seq<>(0, 2, 3, 4), "iterated [ ...\n  1: <2>,\n  2: <3>,\n  3: unexpected <4> ]"),
-                new HasDescription("iterates [ 0: less than <1>,\n  1: greater than <2>,\n  2: less than <3> ]")
+                new Has<>(new Description("iterates [ 0: less than <1>,\n  1: greater than <2>,\n  2: less than <3> ]"))
             ));
     }
 }

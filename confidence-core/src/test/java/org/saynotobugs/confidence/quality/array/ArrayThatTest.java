@@ -2,8 +2,9 @@ package org.saynotobugs.confidence.quality.array;
 
 import org.junit.jupiter.api.Test;
 import org.saynotobugs.confidence.quality.composite.AllOf;
+import org.saynotobugs.confidence.quality.grammar.Has;
 import org.saynotobugs.confidence.quality.iterable.Contains;
-import org.saynotobugs.confidence.test.quality.HasDescription;
+import org.saynotobugs.confidence.test.quality.Description;
 import org.saynotobugs.confidence.test.quality.Fails;
 import org.saynotobugs.confidence.test.quality.Passes;
 
@@ -22,7 +23,7 @@ class ArrayThatTest
                 new Fails<Object>(new int[] {}, "(1) array [  ] did not contain <3>"),
                 new Fails<Object>(new int[] { 1, 2, 4 }, "(1) array [ <1>,\n  <2>,\n  <4> ] did not contain <3>"),
                 new Fails<>("abc", "(0) not an array"),
-                new HasDescription("(0) an array\n  and\n  (1) array that contains <3>")
+                new Has<>(new Description("(0) an array\n  and\n  (1) array that contains <3>"))
             ));
     }
 

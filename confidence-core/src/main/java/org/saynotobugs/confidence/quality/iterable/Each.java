@@ -9,8 +9,8 @@ import org.saynotobugs.confidence.assessment.AllPassed;
 import org.saynotobugs.confidence.assessment.FailPrepended;
 import org.saynotobugs.confidence.description.Delimited;
 import org.saynotobugs.confidence.description.TextDescription;
-import org.saynotobugs.confidence.quality.composite.QualityComposition;
 import org.saynotobugs.confidence.quality.composite.AllOf;
+import org.saynotobugs.confidence.quality.composite.QualityComposition;
 
 import static org.saynotobugs.confidence.description.LiteralDescription.COMMA_NEW_LINE;
 

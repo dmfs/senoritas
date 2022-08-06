@@ -1,10 +1,10 @@
 package org.saynotobugs.confidence.rxjava3.rxexpectation.internal;
 
 import org.saynotobugs.confidence.Quality;
-import org.saynotobugs.confidence.quality.object.InstanceOf;
-import org.saynotobugs.confidence.quality.composite.QualityComposition;
 import org.saynotobugs.confidence.quality.composite.Having;
+import org.saynotobugs.confidence.quality.composite.QualityComposition;
 import org.saynotobugs.confidence.quality.iterable.Iterates;
+import org.saynotobugs.confidence.quality.object.InstanceOf;
 import org.saynotobugs.confidence.rxjava3.RxTestAdapter;
 
 

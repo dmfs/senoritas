@@ -2,12 +2,12 @@ package org.saynotobugs.confidence.test.quality;
 
 import org.junit.jupiter.api.Test;
 import org.saynotobugs.confidence.Assessment;
-import org.saynotobugs.confidence.Description;
 import org.saynotobugs.confidence.Quality;
 import org.saynotobugs.confidence.assessment.Fail;
 import org.saynotobugs.confidence.assessment.Pass;
 import org.saynotobugs.confidence.description.TextDescription;
 import org.saynotobugs.confidence.quality.composite.AllOf;
+import org.saynotobugs.confidence.quality.grammar.Has;
 
 import static org.saynotobugs.confidence.Assertion.assertThat;
 
@@ -29,7 +29,7 @@ class FailsTest
 
 
                     @Override
-                    public Description description()
+                    public org.saynotobugs.confidence.Description description()
                     {
                         return new TextDescription("expects");
                     }
@@ -44,12 +44,12 @@ class FailsTest
 
 
                     @Override
-                    public Description description()
+                    public org.saynotobugs.confidence.Description description()
                     {
                         return new TextDescription("pass");
                     }
                 }, "<123> matched pass"),
-                new HasDescription("mismatches <123> with diff <anything>")
+                new Has<>(new Description("mismatches <123> with diff <anything>"))
             ));
     }
 
@@ -69,7 +69,7 @@ class FailsTest
 
 
                     @Override
-                    public Description description()
+                    public org.saynotobugs.confidence.Description description()
                     {
                         return new TextDescription("expects");
                     }
@@ -84,7 +84,7 @@ class FailsTest
 
 
                     @Override
-                    public Description description()
+                    public org.saynotobugs.confidence.Description description()
                     {
                         return new TextDescription("pass");
                     }
@@ -99,12 +99,12 @@ class FailsTest
 
 
                     @Override
-                    public Description description()
+                    public org.saynotobugs.confidence.Description description()
                     {
                         return new TextDescription("pass");
                     }
                 }, "<123> matched pass"),
-                new HasDescription("mismatches <123> with diff describes as\n  ----\n  \"mismatch\"\n  ----")
+                new Has<>(new Description("mismatches <123> with diff describes as\n  ----\n  \"mismatch\"\n  ----"))
             ));
     }
 }

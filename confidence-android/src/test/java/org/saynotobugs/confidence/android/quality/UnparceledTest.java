@@ -7,11 +7,12 @@ import android.os.Parcelable;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
-import org.saynotobugs.confidence.quality.object.EqualTo;
 import org.saynotobugs.confidence.quality.charsequence.MatchesPattern;
 import org.saynotobugs.confidence.quality.composite.AllOf;
+import org.saynotobugs.confidence.quality.grammar.Has;
+import org.saynotobugs.confidence.quality.object.EqualTo;
 import org.saynotobugs.confidence.test.quality.DescribesAs;
-import org.saynotobugs.confidence.test.quality.HasDescription;
+import org.saynotobugs.confidence.test.quality.Description;
 import org.saynotobugs.confidence.test.quality.Fails;
 import org.saynotobugs.confidence.test.quality.Passes;
 
@@ -29,9 +30,8 @@ public class UnparceledTest
             new AllOf<>(
                 new Passes<>(new TestParcelable("abc")),
                 new Fails<>(new TestParcelable("xyz"), new DescribesAs("Parcelable that <TestParcelable(xyz)>")),
-                new HasDescription("Parcelable that <TestParcelable(abc)>")
-            )
-        );
+                new Has<>(new Description("Parcelable that <TestParcelable(abc)>"))
+            ));
     }
 
 

@@ -2,7 +2,8 @@ package org.saynotobugs.confidence.quality.comparator;
 
 import org.junit.jupiter.api.Test;
 import org.saynotobugs.confidence.quality.composite.AllOf;
-import org.saynotobugs.confidence.test.quality.HasDescription;
+import org.saynotobugs.confidence.quality.grammar.Has;
+import org.saynotobugs.confidence.test.quality.Description;
 import org.saynotobugs.confidence.test.quality.Fails;
 import org.saynotobugs.confidence.test.quality.Passes;
 
@@ -31,7 +32,7 @@ class ImposesEqualityTest
                         "  compared elements \"xyz\" at index 2 and \"123\" at index 0 incorrectly to <71>,\n" +
                         "  compared elements \"xyz\" at index 2 and \"abc\" at index 1 incorrectly to <23>\n" +
                         "  ..."),
-                new HasDescription("imposes equality on \"123\",\n  \"abc\",\n  \"xyz\"")
+                new Has<>(new Description("imposes equality on \"123\",\n  \"abc\",\n  \"xyz\""))
             ));
     }
 }

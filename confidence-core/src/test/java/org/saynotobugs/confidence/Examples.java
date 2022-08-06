@@ -7,18 +7,17 @@ import org.saynotobugs.confidence.assessment.PassIf;
 import org.saynotobugs.confidence.description.Delimited;
 import org.saynotobugs.confidence.description.NumberDescription;
 import org.saynotobugs.confidence.description.TextDescription;
-import org.saynotobugs.confidence.quality.object.EqualTo;
-import org.saynotobugs.confidence.quality.compat.Hamcrest;
-import org.saynotobugs.confidence.quality.object.HasToString;
-import org.saynotobugs.confidence.quality.composite.Parallel;
 import org.saynotobugs.confidence.quality.comparable.GreaterThan;
 import org.saynotobugs.confidence.quality.comparable.LessThan;
+import org.saynotobugs.confidence.quality.compat.Hamcrest;
 import org.saynotobugs.confidence.quality.composite.*;
 import org.saynotobugs.confidence.quality.grammar.Is;
 import org.saynotobugs.confidence.quality.iterable.Contains;
 import org.saynotobugs.confidence.quality.iterable.Each;
 import org.saynotobugs.confidence.quality.iterable.Iterates;
 import org.saynotobugs.confidence.quality.iterable.IteratesInAnyOrder;
+import org.saynotobugs.confidence.quality.object.EqualTo;
+import org.saynotobugs.confidence.quality.object.ToString;
 import org.saynotobugs.confidence.quality.optional.Present;
 import org.saynotobugs.confidence.quality.supplier.Supplies;
 import org.saynotobugs.confidence.test.quality.Fails;
@@ -238,8 +237,8 @@ public final class Examples
     @Test
     void testHasToString()
     {
-        assertThat("123", new HasToString(new EqualTo<>("123")));
-        assertThat("124", new HasToString("123"));
+        assertThat("123", new ToString(new EqualTo<>("123")));
+        assertThat("124", new ToString("123"));
     }
 
 

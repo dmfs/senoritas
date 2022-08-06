@@ -2,8 +2,9 @@ package org.saynotobugs.confidence.quality.composite;
 
 import org.dmfs.jems2.iterable.Seq;
 import org.junit.jupiter.api.Test;
+import org.saynotobugs.confidence.quality.grammar.Has;
 import org.saynotobugs.confidence.quality.object.EqualTo;
-import org.saynotobugs.confidence.test.quality.HasDescription;
+import org.saynotobugs.confidence.test.quality.Description;
 import org.saynotobugs.confidence.test.quality.Fails;
 import org.saynotobugs.confidence.test.quality.Passes;
 
@@ -22,7 +23,7 @@ class InTest
                 new Passes<>(1, 2, 3),
                 new Fails<>(4, "<4> not in [ <1>,\n  <2>,\n  <3> ]"),
                 new Fails<>(0, "<0> not in [ <1>,\n  <2>,\n  <3> ]"),
-                new HasDescription("in [ <1>,\n  <2>,\n  <3> ]")));
+                new Has<>(new Description("in [ <1>,\n  <2>,\n  <3> ]"))));
     }
 
 
@@ -34,7 +35,7 @@ class InTest
                 new Passes<>(1, 2, 3),
                 new Fails<>(4, "<4> not in [ <1>,\n  <2>,\n  <3> ]"),
                 new Fails<>(0, "<0> not in [ <1>,\n  <2>,\n  <3> ]"),
-                new HasDescription("in [ <1>,\n  <2>,\n  <3> ]")));
+                new Has<>(new Description("in [ <1>,\n  <2>,\n  <3> ]"))));
     }
 
 
@@ -46,7 +47,7 @@ class InTest
                 new Passes<>(1, 2, 3),
                 new Fails<>(4, "<4> not in { <1>,\n  <2>,\n  <3> }"),
                 new Fails<>(0, "<0> not in { <1>,\n  <2>,\n  <3> }"),
-                new HasDescription("in { <1>,\n  <2>,\n  <3> }")));
+                new Has<>(new Description("in { <1>,\n  <2>,\n  <3> }"))));
     }
 
 
@@ -58,6 +59,6 @@ class InTest
                 new Passes<>(1, 2, 3),
                 new Fails<>(4, "<4> not in { <1>,\n  <2>,\n  <3> }"),
                 new Fails<>(0, "<0> not in { <1>,\n  <2>,\n  <3> }"),
-                new HasDescription("in { <1>,\n  <2>,\n  <3> }")));
+                new Has<>(new Description("in { <1>,\n  <2>,\n  <3> }"))));
     }
 }
