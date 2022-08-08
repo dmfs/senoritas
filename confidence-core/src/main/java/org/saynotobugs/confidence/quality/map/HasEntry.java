@@ -11,7 +11,7 @@ import org.saynotobugs.confidence.quality.trivial.Anything;
 import java.util.Map;
 
 
-@StaticFactories("Core")
+@StaticFactories(value = "Core", packageName = "org.saynotobugs.confidence.quality")
 public final class HasEntry<K, V> extends QualityComposition<Map<K, V>>
 {
     public HasEntry(K key)
