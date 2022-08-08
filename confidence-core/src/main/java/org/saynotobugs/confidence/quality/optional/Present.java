@@ -40,8 +40,8 @@ public final class Present<T> extends QualityComposition<Optional<T>>
     public Present(Quality<? super T> delegate)
     {
         super(actual -> actual.isPresent()
-                ? new FailPrepended(new TextDescription("was present"), delegate.assessmentOf(actual.get()))
-                : new Fail(new TextDescription("was absent")),
-            new Delimited(new TextDescription("is present"), delegate.description()));
+                ? new FailPrepended(new TextDescription("present"), delegate.assessmentOf(actual.get()))
+                : new Fail(new TextDescription("absent")),
+            new Delimited(new TextDescription("present"), delegate.description()));
     }
 }

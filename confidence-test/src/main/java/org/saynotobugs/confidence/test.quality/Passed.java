@@ -16,8 +16,8 @@ public final class Passed extends QualityComposition<Assessment>
     public Passed()
     {
         super(actual -> actual.isSuccess()
-                ? new FailPrepended(new TextDescription("passed but did described mismatch"), new DescribesAs("").assessmentOf(actual.description()))
+                ? new FailPrepended(new TextDescription("passed but described failure"), new DescribesAs("").assessmentOf(actual.description()))
                 : new Fail(new Delimited("failed with", actual.description())),
-            new TextDescription("passes"));
+            new TextDescription("passed"));
     }
 }

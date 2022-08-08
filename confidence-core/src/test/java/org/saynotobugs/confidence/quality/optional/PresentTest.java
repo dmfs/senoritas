@@ -21,8 +21,8 @@ class PresentTest
         assertThat(new Present<>(),
             new AllOf<>(
                 new Passes<Optional<Object>>(Optional.of(123), Optional.of(1234), Optional.of("abc")),
-                new Fails<>(Optional.empty(), "was absent"),
-                new HasDescription("is present <anything>")));
+                new Fails<>(Optional.empty(), "absent"),
+                new HasDescription("present <anything>")));
     }
 
 
@@ -32,9 +32,9 @@ class PresentTest
         assertThat(new Present<>(123),
             new AllOf<>(
                 new Passes<>(Optional.of(123)),
-                new Fails<>(Optional.of(1234), "was present <1234>"),
-                new Fails<Optional<Integer>>(Optional.empty(), "was absent"),
-                new HasDescription("is present <123>")));
+                new Fails<>(Optional.of(1234), "present <1234>"),
+                new Fails<Optional<Integer>>(Optional.empty(), "absent"),
+                new HasDescription("present <123>")));
     }
 
 
@@ -44,9 +44,9 @@ class PresentTest
         assertThat(new Present<>(new EqualTo<>(123)),
             new AllOf<>(
                 new Passes<>(Optional.of(123)),
-                new Fails<>(Optional.of(1234), "was present <1234>"),
-                new Fails<Optional<Integer>>(Optional.empty(), "was absent"),
-                new HasDescription("is present <123>")));
+                new Fails<>(Optional.of(1234), "present <1234>"),
+                new Fails<Optional<Integer>>(Optional.empty(), "absent"),
+                new HasDescription("present <123>")));
     }
 
 }

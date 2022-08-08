@@ -1,6 +1,7 @@
 package org.saynotobugs.confidence.mockito4;
 
 import org.junit.jupiter.api.Test;
+import org.saynotobugs.confidence.mockito4.quality.Matches;
 import org.saynotobugs.confidence.quality.composite.AllOf;
 import org.saynotobugs.confidence.quality.composite.Not;
 import org.saynotobugs.confidence.quality.object.EqualTo;

@@ -28,7 +28,7 @@ public final class Supplies<T> extends QualityComposition<Supplier<T>>
      */
     public Supplies(Quality<? super T> delegate)
     {
-        super(actual -> new FailPrepended(new TextDescription("supplied value"), delegate.assessmentOf(actual.get())),
-            new Delimited(new TextDescription("supplies value"), delegate.description()));
+        super(actual -> new FailPrepended(new TextDescription("supplied"), delegate.assessmentOf(actual.get())),
+            new Delimited(new TextDescription("supplies"), delegate.description()));
     }
 }

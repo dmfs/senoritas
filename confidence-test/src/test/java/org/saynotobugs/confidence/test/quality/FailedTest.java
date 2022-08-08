@@ -8,17 +8,17 @@ import org.saynotobugs.confidence.quality.object.EqualTo;
 import static org.saynotobugs.confidence.Assertion.assertThat;
 
 
-class FailureTest
+class FailedTest
 {
 
     @Test
     void test()
     {
-        assertThat(new Failure(new EqualTo<>("<123>")),
+        assertThat(new Failed(new EqualTo<>("<123>")),
             new AllOf<>(
                 // currently, we can't match the matching case due to the recursive description
                 //    new Matches<>(new Fail(new TextDescription("mismatched with description \n  ----\n  <123>\n  ----"))),
-                new Fails<>(new Pass(), "did pass")));
+                new Fails<>(new Pass(), "passed")));
     }
 
 }

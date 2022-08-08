@@ -12,13 +12,13 @@ import org.saynotobugs.confidence.quality.composite.QualityComposition;
 
 
 @StaticFactories("Test")
-public final class Failure extends QualityComposition<Assessment>
+public final class Failed extends QualityComposition<Assessment>
 {
-    public Failure(Quality<? super Description> mismatchDescription)
+    public Failed(Quality<? super Description> mismatchDescription)
     {
         super(actual -> actual.isSuccess()
-                ? new Fail(new TextDescription("did pass"))
-                : new FailPrepended(new TextDescription("mismatched with description"), mismatchDescription.assessmentOf(actual.description())),
+                ? new Fail(new TextDescription("passed"))
+                : new FailPrepended(new TextDescription("failed with description"), mismatchDescription.assessmentOf(actual.description())),
             new Delimited(new TextDescription("failed with"), mismatchDescription.description()));
     }
 }

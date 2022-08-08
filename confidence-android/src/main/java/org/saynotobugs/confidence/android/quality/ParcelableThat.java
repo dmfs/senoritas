@@ -15,7 +15,7 @@ import org.saynotobugs.confidence.description.TextDescription;
 import java.util.Locale;
 
 
-@StaticFactories("Android")
+@StaticFactories(value = "Android", packageName = "org.saynotobugs.confidence.android")
 public final class ParcelableThat<T extends Parcelable> implements Quality<T>
 {
     private final Quality<T> mDelegate;

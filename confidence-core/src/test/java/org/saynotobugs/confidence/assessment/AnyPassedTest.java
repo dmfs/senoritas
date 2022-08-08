@@ -3,7 +3,7 @@ package org.saynotobugs.confidence.assessment;
 import org.junit.jupiter.api.Test;
 import org.saynotobugs.confidence.description.TextDescription;
 import org.saynotobugs.confidence.test.quality.DescribesAs;
-import org.saynotobugs.confidence.test.quality.Failure;
+import org.saynotobugs.confidence.test.quality.Failed;
 import org.saynotobugs.confidence.test.quality.Passed;
 
 import static org.saynotobugs.confidence.Assertion.assertThat;
@@ -32,7 +32,7 @@ class AnyPassedTest
     void testOneFail()
     {
         assertThat(new AnyPassed(new TextDescription("e"), new TextDescription("x"), new Fail(new TextDescription("faaail"))),
-            new Failure(new DescribesAs("efaaail")));
+            new Failed(new DescribesAs("efaaail")));
     }
 
 
@@ -49,7 +49,7 @@ class AnyPassedTest
     {
         assertThat(new AnyPassed(new TextDescription("e"), new TextDescription("x"), new Fail(new TextDescription("f1")), new Fail(new TextDescription("f2")),
                 new Fail(new TextDescription("f3"))),
-            new Failure(new DescribesAs("ef1xf2xf3")));
+            new Failed(new DescribesAs("ef1xf2xf3")));
     }
 
 
@@ -59,6 +59,6 @@ class AnyPassedTest
         assertThat(new AnyPassed(new TextDescription("e"), new TextDescription("x"), new TextDescription("--"), new Fail(new TextDescription("f1")),
                 new Fail(new TextDescription("f2")),
                 new Fail(new TextDescription("f3"))),
-            new Failure(new DescribesAs("ef1xf2xf3--")));
+            new Failed(new DescribesAs("ef1xf2xf3--")));
     }
 }

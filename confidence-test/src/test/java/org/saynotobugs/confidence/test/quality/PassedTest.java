@@ -33,9 +33,9 @@ class PassedTest
                     {
                         return new TextDescription("should not exist");
                     }
-                }, "passed but did described mismatch described as\n  ----\n  \"should not exist\"\n  ----"),
-                new Fails<>(new Fail(new TextDescription("mismatches")), "mismatches"),
-                new HasDescription("passes")
+                }, "passed but described failure described as\n  ----\n  \"should not exist\"\n  ----"),
+                new Fails<>(new Fail(new TextDescription("failed")), "failed"),
+                new HasDescription("passed")
             ));
     }
 

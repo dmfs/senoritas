@@ -7,9 +7,9 @@ import org.saynotobugs.confidence.scribe.StringBuilderScribe;
 
 
 /**
- * An {@link ArgumentMatcher} that matches when the tested argument satisfies the given {@link Quality}.
+ * An {@link ArgumentMatcher} that matches when the tested argument has the given {@link Quality}.
  */
-@StaticFactories("Mockito4")
+@StaticFactories(value = "Mockito4", packageName = "org.saynotobugs.confidence.mockito4")
 public final class ArgThat<T> implements ArgumentMatcher<T>
 {
     private final Quality<? super T> mDelegate;
