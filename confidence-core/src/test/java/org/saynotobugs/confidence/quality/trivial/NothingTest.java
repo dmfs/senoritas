@@ -2,7 +2,6 @@ package org.saynotobugs.confidence.quality.trivial;
 
 import org.junit.jupiter.api.Test;
 import org.saynotobugs.confidence.quality.composite.AllOf;
-import org.saynotobugs.confidence.test.quality.DescribesAs;
 import org.saynotobugs.confidence.test.quality.Fails;
 import org.saynotobugs.confidence.test.quality.HasDescription;
 
@@ -17,9 +16,9 @@ class NothingTest
     {
         assertThat(new Nothing(),
             new AllOf<>(
-                new Fails<Object>("abc", new DescribesAs("\"abc\"")),
-                new Fails<Object>(123, new DescribesAs("<123>")),
-                new Fails<Object>(null, new DescribesAs("<null>")),
+                new Fails<Object>("abc", "\"abc\""),
+                new Fails<Object>(123, "<123>"),
+                new Fails<Object>(null, "<null>"),
                 new HasDescription("<nothing>")));
     }
 

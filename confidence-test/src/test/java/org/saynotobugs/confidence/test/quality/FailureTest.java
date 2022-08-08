@@ -18,7 +18,7 @@ class FailureTest
             new AllOf<>(
                 // currently, we can't match the matching case due to the recursive description
                 //    new Matches<>(new Fail(new TextDescription("mismatched with description \n  ----\n  <123>\n  ----"))),
-                new Fails<>(new Pass(), new DescribesAs("did pass"))));
+                new Fails<>(new Pass(), "did pass")));
     }
 
 }

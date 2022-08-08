@@ -2,7 +2,6 @@ package org.saynotobugs.confidence.quality.optional;
 
 import org.junit.jupiter.api.Test;
 import org.saynotobugs.confidence.quality.composite.AllOf;
-import org.saynotobugs.confidence.test.quality.DescribesAs;
 import org.saynotobugs.confidence.test.quality.Fails;
 import org.saynotobugs.confidence.test.quality.HasDescription;
 import org.saynotobugs.confidence.test.quality.Passes;
@@ -21,7 +20,7 @@ class AbsentTest
         assertThat(new Absent<>(),
             new AllOf<>(
                 new Passes<Optional<Integer>>(Optional.empty()),
-                new Fails<>(Optional.of(123), new DescribesAs("<present <123>>")),
+                new Fails<>(Optional.of(123), "<present <123>>"),
                 new HasDescription("<empty> optional")
             ));
     }

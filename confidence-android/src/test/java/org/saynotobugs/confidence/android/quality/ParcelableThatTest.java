@@ -28,7 +28,7 @@ public class ParcelableThatTest
         assertThat(new ParcelableThat<>(new EqualTo<>(new TestParcelable("abc"))),
             new AllOf<>(
                 new Passes<>(new TestParcelable("abc")),
-                new Fails<>(new TestParcelable("xyz"), new DescribesAs("Parcelable that <TestParcelable(xyz)>")),
+                new Fails<>(new TestParcelable("xyz"), "Parcelable that <TestParcelable(xyz)>"),
                 new HasDescription("Parcelable that <TestParcelable(abc)>")
             ));
     }
@@ -38,7 +38,7 @@ public class ParcelableThatTest
     public void testMismatch()
     {
         assertThat(new ParcelableThat<>(new EqualTo<>(new Account("a", "b"))),
-            new Fails<>(new TestParcelable("abc"), new DescribesAs("Parcelable that <TestParcelable(abc)>")));
+            new Fails<>(new TestParcelable("abc"), "Parcelable that <TestParcelable(abc)>"));
     }
 
 
