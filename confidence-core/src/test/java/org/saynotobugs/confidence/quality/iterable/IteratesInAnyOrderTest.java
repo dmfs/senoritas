@@ -4,10 +4,9 @@ import org.junit.jupiter.api.Test;
 import org.saynotobugs.confidence.quality.comparable.GreaterThan;
 import org.saynotobugs.confidence.quality.comparable.LessThan;
 import org.saynotobugs.confidence.quality.composite.AllOf;
-import org.saynotobugs.confidence.quality.grammar.Has;
 import org.saynotobugs.confidence.quality.object.EqualTo;
-import org.saynotobugs.confidence.test.quality.Description;
 import org.saynotobugs.confidence.test.quality.Fails;
+import org.saynotobugs.confidence.test.quality.HasDescription;
 import org.saynotobugs.confidence.test.quality.Passes;
 
 import static java.util.Arrays.asList;
@@ -25,7 +24,7 @@ class IteratesInAnyOrderTest
                 new Fails<>(asList(0, 1, 2, 3), "iterated also [<0>]\n  did not iterate []"),
                 new Fails<>(asList(1, 2), "iterated also []\n  did not iterate [<3>]"),
                 new Fails<>(asList(-1, 0, 1, 2), "iterated also [<0>,\n    <-1>]\n  did not iterate [<3>]"),
-                new Has<>(new Description("iterates in any order [<1>,\n  <2>,\n  <3>]"))
+                new HasDescription("iterates in any order [<1>,\n  <2>,\n  <3>]")
             ));
     }
 
@@ -39,7 +38,7 @@ class IteratesInAnyOrderTest
                 new Fails<>(asList(0, 1, 2, 3), "iterated also [<0>]\n  did not iterate []"),
                 new Fails<>(asList(1, 2), "iterated also []\n  did not iterate [<3>]"),
                 new Fails<>(asList(-1, 0, 1, 2), "iterated also [<0>,\n    <-1>]\n  did not iterate [<3>]"),
-                new Has<>(new Description("iterates in any order [<1>,\n  <2>,\n  <3>]"))
+                new HasDescription("iterates in any order [<1>,\n  <2>,\n  <3>]")
             ));
     }
 
@@ -54,7 +53,7 @@ class IteratesInAnyOrderTest
                 new Fails<>(asList(1, 1, 1), "iterated also []\n  did not iterate [greater than <10>]"),
                 new Fails<>(asList(1, 2), "iterated also []\n  did not iterate [greater than <10>]"),
                 new Fails<>(asList(-1, 0, 1, 2), "iterated also []\n  did not iterate [greater than <10>]"),
-                new Has<>(new Description("iterates in any order [less than <10>,\n  less than <20>,\n  greater than <10>]"))
+                new HasDescription("iterates in any order [less than <10>,\n  less than <20>,\n  greater than <10>]")
             ));
     }
 
@@ -71,7 +70,7 @@ class IteratesInAnyOrderTest
                 new Fails<>(asList(1, 11, 11, 11),
                     "[ <1>,\n  <11>,\n  <11>,\n  <11> ] has more elements than [less than <10>,\n  less than <10>,\n  greater than <10>]"),
                 new Fails<>(asList(11, 11, 11), "iterated also []\n  did not iterate [less than <10>,\n    less than <10>]"),
-                new Has<>(new Description("iterates in any order [less than <10>,\n  less than <10>,\n  greater than <10>]"))
+                new HasDescription("iterates in any order [less than <10>,\n  less than <10>,\n  greater than <10>]")
             ));
     }
 }

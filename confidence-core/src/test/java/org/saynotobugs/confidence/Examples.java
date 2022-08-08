@@ -150,14 +150,14 @@ public final class Examples
     @Test
     void testHaving()
     {
-        assertThat(123, new Having<>("hashcode", Objects::hashCode, new EqualTo<>(125)));
+        assertThat(123, new Has<>("hashcode", Objects::hashCode, new EqualTo<>(125)));
     }
 
 
     @Test
     void testHaving2()
     {
-        assertThat(123, new Having<>(new TextDescription("has hash"), new TextDescription("had hash"), Objects::hashCode, new EqualTo<>(125)));
+        assertThat(123, new Has<>(new TextDescription("has hash"), new TextDescription("had hash"), Objects::hashCode, new EqualTo<>(125)));
     }
 
 
@@ -246,7 +246,7 @@ public final class Examples
     void parallel()
     {
         assertThat(new AtomicInteger(0), new Parallel<>(1000,
-            new Having<>("modulo", i -> i.incrementAndGet() % 50, new LessThan<>(48))));
+            new Has<>("modulo", i -> i.incrementAndGet() % 50, new LessThan<>(48))));
     }
 
 

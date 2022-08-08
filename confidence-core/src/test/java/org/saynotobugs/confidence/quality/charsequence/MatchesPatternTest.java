@@ -2,9 +2,8 @@ package org.saynotobugs.confidence.quality.charsequence;
 
 import org.junit.jupiter.api.Test;
 import org.saynotobugs.confidence.quality.composite.AllOf;
-import org.saynotobugs.confidence.quality.grammar.Has;
-import org.saynotobugs.confidence.test.quality.Description;
 import org.saynotobugs.confidence.test.quality.Fails;
+import org.saynotobugs.confidence.test.quality.HasDescription;
 import org.saynotobugs.confidence.test.quality.Passes;
 
 import static org.saynotobugs.confidence.Assertion.assertThat;
@@ -20,7 +19,7 @@ class MatchesPatternTest
                 new Passes<>("123", "abc123xyz"),
                 new Fails<>("12", "\"12\" mismatched pattern <^.*123.*$>"),
                 new Fails<>("abc", "\"abc\" mismatched pattern <^.*123.*$>"),
-                new Has<>(new Description("matches pattern <^.*123.*$>"))
+                new HasDescription("matches pattern <^.*123.*$>")
             ));
     }
 }

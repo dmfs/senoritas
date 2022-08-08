@@ -7,7 +7,6 @@ import org.saynotobugs.confidence.assessment.Fail;
 import org.saynotobugs.confidence.assessment.Pass;
 import org.saynotobugs.confidence.description.TextDescription;
 import org.saynotobugs.confidence.quality.composite.AllOf;
-import org.saynotobugs.confidence.quality.grammar.Has;
 
 import static org.saynotobugs.confidence.Assertion.assertThat;
 
@@ -49,7 +48,7 @@ class FailsTest
                         return new TextDescription("pass");
                     }
                 }, "<123> matched pass"),
-                new Has<>(new Description("mismatches <123> with diff <anything>"))
+                new HasDescription("mismatches <123> with diff <anything>")
             ));
     }
 
@@ -104,7 +103,7 @@ class FailsTest
                         return new TextDescription("pass");
                     }
                 }, "<123> matched pass"),
-                new Has<>(new Description("mismatches <123> with diff describes as\n  ----\n  \"mismatch\"\n  ----"))
+                new HasDescription("mismatches <123> with diff describes as\n  ----\n  \"mismatch\"\n  ----")
             ));
     }
 }

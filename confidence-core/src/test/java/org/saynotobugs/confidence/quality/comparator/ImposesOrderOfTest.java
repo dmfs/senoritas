@@ -2,9 +2,8 @@ package org.saynotobugs.confidence.quality.comparator;
 
 import org.junit.jupiter.api.Test;
 import org.saynotobugs.confidence.quality.composite.AllOf;
-import org.saynotobugs.confidence.quality.grammar.Has;
-import org.saynotobugs.confidence.test.quality.Description;
 import org.saynotobugs.confidence.test.quality.Fails;
+import org.saynotobugs.confidence.test.quality.HasDescription;
 import org.saynotobugs.confidence.test.quality.Passes;
 
 import java.util.Comparator;
@@ -35,7 +34,7 @@ class ImposesOrderOfTest
                         "  compared elements <1> at index 0 and <3> at index 2 incorrectly to <1>,\n" +
                         "  compared elements <1> at index 0 and <4> at index 3 incorrectly to <1>,\n" +
                         "  compared elements <1> at index 0 and <5> at index 4 incorrectly to <1>\n  ..."),
-                new Has<>(new Description("imposes the following order: <1>,\n  <2>,\n  <3>,\n  <4>,\n  <5>"))));
+                new HasDescription("imposes the following order: <1>,\n  <2>,\n  <3>,\n  <4>,\n  <5>")));
     }
 
 }

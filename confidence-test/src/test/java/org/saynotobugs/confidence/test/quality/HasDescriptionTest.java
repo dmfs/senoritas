@@ -6,20 +6,19 @@ import org.saynotobugs.confidence.Quality;
 import org.saynotobugs.confidence.assessment.Pass;
 import org.saynotobugs.confidence.description.TextDescription;
 import org.saynotobugs.confidence.quality.composite.AllOf;
-import org.saynotobugs.confidence.quality.grammar.Has;
 
 import java.util.regex.Pattern;
 
 import static org.saynotobugs.confidence.Assertion.assertThat;
 
 
-class DescriptionTest
+class HasDescriptionTest
 {
 
     @Test
     void test()
     {
-        assertThat(new Description("abc"),
+        assertThat(new HasDescription("abc"),
             new AllOf<>(
                 new Passes<>(new Quality<Object>()
                 {
@@ -51,7 +50,7 @@ class DescriptionTest
                         return new TextDescription("123");
                     }
                 }, "description described as\n  ----\n  \"123\"\n  ----"),
-                new Has<>(new Description("description describes as\n  ----\n  \"abc\"\n  ----"))
+                new HasDescription("description describes as\n  ----\n  \"abc\"\n  ----")
             ));
     }
 
@@ -59,7 +58,7 @@ class DescriptionTest
     @Test
     void testPattern()
     {
-        assertThat(new Description(Pattern.compile("\\dabc\\d")),
+        assertThat(new HasDescription(Pattern.compile("\\dabc\\d")),
             new AllOf<>(
                 new Passes<>(new Quality<Object>()
                 {
@@ -91,7 +90,7 @@ class DescriptionTest
                         return new TextDescription("123");
                     }
                 }, "description described as\n  ----\n  \"123\" mismatched pattern <\\\\dabc\\\\d>\n  ----"),
-                new Has<>(new Description("description describes as\n  ----\n  matches pattern <\\\\dabc\\\\d>\n  ----"))
+                new HasDescription("description describes as\n  ----\n  matches pattern <\\\\dabc\\\\d>\n  ----")
             ));
     }
 

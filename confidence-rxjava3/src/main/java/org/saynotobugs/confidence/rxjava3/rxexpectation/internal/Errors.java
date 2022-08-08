@@ -1,7 +1,7 @@
 package org.saynotobugs.confidence.rxjava3.rxexpectation.internal;
 
 import org.saynotobugs.confidence.Quality;
-import org.saynotobugs.confidence.quality.composite.Having;
+import org.saynotobugs.confidence.quality.composite.Has;
 import org.saynotobugs.confidence.quality.composite.QualityComposition;
 import org.saynotobugs.confidence.quality.iterable.Iterates;
 import org.saynotobugs.confidence.quality.object.InstanceOf;
@@ -18,6 +18,6 @@ public final class Errors<T> extends QualityComposition<RxTestAdapter<T>>
 
     public Errors(Quality<? super Throwable> errorQuality)
     {
-        super(new Having<>("error", RxTestAdapter::errors, new Iterates<>(errorQuality)));
+        super(new Has<>("error", RxTestAdapter::errors, new Iterates<>(errorQuality)));
     }
 }

@@ -2,10 +2,9 @@ package org.saynotobugs.confidence.quality.optional;
 
 import org.junit.jupiter.api.Test;
 import org.saynotobugs.confidence.quality.composite.AllOf;
-import org.saynotobugs.confidence.quality.grammar.Has;
 import org.saynotobugs.confidence.test.quality.DescribesAs;
-import org.saynotobugs.confidence.test.quality.Description;
 import org.saynotobugs.confidence.test.quality.Fails;
+import org.saynotobugs.confidence.test.quality.HasDescription;
 import org.saynotobugs.confidence.test.quality.Passes;
 
 import java.util.Optional;
@@ -23,7 +22,7 @@ class AbsentTest
             new AllOf<>(
                 new Passes<Optional<Integer>>(Optional.empty()),
                 new Fails<>(Optional.of(123), new DescribesAs("<present <123>>")),
-                new Has<>(new Description("<empty> optional"))
+                new HasDescription("<empty> optional")
             ));
     }
 

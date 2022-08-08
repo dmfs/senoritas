@@ -11,26 +11,26 @@ import org.saynotobugs.confidence.description.TextDescription;
 
 
 @StaticFactories(value = "Core", packageName = "org.saynotobugs.confidence.quality")
-public final class Having<T, V> extends QualityComposition<T>
+public final class Has<T, V> extends QualityComposition<T>
 {
 
-    public Having(Function<? super T, ? extends V> featureFunction, Quality<? super V> delegate)
+    public Has(Function<? super T, ? extends V> featureFunction, Quality<? super V> delegate)
     {
         super(actual -> delegate.assessmentOf(featureFunction.value(actual)),
             delegate.description());
     }
 
 
-    public Having(String featureName, Function<? super T, ? extends V> featureFunction, Quality<? super V> delegate)
+    public Has(String featureName, Function<? super T, ? extends V> featureFunction, Quality<? super V> delegate)
     {
-        this(new Delimited(new TextDescription("having"), new TextDescription(featureName)),
-            new Delimited(new TextDescription("having"), new TextDescription(featureName)),
+        this(new Delimited(new TextDescription("has"), new TextDescription(featureName)),
+            new Delimited(new TextDescription("had"), new TextDescription(featureName)),
             featureFunction,
             delegate);
     }
 
 
-    public Having(Description featureDescription,
+    public Has(Description featureDescription,
         Description featureMismatchDescription,
         Function<? super T, ? extends V> featureFunction,
         Quality<? super V> delegate)
@@ -40,7 +40,7 @@ public final class Having<T, V> extends QualityComposition<T>
     }
 
 
-    public Having(Function<Description, Description> featureDescription,
+    public Has(Function<Description, Description> featureDescription,
         Function<Description, Description> featureMismatchDescription,
         Function<? super T, ? extends V> featureFunction,
         Quality<? super V> delegate)

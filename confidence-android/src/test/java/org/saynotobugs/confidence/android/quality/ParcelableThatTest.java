@@ -9,28 +9,27 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.saynotobugs.confidence.quality.charsequence.MatchesPattern;
 import org.saynotobugs.confidence.quality.composite.AllOf;
-import org.saynotobugs.confidence.quality.grammar.Has;
 import org.saynotobugs.confidence.quality.object.EqualTo;
 import org.saynotobugs.confidence.test.quality.DescribesAs;
-import org.saynotobugs.confidence.test.quality.Description;
 import org.saynotobugs.confidence.test.quality.Fails;
+import org.saynotobugs.confidence.test.quality.HasDescription;
 import org.saynotobugs.confidence.test.quality.Passes;
 
 import static org.saynotobugs.confidence.Assertion.assertThat;
 
 
 @RunWith(RobolectricTestRunner.class)
-public class UnparceledTest
+public class ParcelableThatTest
 {
 
     @Test
     public void test()
     {
-        assertThat(new Unparceled<>(new EqualTo<>(new TestParcelable("abc"))),
+        assertThat(new ParcelableThat<>(new EqualTo<>(new TestParcelable("abc"))),
             new AllOf<>(
                 new Passes<>(new TestParcelable("abc")),
                 new Fails<>(new TestParcelable("xyz"), new DescribesAs("Parcelable that <TestParcelable(xyz)>")),
-                new Has<>(new Description("Parcelable that <TestParcelable(abc)>"))
+                new HasDescription("Parcelable that <TestParcelable(abc)>")
             ));
     }
 
@@ -38,7 +37,7 @@ public class UnparceledTest
     @Test
     public void testMismatch()
     {
-        assertThat(new Unparceled<>(new EqualTo<>(new Account("a", "b"))),
+        assertThat(new ParcelableThat<>(new EqualTo<>(new Account("a", "b"))),
             new Fails<>(new TestParcelable("abc"), new DescribesAs("Parcelable that <TestParcelable(abc)>")));
     }
 
@@ -46,7 +45,7 @@ public class UnparceledTest
     @Test
     public void testReadFewer()
     {
-        assertThat(new Unparceled<>(new EqualTo<>(new ReadFewerParcelable())),
+        assertThat(new ParcelableThat<>(new EqualTo<>(new ReadFewerParcelable())),
             new Fails<>(new ReadFewerParcelable(), new DescribesAs(
                 new MatchesPattern("Parcelable ReadFewerParcelable wrote \\d+ bytes but read \\d+ bytes"))));
     }
@@ -55,7 +54,7 @@ public class UnparceledTest
     @Test
     public void testReadMore()
     {
-        assertThat(new Unparceled<>(new EqualTo<>(new ReadMoreParcelable())),
+        assertThat(new ParcelableThat<>(new EqualTo<>(new ReadMoreParcelable())),
             new Fails<>(new ReadMoreParcelable(), new DescribesAs(
                 new MatchesPattern("Parcelable ReadMoreParcelable wrote \\d+ bytes but read \\d+ bytes"))));
     }

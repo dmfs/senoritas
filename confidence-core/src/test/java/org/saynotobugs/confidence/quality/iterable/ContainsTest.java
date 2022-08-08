@@ -5,11 +5,10 @@ import org.junit.jupiter.api.Test;
 import org.saynotobugs.confidence.quality.comparable.GreaterThan;
 import org.saynotobugs.confidence.quality.comparable.LessThan;
 import org.saynotobugs.confidence.quality.composite.AllOf;
-import org.saynotobugs.confidence.quality.grammar.Has;
 import org.saynotobugs.confidence.quality.object.EqualTo;
 import org.saynotobugs.confidence.test.quality.DescribesAs;
-import org.saynotobugs.confidence.test.quality.Description;
 import org.saynotobugs.confidence.test.quality.Fails;
+import org.saynotobugs.confidence.test.quality.HasDescription;
 import org.saynotobugs.confidence.test.quality.Passes;
 
 import static org.dmfs.jems2.iterable.EmptyIterable.emptyIterable;
@@ -27,7 +26,7 @@ class ContainsTest
                 new Passes<>(new Seq<>(123), new Seq<>(1, 2, 3, 123)),
                 new Fails<Iterable<Integer>>(emptyIterable(), new DescribesAs("[  ] did not contain <123>")),
                 new Fails<Iterable<Integer>>(new Seq<>(1, 2, 3), new DescribesAs("[ <1>,\n  <2>,\n  <3> ] did not contain <123>")),
-                new Has<>(new Description("contains <123>"))
+                new HasDescription("contains <123>")
             ));
     }
 
@@ -48,7 +47,7 @@ class ContainsTest
                 new Fails<Iterable<Integer>>(new Seq<>(1, 2), new DescribesAs("{ ...\n  [ <1>,\n    <2> ] did not contain <3> }")),
                 new Fails<Iterable<Integer>>(new Seq<>(1, 2, 2, 2),
                     new DescribesAs("{ ...\n  [ <1>,\n    <2>,\n    <2>,\n    <2> ] did not contain <3> }")),
-                new Has<>(new Description("contains <1>\n  and\n  contains <2>\n  and\n  contains <3>"))
+                new HasDescription("contains <1>\n  and\n  contains <2>\n  and\n  contains <3>")
             ));
     }
 
@@ -72,7 +71,7 @@ class ContainsTest
                     new DescribesAs("{ ...\n  [ <-10>,\n    <5>,\n    <6>,\n    <7> ] did not contain <2>\n  ... }")),
                 new Fails<Iterable<Integer>>(new Seq<>(1, 2, 2, 10, 100),
                     new DescribesAs("{ [ <1>,\n    <2>,\n    <2>,\n    <10>,\n    <100> ] did not contain less than <1>\n  ... }")),
-                new Has<>(new Description("contains less than <1>\n  and\n  contains <2>\n  and\n  contains greater than <3>"))
+                new HasDescription("contains less than <1>\n  and\n  contains <2>\n  and\n  contains greater than <3>")
             ));
     }
 }

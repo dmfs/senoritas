@@ -16,12 +16,12 @@ import java.util.Locale;
 
 
 @StaticFactories("Android")
-public final class Unparceled<T extends Parcelable> implements Quality<T>
+public final class ParcelableThat<T extends Parcelable> implements Quality<T>
 {
     private final Quality<T> mDelegate;
 
 
-    public Unparceled(Quality<T> delegate)
+    public ParcelableThat(Quality<T> delegate)
     {
         mDelegate = delegate;
     }

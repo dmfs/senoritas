@@ -162,20 +162,20 @@ about the "how".
 This is how a test of an RXJava Flowable would look like.
 
 ```java
-assertThat((TestScheduler scheduler) -> Flowable.interval(10, TimeUnit.SECONDS, scheduler).take(10),
+assertThat((TestScheduler scheduler)->Flowable.interval(10,TimeUnit.SECONDS,scheduler).take(10),
     is(publisherThat(
-        immediately(emitsNothing()),
-        within(ofSeconds(10), emits(0L)),
-        within(ofSeconds(10), emits(1L)),
-        within(ofSeconds(10), emits(2L)),
-        within(ofSeconds(10), emits(3L)),
-        within(ofSeconds(10), emits(4L)),
-        within(ofSeconds(10), emits(5L)),
-        within(ofSeconds(10), emits(6L)),
-        within(ofSeconds(10), emits(7L)),
-        within(ofSeconds(10), emits(8L)),
-        within(ofSeconds(10), emits(9L)),
-        immediately(completes())
+    immediately(emitsNothing()),
+    within(ofSeconds(10),emits(0L)),
+    within(ofSeconds(10),emits(1L)),
+    within(ofSeconds(10),emits(2L)),
+    within(ofSeconds(10),emits(3L)),
+    within(ofSeconds(10),emits(4L)),
+    within(ofSeconds(10),emits(5L)),
+    within(ofSeconds(10),emits(6L)),
+    within(ofSeconds(10),emits(7L)),
+    within(ofSeconds(10),emits(8L)),
+    within(ofSeconds(10),emits(9L)),
+    immediately(completes())
     )));
 ```
 

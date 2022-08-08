@@ -6,7 +6,7 @@ import org.saynotobugs.confidence.description.Composite;
 import org.saynotobugs.confidence.description.TextDescription;
 import org.saynotobugs.confidence.quality.composite.AllOf;
 import org.saynotobugs.confidence.quality.composite.DescribedAs;
-import org.saynotobugs.confidence.quality.composite.Having;
+import org.saynotobugs.confidence.quality.composite.Has;
 import org.saynotobugs.confidence.quality.composite.QualityComposition;
 import org.saynotobugs.confidence.quality.object.EqualTo;
 
@@ -37,8 +37,8 @@ public final class EntryOf<K, V> extends QualityComposition<Map.Entry<K, V>>
             value.description(),
             new TextDescription(" }")),
             new AllOf<>(
-                new Having<>(Map.Entry::getKey, key),
-                new Having<>(Map.Entry::getValue, value)
+                new Has<>(Map.Entry::getKey, key),
+                new Has<>(Map.Entry::getValue, value)
             )));
     }
 }

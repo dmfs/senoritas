@@ -2,7 +2,7 @@ package org.saynotobugs.confidence.quality.map;
 
 import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 import org.saynotobugs.confidence.Quality;
-import org.saynotobugs.confidence.quality.composite.Having;
+import org.saynotobugs.confidence.quality.composite.Has;
 import org.saynotobugs.confidence.quality.composite.QualityComposition;
 import org.saynotobugs.confidence.quality.iterable.Contains;
 import org.saynotobugs.confidence.quality.object.EqualTo;
@@ -40,6 +40,6 @@ public final class HasEntry<K, V> extends QualityComposition<Map<K, V>>
 
     public HasEntry(Quality<? super K> keyQuality, Quality<? super V> valueQuality)
     {
-        super(new Having<>(Map::entrySet, new Contains<>(new EntryOf<>(keyQuality, valueQuality))));
+        super(new Has<>(Map::entrySet, new Contains<>(new EntryOf<>(keyQuality, valueQuality))));
     }
 }

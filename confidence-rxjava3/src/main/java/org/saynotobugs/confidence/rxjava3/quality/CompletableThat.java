@@ -5,7 +5,7 @@ import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 import org.saynotobugs.confidence.Quality;
 import org.saynotobugs.confidence.description.TextDescription;
 import org.saynotobugs.confidence.quality.composite.AllOfFailingFast;
-import org.saynotobugs.confidence.quality.composite.Having;
+import org.saynotobugs.confidence.quality.composite.Has;
 import org.saynotobugs.confidence.quality.composite.QualityComposition;
 import org.saynotobugs.confidence.rxjava3.RxTestAdapter;
 import org.saynotobugs.confidence.rxjava3.adapters.RxTestObserver;
@@ -25,7 +25,7 @@ public final class CompletableThat<T> extends QualityComposition<CompletableSour
 
     public CompletableThat(Iterable<? extends Quality<? super RxTestAdapter<? extends T>>> events)
     {
-        super(new Having<>(new TextDescription("Completable that"),
+        super(new Has<>(new TextDescription("Completable that"),
             new TextDescription("Completable that"),
             actual -> {
                 RxTestObserver<T> observer = new RxTestObserver<>();

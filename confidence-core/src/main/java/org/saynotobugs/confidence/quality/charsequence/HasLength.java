@@ -3,7 +3,7 @@ package org.saynotobugs.confidence.quality.charsequence;
 import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 import org.saynotobugs.confidence.Quality;
 import org.saynotobugs.confidence.description.TextDescription;
-import org.saynotobugs.confidence.quality.composite.Having;
+import org.saynotobugs.confidence.quality.composite.Has;
 import org.saynotobugs.confidence.quality.composite.QualityComposition;
 import org.saynotobugs.confidence.quality.object.EqualTo;
 
@@ -31,6 +31,6 @@ public final class HasLength extends QualityComposition<CharSequence>
      */
     public HasLength(Quality<? super Integer> delegate)
     {
-        super(new Having<>(new TextDescription("has length"), new TextDescription("had length"), CharSequence::length, delegate));
+        super(new Has<>(new TextDescription("has length"), new TextDescription("had length"), CharSequence::length, delegate));
     }
 }

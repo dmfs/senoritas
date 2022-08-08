@@ -3,7 +3,7 @@ package org.saynotobugs.confidence.rxjava3.quality;
 import org.dmfs.jems2.Function;
 import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 import org.saynotobugs.confidence.Quality;
-import org.saynotobugs.confidence.quality.composite.Having;
+import org.saynotobugs.confidence.quality.composite.Has;
 import org.saynotobugs.confidence.quality.composite.QualityComposition;
 import org.saynotobugs.confidence.rxjava3.rxexpectation.Within;
 
@@ -20,7 +20,7 @@ public final class Unscheduled<RxType> extends QualityComposition<RxType>
      */
     public Unscheduled(Quality<? super Function<? super TestScheduler, ? extends RxType>> delegate)
     {
-        super(new Having<>(
+        super(new Has<>(
             matcher -> (Function<? super TestScheduler, ? extends RxType>) ignoredScheduler -> matcher,
             delegate));
     }

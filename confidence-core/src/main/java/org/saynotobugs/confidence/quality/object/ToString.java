@@ -2,8 +2,7 @@ package org.saynotobugs.confidence.quality.object;
 
 import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 import org.saynotobugs.confidence.Quality;
-import org.saynotobugs.confidence.description.TextDescription;
-import org.saynotobugs.confidence.quality.composite.Having;
+import org.saynotobugs.confidence.quality.composite.Has;
 import org.saynotobugs.confidence.quality.composite.QualityComposition;
 
 
@@ -18,6 +17,6 @@ public final class ToString extends QualityComposition<Object>
 
     public ToString(Quality<? super String> delegate)
     {
-        super(new Having<>(new TextDescription("toString()"), new TextDescription("toString()"), Object::toString, delegate));
+        super(new Has<>("toString()", Object::toString, delegate));
     }
 }

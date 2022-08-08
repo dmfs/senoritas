@@ -2,9 +2,8 @@ package org.saynotobugs.confidence.quality.object;
 
 import org.junit.jupiter.api.Test;
 import org.saynotobugs.confidence.quality.composite.AllOf;
-import org.saynotobugs.confidence.quality.grammar.Has;
-import org.saynotobugs.confidence.test.quality.Description;
 import org.saynotobugs.confidence.test.quality.Fails;
+import org.saynotobugs.confidence.test.quality.HasDescription;
 import org.saynotobugs.confidence.test.quality.Passes;
 
 import static org.saynotobugs.confidence.Assertion.assertThat;
@@ -19,6 +18,6 @@ class NullTest
             new AllOf<>(
                 new Passes<>(new Object[] { null }),
                 new Fails<>(123, "<123>"),
-                new Has<>(new Description("<null>"))));
+                new HasDescription("<null>")));
     }
 }
