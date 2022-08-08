@@ -8,7 +8,7 @@ import org.saynotobugs.confidence.Assessment;
 import org.saynotobugs.confidence.Description;
 import org.saynotobugs.confidence.Quality;
 import org.saynotobugs.confidence.assessment.Fail;
-import org.saynotobugs.confidence.assessment.FailUpdated;
+import org.saynotobugs.confidence.assessment.FailPrepended;
 import org.saynotobugs.confidence.description.Delimited;
 import org.saynotobugs.confidence.description.TextDescription;
 
@@ -46,7 +46,7 @@ public final class ParcelableThat<T extends Parcelable> implements Quality<T>
                     pos,
                     parcel.dataPosition())));
             }
-            return new FailUpdated(d -> new Delimited(new TextDescription("Parcelable that"), d), mDelegate.assessmentOf(result));
+            return new FailPrepended(new TextDescription("Parcelable that"), mDelegate.assessmentOf(result));
         }
         finally
         {
