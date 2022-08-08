@@ -5,7 +5,7 @@ import org.saynotobugs.confidence.mockito4.quality.Matches;
 import org.saynotobugs.confidence.quality.composite.AllOf;
 import org.saynotobugs.confidence.quality.composite.Not;
 import org.saynotobugs.confidence.quality.object.EqualTo;
-import org.saynotobugs.confidence.quality.object.ToString;
+import org.saynotobugs.confidence.quality.object.HasToString;
 
 import static org.saynotobugs.confidence.Assertion.assertThat;
 
@@ -20,7 +20,7 @@ class ArgThatTest
             new AllOf<>(
                 new Matches<>("123"),
                 new Not<>(new Matches<>("1234")),
-                new ToString("ArgThat \"123\"")
+                new HasToString("ArgThat \"123\"")
             ));
     }
 

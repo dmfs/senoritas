@@ -7,15 +7,15 @@ import org.saynotobugs.confidence.quality.composite.QualityComposition;
 
 
 @StaticFactories(value = "Core", packageName = "org.saynotobugs.confidence.quality")
-public final class ToString extends QualityComposition<Object>
+public final class HasToString extends QualityComposition<Object>
 {
-    public ToString(String toStringValue)
+    public HasToString(String toStringValue)
     {
         this(new EqualTo<>(toStringValue));
     }
 
 
-    public ToString(Quality<? super String> delegate)
+    public HasToString(Quality<? super String> delegate)
     {
         super(new Has<>("toString()", Object::toString, delegate));
     }
