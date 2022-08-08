@@ -37,8 +37,8 @@ public final class HasNumberOfElements extends QualityComposition<Iterable<?>>
         super(new DescribedAs<>(
             original -> new Delimited(original, new TextDescription("elements")),
             new Having<>(
-                new TextDescription("has"),
-                new TextDescription("had"),
+                d->d,
+                d->d,
                 actual -> new Reduced<>(() -> 0, (current, i) -> current + 1, actual).value(), delegate)));
     }
 }

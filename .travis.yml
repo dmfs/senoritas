@@ -1,6 +1,11 @@
 language: android
+# currently not working, see below
 jdk: openjdk11
 
+# this seems to be necessary:
+# see https://github.com/git-lfs/git-lfs/issues/3474
+# since it doesn't seem to be possible to install the git-lfs script before travis installs the JDK we install it manually
+# this also requires updating dpkg, see https://askubuntu.com/questions/1065231/dpkg-deb-error-archive-has-premature-member-control-tar-xz-before-contr
 before_install:
   - sudo curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
   - sudo apt-get -y install dpkg

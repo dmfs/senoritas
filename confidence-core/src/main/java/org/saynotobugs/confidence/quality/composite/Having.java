@@ -5,6 +5,7 @@ import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
 import org.saynotobugs.confidence.Description;
 import org.saynotobugs.confidence.Quality;
 import org.saynotobugs.confidence.assessment.FailPrepended;
+import org.saynotobugs.confidence.assessment.FailUpdated;
 import org.saynotobugs.confidence.description.Delimited;
 import org.saynotobugs.confidence.description.TextDescription;
 
@@ -36,5 +37,15 @@ public final class Having<T, V> extends QualityComposition<T>
     {
         super(actual -> new FailPrepended(featureMismatchDescription, delegate.assessmentOf(featureFunction.value(actual))),
             new Delimited(featureDescription, delegate.description()));
+    }
+
+
+    public Having(Function<Description, Description> featureDescription,
+        Function<Description, Description> featureMismatchDescription,
+        Function<? super T, ? extends V> featureFunction,
+        Quality<? super V> delegate)
+    {
+        super(actual -> new FailUpdated(featureMismatchDescription, delegate.assessmentOf(featureFunction.value(actual))),
+            featureDescription.value(delegate.description()));
     }
 }
