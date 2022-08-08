@@ -20,7 +20,7 @@ class SameAsTest
             new AllOf<>(
                 new Passes<>(i),
                 new Fails<>(123, "<123>"),
-                new HasDescription("<123>")));
+                new HasDescription("same instance as <123>")));
     }
 
 }

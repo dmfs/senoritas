@@ -1,6 +1,8 @@
 package org.saynotobugs.confidence.quality.object;
 
 import org.dmfs.srcless.annotations.staticfactory.StaticFactories;
+import org.saynotobugs.confidence.description.Delimited;
+import org.saynotobugs.confidence.description.TextDescription;
 import org.saynotobugs.confidence.description.ValueDescription;
 import org.saynotobugs.confidence.quality.composite.QualityComposition;
 
@@ -12,6 +14,6 @@ public final class SameAs<T> extends QualityComposition<T>
     {
         super(new Satisfies<>(
             actual -> expected == actual,
-            new ValueDescription(expected)));
+            new Delimited(new TextDescription("same instance as"), new ValueDescription(expected))));
     }
 }
