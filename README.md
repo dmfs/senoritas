@@ -2,6 +2,8 @@
 [![codecov](https://codecov.io/gh/dmfs/senoritas/branch/main/graph/badge.svg?token=3wGxOPmEEc)](https://codecov.io/gh/dmfs/senoritas)
 [![Language grade: Java](https://img.shields.io/lgtm/grade/java/g/dmfs/senoritas.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/dmfs/senoritas/context:java)
 
+## **This project is now continued at https://github.com/saynotobugsorg/confidence and this repo is no longer maintained**
+
 # Confidence
 
 Confidence is a composable Assertion Framework. It's very much inspired by Hamcrest and based on the same idea. There are a couple of important differences
